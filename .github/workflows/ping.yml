@@ -1,0 +1,112 @@
+name: Ping
+
+# Runs only when this example (or this workflow) changes.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'networking/ping/**'
+      - '.github/workflows/ping.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'networking/ping/**'
+      - '.github/workflows/ping.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# A new push to the same branch cancels the run it supersedes.
+concurrency:
+  group: ping-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gcc:
+    name: GCC
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: networking/ping
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Build with GCC
+        run: |
+          gcc -std=c11 -Wall -Wextra -pedantic -Werror               src/ping.c               -o ping
+
+      - name: Argument validation smoke test
+        run: |
+          set +e
+          ./ping > output.txt 2>&1
+          status=$?
+          set -e
+
+          test "$status" -eq 2
+          grep -q "usage:" output.txt
+
+  clang:
+    name: Clang
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: networking/ping
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Build with Clang
+        run: |
+          clang -std=c11 -Wall -Wextra -pedantic -Werror                 src/ping.c                 -o ping
+
+      - name: Argument validation smoke test
+        run: |
+          set +e
+          ./ping > output.txt 2>&1
+          status=$?
+          set -e
+
+          test "$status" -eq 2
+          grep -q "usage:" output.txt
+
+  msvc:
+    name: MSVC
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: networking/ping
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Configure MSVC environment
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Build with MSVC
+        shell: cmd
+        run: |
+          cl /nologo /TC /W4 /WX /EHsc ^
+             src\ping-windows.c ^
+             /link Ws2_32.lib ^
+             /OUT:ping-windows.exe
+
+      - name: Argument validation smoke test
+        shell: pwsh
+        run: |
+          $output = & .\ping-windows.exe 2>&1
+          $status = $LASTEXITCODE
+
+          if ($status -ne 2) {
+              Write-Error "Expected exit code 2, got $status"
+              exit 1
+          }
+
+          if ($output -notmatch "usage:") {
+              Write-Error "Usage message was not produced."
+              exit 1
+          }
