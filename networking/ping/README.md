@@ -61,7 +61,7 @@ The valid payload range is 0–1024 bytes.
 Build:
 
 ```bat
-cl /nologo /TC /W4 /WX /EHsc src\ping-windows.c /link Ws2_32.lib
+cl /nologo /TC /W4 /WX src\ping-windows.c /link Ws2_32.lib
 ```
 
 Run from an elevated command prompt:
