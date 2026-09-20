@@ -163,7 +163,13 @@ int main(int argc, char **argv)
             ssize_t n = recvfrom(fd, reply, sizeof reply, 0,
                                  (struct sockaddr *)&from, &fromlen);
             if (n < 0) {
-                printf("seq=%d timeout\n", seq);
+                if (errno == EINTR)
+                    continue;                   /* a signal, not a timeout */
+                if (errno == EAGAIN || errno == EWOULDBLOCK) {
+                    printf("seq=%d timeout\n", seq);
+                    break;
+                }
+                fprintf(stderr, "recvfrom: %s\n", strerror(errno));
                 break;
             }
 
@@ -183,10 +189,15 @@ int main(int argc, char **argv)
             if (in.type != ICMP_ECHOREPLY)
                 continue;                       /* our own request, or something else */
 
-            /* The kernel rewrites the id on an unprivileged socket, so only
-               a raw socket can match on it. */
+            /* The kernel manages the id on an unprivileged ping socket, so
+               only a raw socket can match on it. */
             if (is_raw && ntohs(in.un.echo.id) != ident)
                 continue;                       /* somebody else's ping */
+
+            /* Match the sequence we are waiting for, so a late reply to an
+               earlier request is not counted twice. */
+            if (ntohs(in.un.echo.sequence) != (unsigned short)seq)
+                continue;
 
             char fromdot[INET_ADDRSTRLEN];
             inet_ntop(AF_INET, &from.sin_addr, fromdot, sizeof fromdot);
