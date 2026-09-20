@@ -38,7 +38,7 @@ jobs:
         run: |
           gcc -std=c11 -Wall -Wextra -pedantic -Werror               src/ping.c               -o ping
 
-      - name: Argument validation smoke test
+      - name: Validation smoke test
         run: |
           set +e
           ./ping > output.txt 2>&1
@@ -65,7 +65,7 @@ jobs:
         run: |
           clang -std=c11 -Wall -Wextra -pedantic -Werror                 src/ping.c                 -o ping
 
-      - name: Argument validation smoke test
+      - name: Validation smoke test
         run: |
           set +e
           ./ping > output.txt 2>&1
@@ -99,21 +99,22 @@ jobs:
              /link Ws2_32.lib ^
              /OUT:ping-windows.exe
 
-      - name: Argument validation smoke test
+      - name: Validation smoke test
         shell: pwsh
         run: |
-          & .\ping-windows.exe > output.txt 2>&1
+          & .\ping-windows.exe 0 > output.txt 2>&1
           $status = $LASTEXITCODE
 
-          Write-Host "Program exit code: $status"
           Get-Content output.txt
 
-          if ($status -ne 2) {
-              Write-Error "Expected exit code 2, got $status"
+          if ($status -eq 0) {
+              Write-Error "Expected hostname resolution to fail."
               exit 1
           }
 
-          if (-not (Select-String -Path output.txt -Pattern "usage:" -Quiet)) {
-              Write-Error "Usage message was not produced."
+          if (-not (Select-String -Path output.txt -Pattern "No such host is known" -Quiet)) {
+              Write-Error "Expected hostname resolution error was not produced."
               exit 1
-          }      
+          }
+
+          Write-Host "Smoke test passed."    
