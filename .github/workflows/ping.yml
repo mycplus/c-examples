@@ -45,6 +45,8 @@ jobs:
           status=$?
           set -e
 
+          cat output.txt
+
           test "$status" -eq 2
           grep -q "usage:" output.txt
 
@@ -69,6 +71,8 @@ jobs:
           ./ping > output.txt 2>&1
           status=$?
           set -e
+
+          cat output.txt
 
           test "$status" -eq 2
           grep -q "usage:" output.txt
@@ -98,15 +102,18 @@ jobs:
       - name: Argument validation smoke test
         shell: pwsh
         run: |
-          $output = & .\ping-windows.exe 2>&1
+          & .\ping-windows.exe > output.txt 2>&1
           $status = $LASTEXITCODE
+
+          Write-Host "Program exit code: $status"
+          Get-Content output.txt
 
           if ($status -ne 2) {
               Write-Error "Expected exit code 2, got $status"
               exit 1
           }
 
-          if ($output -notmatch "usage:") {
+          if (-not (Select-String -Path output.txt -Pattern "usage:" -Quiet)) {
               Write-Error "Usage message was not produced."
               exit 1
-          }
+          }      
