@@ -1,0 +1,151 @@
+name: Base64
+
+# Runs only when this example (or this workflow) changes.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'encoding/base64/**'
+      - '.github/workflows/base64.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'encoding/base64/**'
+      - '.github/workflows/base64.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: base64-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: ${{ matrix.name }} C${{ matrix.std }}
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: encoding/base64
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: GCC,         os: ubuntu-latest,  std: 11, exe: '' }
+          - { name: GCC,         os: ubuntu-latest,  std: 17, exe: '' }
+          - { name: Clang,       os: ubuntu-latest,  std: 11, exe: '' }
+          - { name: Clang,       os: ubuntu-latest,  std: 17, exe: '' }
+          - { name: Apple Clang, os: macos-latest,   std: 11, exe: '' }
+          - { name: MSVC,        os: windows-latest, std: 11, exe: '.exe' }
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Configure MSVC environment
+        if: runner.os == 'Windows'
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Build (GCC)
+        if: matrix.name == 'GCC'
+        run: |
+          gcc -std=c${{ matrix.std }} -Wall -Wextra -pedantic -Werror -Iinclude \
+              src/base64.c tests/test_base64.c -o test_base64
+          gcc -std=c${{ matrix.std }} -Wall -Wextra -pedantic -Werror -Iinclude \
+              src/base64.c src/base64-demo.c -o base64-demo
+
+      - name: Build (Clang)
+        if: matrix.name == 'Clang' || matrix.name == 'Apple Clang'
+        run: |
+          clang -std=c${{ matrix.std }} -Wall -Wextra -pedantic -Werror -Iinclude \
+                src/base64.c tests/test_base64.c -o test_base64
+          clang -std=c${{ matrix.std }} -Wall -Wextra -pedantic -Werror -Iinclude \
+                src/base64.c src/base64-demo.c -o base64-demo
+
+      - name: Build (MSVC)
+        if: matrix.name == 'MSVC'
+        shell: cmd
+        run: |
+          cl /nologo /TC /W4 /WX /Iinclude src\base64.c tests\test_base64.c /Fe:test_base64.exe
+          cl /nologo /TC /W4 /WX /Iinclude src\base64.c src\base64-demo.c /Fe:base64-demo.exe
+
+      - name: RFC 4648 test suite
+        shell: bash
+        run: ./test_base64${{ matrix.exe }}
+
+      - name: Demo - encode
+        shell: bash
+        run: |
+          out=$(./base64-demo${{ matrix.exe }} encode "Hello World!")
+          echo "$out"
+          test "$out" = "SGVsbG8gV29ybGQh"
+
+      - name: Demo - decode
+        shell: bash
+        run: |
+          out=$(./base64-demo${{ matrix.exe }} decode "SGVsbG8gV29ybGQh")
+          echo "$out"
+          test "$out" = "Hello World!"
+
+      - name: Demo - invalid input must be refused
+        shell: bash
+        run: |
+          set +e
+          ./base64-demo${{ matrix.exe }} decode "!!!!" > out.txt 2>&1
+          status=$?
+          set -e
+          cat out.txt
+          test "$status" -eq 1
+          grep -q "not valid base64" out.txt
+
+      - name: Demo - usage on wrong argument count
+        shell: bash
+        run: |
+          set +e
+          ./base64-demo${{ matrix.exe }} > usage.txt 2>&1
+          status=$?
+          set -e
+          cat usage.txt
+          test "$status" -eq 2
+          grep -q "usage:" usage.txt
+
+  cmake:
+    name: CMake build and ctest
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: encoding/base64
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Configure, build and test
+        run: |
+          cmake -S . -B build
+          cmake --build build
+          ctest --test-dir build --output-on-failure
+
+  sanitizers:
+    name: ASan + UBSan
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: encoding/base64
+    env:
+      UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+      ASAN_OPTIONS: detect_leaks=1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Build with sanitizers
+        run: |
+          gcc -std=c11 -g -fsanitize=address,undefined -Iinclude \
+              src/base64.c tests/test_base64.c -o test_base64_san
+          gcc -std=c11 -g -fsanitize=address,undefined -Iinclude \
+              src/base64.c src/base64-demo.c -o base64-demo_san
+      - name: Test suite under sanitizers
+        run: ./test_base64_san
+      - name: Demo under sanitizers
+        run: |
+          ./base64-demo_san encode "Hello World!"
+          ./base64-demo_san decode "SGVsbG8gV29ybGQh"
