@@ -1,3 +1,5 @@
+#include <stdint.h>
+
 #include "base64.h"
 
 static const char ENCODE[65] =
@@ -29,7 +31,16 @@ static const unsigned char VALID[256] = {
     ['4']=1,['5']=1,['6']=1,['7']=1,['8']=1,['9']=1,['+']=1,['/']=1,
 };
 
-size_t b64_encoded_size(size_t n) { return 4 * ((n + 2) / 3) + 1; }
+/* Count groups without computing n + 2, which wraps for n near SIZE_MAX.
+   On overflow, return B64_ERROR - which is SIZE_MAX, a size no allocation
+   can satisfy, so a caller who ignores the check still fails safely. */
+size_t b64_encoded_size(size_t n)
+{
+    const size_t groups = n / 3 + (n % 3 != 0);
+    if (groups > (SIZE_MAX - 1) / 4)
+        return B64_ERROR;
+    return groups * 4 + 1;
+}
 size_t b64_decoded_size(size_t n) { return n / 4 * 3; }
 
 size_t b64_encode(const unsigned char *in, size_t len,
@@ -37,7 +48,8 @@ size_t b64_encode(const unsigned char *in, size_t len,
 {
     if (out == NULL || (in == NULL && len > 0))
         return B64_ERROR;
-    if (out_size < b64_encoded_size(len))
+    const size_t need = b64_encoded_size(len);
+    if (need == B64_ERROR || out_size < need)
         return B64_ERROR;
 
     size_t j = 0;
@@ -98,6 +110,14 @@ size_t b64_decode(const char *in, size_t len,
             if (!VALID[ch])
                 return B64_ERROR;
             quad[k] = DECODE[ch];
+        }
+
+        /* Reject non-canonical encodings. The bits a padded group does not
+           use must be zero - otherwise "Zh==" and "Zg==" would both decode
+           to "f", and two different strings would mean the same bytes. */
+        if (i + 4 == len) {
+            if (pad == 2 && (quad[1] & 0x0F) != 0) return B64_ERROR;
+            if (pad == 1 && (quad[2] & 0x03) != 0) return B64_ERROR;
         }
 
         const unsigned triple = (quad[0] << 18) | (quad[1] << 12)

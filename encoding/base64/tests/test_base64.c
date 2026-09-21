@@ -1,5 +1,6 @@
 /* Test vectors from RFC 4648 section 10, plus round-trip and
    input-validation checks. Exits non-zero on the first failure. */
+#include <stdint.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -65,6 +66,8 @@ int main(void)
     reject("A=AA",       "padding before the end of the last group");
     reject("=AAA",       "padding in the first position");
     reject("Zm9vYg=A",   "data after padding");
+    reject("Zh==",       "non-canonical padding bits (one byte)");
+    reject("Zm9=",       "non-canonical padding bits (two bytes)");
 
     puts("\nBuffer sizing");
     char small[4];
@@ -74,6 +77,12 @@ int main(void)
     check(b64_decode("Zm9vYmFy", 8, tiny, sizeof tiny)
           == B64_ERROR, "decode refuses a buffer that is too small");
     check(b64_encoded_size(0) == 1, "encoded_size(0) leaves room for the NUL");
+    check(b64_encoded_size(SIZE_MAX) == B64_ERROR,
+          "encoded_size reports overflow instead of wrapping");
+    check(b64_encoded_size(SIZE_MAX / 2) != B64_ERROR,
+          "encoded_size still answers for large in-range sizes");
+    check(b64_encoded_size(SIZE_MAX / 4 * 3 + 3) == B64_ERROR,
+          "encoded_size reports overflow just past three quarters");
 
     printf("\n%s\n", failures ? "FAILURES" : "all checks passed");
     return failures != 0;
