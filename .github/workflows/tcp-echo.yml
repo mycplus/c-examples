@@ -1,0 +1,151 @@
+name: TCP Echo
+
+# Runs only when this example (or this workflow) changes.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'networking/tcp-echo/**'
+      - '.github/workflows/tcp-echo.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'networking/tcp-echo/**'
+      - '.github/workflows/tcp-echo.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tcp-echo-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: networking/tcp-echo
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: GCC,         os: ubuntu-latest, cc: gcc   }
+          - { name: Clang,       os: ubuntu-latest, cc: clang }
+          - { name: Apple Clang, os: macos-latest,  cc: clang }
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Build
+        run: |
+          ${{ matrix.cc }} -std=c11 -Wall -Wextra -pedantic -Werror -Iinclude \
+              src/net.c src/tcp-server.c -o tcp-server -lpthread
+          ${{ matrix.cc }} -std=c11 -Wall -Wextra -pedantic -Werror -Iinclude \
+              src/net.c src/tcp-client.c -o tcp-client
+
+      - name: Usage errors
+        run: |
+          set +e
+          ./tcp-server;                     test $? -eq 2
+          ./tcp-client localhost 5150;      test $? -eq 2
+          ./tcp-client localhost 5150 x 0;  test $? -eq 2
+
+      - name: Echo tests against a running server
+        run: |
+          ./tcp-server 5150 > server.log 2>&1 &
+          SRV=$!
+          trap 'kill $SRV 2>/dev/null || true' EXIT
+          sleep 1
+
+          echo "--- basic"
+          ./tcp-client localhost 5150 "Hello, TCP"
+
+          echo "--- IPv4 loopback"
+          ./tcp-client 127.0.0.1 5150 "over ipv4"
+
+          echo "--- IPv6 loopback"
+          ./tcp-client ::1 5150 "over ipv6"
+
+          echo "--- 1000 round trips"
+          ./tcp-client localhost 5150 "ping" 1000
+
+          echo "--- message larger than the server's 4096-byte buffer"
+          BIG=$(head -c 20000 /dev/zero | tr '\0' 'x')
+          ./tcp-client localhost 5150 "$BIG" 5
+
+          echo "--- five concurrent clients"
+          pids=()
+          for i in 1 2 3 4 5; do
+            ./tcp-client localhost 5150 "client-$i" 200 & pids+=($!)
+          done
+          for p in "${pids[@]}"; do wait "$p"; done   # clients only, not the server
+
+      - name: Connecting with no server must fail cleanly
+        run: |
+          set +e
+          ./tcp-client localhost 5199 "hello"
+          test $? -eq 1
+
+  cmake:
+    name: CMake build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: networking/tcp-echo
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Configure and build
+        run: |
+          cmake -S . -B build
+          cmake --build build
+
+  sanitizers:
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: networking/tcp-echo
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: ASan + UBSan,    flags: '-fsanitize=address,undefined' }
+          - { name: ThreadSanitizer, flags: '-fsanitize=thread' }
+    env:
+      UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+      TSAN_OPTIONS: halt_on_error=1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Build with sanitizers
+        run: |
+          gcc -std=c11 -g ${{ matrix.flags }} -Iinclude \
+              src/net.c src/tcp-server.c -o tcp-server -lpthread
+          gcc -std=c11 -g ${{ matrix.flags }} -Iinclude \
+              src/net.c src/tcp-client.c -o tcp-client
+      - name: Concurrent clients under the sanitizer
+        run: |
+          ./tcp-server 5150 > server.log 2>&1 &
+          SRV=$!
+          sleep 1
+          pids=()
+          for i in 1 2 3 4 5 6; do
+            ./tcp-client localhost 5150 "client-$i" 100 & pids+=($!)
+          done
+          status=0
+          for p in "${pids[@]}"; do wait "$p" || status=1; done
+          kill $SRV 2>/dev/null || true
+          wait $SRV 2>/dev/null || true   # a killed server exits 143
+          cat server.log
+          if grep -qE "AddressSanitizer|runtime error|ThreadSanitizer" server.log; then
+            echo "::error::sanitizer reported a problem in the server"
+            exit 1
+          fi
+          exit $status
