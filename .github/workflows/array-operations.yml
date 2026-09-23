@@ -1,0 +1,85 @@
+name: Array Operations
+
+on:
+  push:
+    branches: [main]
+    paths: ['arrays/array-operations/**', '.github/workflows/array-operations.yml']
+  pull_request:
+    branches: [main]
+    paths: ['arrays/array-operations/**', '.github/workflows/array-operations.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: array-operations-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: ${{ matrix.name }} C${{ matrix.std }}
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: arrays/array-operations
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: GCC,         os: ubuntu-latest,  cc: gcc,   std: 11, exe: '' }
+          - { name: GCC,         os: ubuntu-latest,  cc: gcc,   std: 17, exe: '' }
+          - { name: Clang,       os: ubuntu-latest,  cc: clang, std: 11, exe: '' }
+          - { name: Clang,       os: ubuntu-latest,  cc: clang, std: 17, exe: '' }
+          - { name: Apple Clang, os: macos-latest,   cc: clang, std: 11, exe: '' }
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build
+        run: |
+          ${{ matrix.cc }} -std=c${{ matrix.std }} -Wall -Wextra -pedantic -Werror -Iinclude \
+              src/array_ops.c tests/test_array_ops.c -o test_array_ops
+          ${{ matrix.cc }} -std=c${{ matrix.std }} -Wall -Wextra -pedantic -Werror -Iinclude \
+              src/array_ops.c src/array-demo.c -o array-demo
+      - name: Test suite
+        run: ./test_array_ops${{ matrix.exe }}
+      - name: Demo runs and reports every operation
+        run: |
+          ./array-demo${{ matrix.exe }} | tee demo.txt
+          for s in "traverse" "access and update" "linear search" "insertion" \
+                   "deletion" "array size" "multi-dimensional"; do
+            grep -q -- "-- $s" demo.txt || { echo "::error::missing section: $s"; exit 1; }
+          done
+          grep -q "40 found: yes, index 3" demo.txt
+          grep -q "99 found: no" demo.txt
+
+  cmake:
+    name: CMake and ctest
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: arrays/array-operations
+    steps:
+      - uses: actions/checkout@v5
+      - run: |
+          cmake -S . -B build
+          cmake --build build
+          ctest --test-dir build --output-on-failure
+
+  sanitizers:
+    name: ASan + UBSan
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: arrays/array-operations
+    env:
+      UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+    steps:
+      - uses: actions/checkout@v5
+      - run: |
+          gcc -std=c11 -g -fsanitize=address,undefined -Iinclude \
+              src/array_ops.c tests/test_array_ops.c -o test_san
+          gcc -std=c11 -g -fsanitize=address,undefined -Iinclude \
+              src/array_ops.c src/array-demo.c -o demo_san
+          ./test_san
+          ./demo_san > /dev/null
