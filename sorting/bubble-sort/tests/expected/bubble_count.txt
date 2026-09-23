@@ -1,0 +1,8 @@
+comparisons, n = 1000
+input              plain      flag  boundary  insertion    swaps
+sorted            499500       999       999        999        0
+random            499500    499364    494153     244344   243354
+reversed          499500    499500    499500     499500   499500
+smallest-last     499500    499500    499500       1997      999
+largest-first     499500      1997      1997       1997      999
+every variant's swap count equals the independently counted inversions

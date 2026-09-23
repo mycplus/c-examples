@@ -1,0 +1,13 @@
+start:            7  3  9  2 11 15
+pass 1 (compares a[0..5])
+  a[0]:a[1] swap    3  7  9  2 11 15
+  a[1]:a[2] ok      3  7  9  2 11 15
+  a[2]:a[3] swap    3  7  2  9 11 15
+  a[3]:a[4] ok      3  7  2  9 11 15
+  a[4]:a[5] ok      3  7  2  9 11 15
+pass 2 (compares a[0..2])
+  a[0]:a[1] ok      3  7  2  9 11 15
+  a[1]:a[2] swap    3  2  7  9 11 15
+pass 3 (compares a[0..1])
+  a[0]:a[1] swap    2  3  7  9 11 15
+sorted after 3 passes

@@ -1,0 +1,11 @@
+# Runs PROG and compares its stdout with EXPECTED, ignoring CR so Windows passes.
+execute_process(COMMAND ${PROG} OUTPUT_VARIABLE actual RESULT_VARIABLE rc)
+if(NOT rc EQUAL 0)
+  message(FATAL_ERROR "${PROG} exited with ${rc}")
+endif()
+file(READ ${EXPECTED} expected)
+string(REPLACE "\r" "" actual "${actual}")
+string(REPLACE "\r" "" expected "${expected}")
+if(NOT actual STREQUAL expected)
+  message(FATAL_ERROR "Output differs from ${EXPECTED}:\n${actual}")
+endif()

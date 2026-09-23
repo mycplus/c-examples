@@ -1,0 +1,73 @@
+name: bubble-sort
+
+on:
+  push:
+    paths: ['sorting/bubble-sort/**', '.github/workflows/bubble-sort.yml']
+  pull_request:
+    paths: ['sorting/bubble-sort/**', '.github/workflows/bubble-sort.yml']
+
+defaults:
+  run:
+    working-directory: sorting/bubble-sort
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+        std: [11, 17]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }} -DCMAKE_BUILD_TYPE=Release
+      - name: Build (warnings are errors)
+        run: cmake --build build
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
+
+  sanitizers:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tests under ASan and UBSan
+        run: |
+          flags="-std=c11 -Wall -Wextra -pedantic -Werror -g -fsanitize=address,undefined -fno-sanitize-recover=all"
+          gcc $flags tests/test_bubble_sort.c -o t1 && ./t1
+          gcc $flags tests/test_flag.c        -o t2 && ./t2
+          gcc $flags src/bubble_count.c       -o t3 && ./t3 > /dev/null
+      - name: The article's pitfalls are caught
+        run: |
+          expect_report() {   # program, pattern: the sanitizer must fail the run
+            if ./"$1" > /dev/null 2> "$1.log"; then
+              echo "$1: expected a sanitizer report, got a clean exit"; exit 1
+            fi
+            grep -q "$2" "$1.log" || { cat "$1.log"; exit 1; }
+            echo "$1: caught ($2)"
+          }
+          san="-std=c11 -g -fsanitize=address,undefined -fno-sanitize-recover=all"
+          gcc $san pitfalls/underflow.c  -o underflow
+          gcc $san pitfalls/off_by_one.c -o off_by_one
+          gcc $san pitfalls/comparator.c -o comparator
+          expect_report underflow  "stack-buffer-overflow"
+          expect_report off_by_one "stack-buffer-overflow"
+          expect_report comparator "signed integer overflow"
+          gcc -std=c11 -Wall -Wextra -pedantic -Werror pitfalls/stability.c -o stability
+          ./stability | grep -q "strict  <  :   1b 1d 2a 2c 2e"
+          ./stability | grep -q "with    <= :   1d 1b 2e 2c 2a"
+          echo "stability: strict < keeps order, <= reverses it"
+          gcc -std=c11 -Wall -Wextra -pedantic -Werror pitfalls/do_while_lte.c -o do_while_lte
+          ./do_while_lte | grep -q "still swapping after 1000000 passes"
+          echo "do_while_lte: duplicates never settle with <="
+
+  msvc:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build
+      - name: Build (/W4 /WX)
+        run: cmake --build build --config Release
+      - name: Test
+        run: ctest --test-dir build -C Release --output-on-failure
