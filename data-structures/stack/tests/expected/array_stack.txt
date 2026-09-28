@@ -1,0 +1,12 @@
+push 10 20 30
+size=3 top=30
+pop 30
+pop 20
+pop 10
+empty=true
+pop on empty: underflow reported
+balanced("{[()()]}") = true
+balanced("([)]") = false
+balanced("((") = false
+balanced("())") = false
+balanced("") = true

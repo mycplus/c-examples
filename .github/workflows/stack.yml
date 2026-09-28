@@ -1,0 +1,52 @@
+name: stack
+
+on:
+  push:
+    paths: ['data-structures/stack/**', '.github/workflows/stack.yml']
+  pull_request:
+    paths: ['data-structures/stack/**', '.github/workflows/stack.yml']
+
+defaults:
+  run:
+    working-directory: data-structures/stack
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+        std: [11, 17]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }} -DCMAKE_BUILD_TYPE=Release
+      - name: Build (warnings are errors)
+        run: cmake --build build
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
+
+  sanitizers:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tests and demos under ASan, UBSan and LeakSanitizer
+        run: |
+          flags="-std=c11 -Wall -Wextra -pedantic -Werror -g -fsanitize=address,undefined -fno-sanitize-recover=all"
+          gcc $flags tests/test_array_stack.c  -o t1 && ./t1
+          gcc $flags tests/test_linked_stack.c -o t2 && ./t2
+          gcc $flags src/array_stack.c  -o d1 && ./d1 > /dev/null
+          gcc $flags src/linked_stack.c -o d2 && ./d2 > /dev/null
+          gcc $flags src/growth.c       -o d3 && ./d3 > /dev/null
+
+  msvc:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build
+      - name: Build (/W4 /WX)
+        run: cmake --build build --config Release
+      - name: Test
+        run: ctest --test-dir build -C Release --output-on-failure
