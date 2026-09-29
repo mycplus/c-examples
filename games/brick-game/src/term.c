@@ -49,6 +49,7 @@ void term_restore(void)
     if (!active)
         return;
     write_str("\x1b[?25h\x1b[0m\r\n");
+    SetConsoleCtrlHandler(on_ctrl, FALSE);
     SetConsoleMode(out_handle, saved_mode);
     active = false;
 }
@@ -90,6 +91,7 @@ void term_sleep_ms(uint32_t ms)
 #include <unistd.h>
 
 static struct termios saved;
+static struct sigaction saved_int, saved_term;  /* handlers to put back */
 static bool active;
 static volatile sig_atomic_t interrupted;
 
@@ -114,8 +116,8 @@ bool term_init(void)
     struct sigaction sa = {0};
     sa.sa_handler = on_signal;
     sigemptyset(&sa.sa_mask);
-    sigaction(SIGINT, &sa, NULL);
-    sigaction(SIGTERM, &sa, NULL);
+    sigaction(SIGINT, &sa, &saved_int);
+    sigaction(SIGTERM, &sa, &saved_term);
 
     write_str("\x1b[?25l");
     return true;
@@ -127,6 +129,8 @@ void term_restore(void)
         return;
     write_str("\x1b[?25h\x1b[0m\r\n");
     tcsetattr(STDIN_FILENO, TCSAFLUSH, &saved);
+    sigaction(SIGINT, &saved_int, NULL);
+    sigaction(SIGTERM, &saved_term, NULL);
     active = false;
 }
 
