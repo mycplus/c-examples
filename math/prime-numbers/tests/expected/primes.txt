@@ -1,0 +1,6 @@
+primes below 100: 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
+primes below 1000: 168
+primes below 1000000: 78498
+is_prime: -7 false, 0 false, 1 false, 2 true, 91 false, 97 true
+is_prime(2147483647) = true
+is_prime(1000000007) = true

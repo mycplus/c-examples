@@ -1,0 +1,5 @@
+divisors tried                remainders
+2 .. n/2                      1073741822
+2 .. sqrt(n)                       46339
+2, then odd .. sqrt(n)             23170
+2, 3, then 6k +/- 1                15448

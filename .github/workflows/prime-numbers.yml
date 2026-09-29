@@ -1,0 +1,58 @@
+name: prime-numbers
+
+on:
+  push:
+    paths: ['math/prime-numbers/**', '.github/workflows/prime-numbers.yml']
+  pull_request:
+    paths: ['math/prime-numbers/**', '.github/workflows/prime-numbers.yml']
+
+defaults:
+  run:
+    working-directory: math/prime-numbers
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+        std: [11, 17]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }} -DCMAKE_BUILD_TYPE=Release
+      - name: Build (warnings are errors)
+        run: cmake --build build
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
+      - name: check_prime accepts integers and rejects everything else
+        run: |
+          printf '97\n' | ./build/check_prime | grep -q "97 is prime"
+          printf -- '-7\n' | ./build/check_prime | grep -q "\-7 is not prime"
+          for bad in abc 12abc 99999999999999999999 ''; do
+            if printf '%s\n' "$bad" | ./build/check_prime > /dev/null 2>&1; then
+              echo "accepted bad input: '$bad'"; exit 1
+            fi
+          done
+
+  sanitizers:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tests and demo under ASan and UBSan
+        run: |
+          flags="-std=c11 -Wall -Wextra -pedantic -Werror -g -fsanitize=address,undefined -fno-sanitize-recover=all"
+          gcc $flags tests/test_primes.c -o t && ./t
+          gcc $flags src/primes.c -o p && ./p > /dev/null
+
+  msvc:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build
+      - name: Build (/W4 /WX)
+        run: cmake --build build --config Release
+      - name: Test
+        run: ctest --test-dir build -C Release --output-on-failure
