@@ -27,7 +27,9 @@ bool is_prime(int64_t n)
  * prime, or NULL if memory runs out. The caller frees it. */
 bool *sieve(size_t limit)
 {
-    bool *flags = calloc(limit > 0 ? limit : 1, sizeof *flags);  /* checks n * size */
+    if (limit > SIZE_MAX / sizeof(bool))           /* byte count would overflow */
+        return NULL;
+    bool *flags = calloc(limit > 0 ? limit : 1, sizeof *flags);
     if (flags == NULL)
         return NULL;
     for (size_t k = 0; k < limit; ++k)
