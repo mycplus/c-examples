@@ -1,0 +1,11 @@
+start:                  29  10  14  37  13   5  41  22
+insert 10 (1 moved):    10  29  14  37  13   5  41  22
+insert 14 (1 moved):    10  14  29  37  13   5  41  22
+insert 37 (0 moved):    10  14  29  37  13   5  41  22
+insert 13 (3 moved):    10  13  14  29  37   5  41  22
+insert 5 (5 moved):      5  10  13  14  29  37  41  22
+insert 41 (0 moved):     5  10  13  14  29  37  41  22
+insert 22 (3 moved):     5  10  13  14  22  29  37  41
+binary insertion:        5  10  13  14  22  29  37  41
+limits: -2147483648 -1 0 0 2147483647
+empty array: ok

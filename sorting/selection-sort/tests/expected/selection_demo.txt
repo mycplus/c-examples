@@ -1,0 +1,8 @@
+start:                      29  10  14  37  13   5  41  22
+pass 1: min 5, swap:         5  10  14  37  13  29  41  22
+pass 2: min 10, no swap:     5  10  14  37  13  29  41  22
+pass 3: min 13, swap:        5  10  13  37  14  29  41  22
+pass 4: min 14, swap:        5  10  13  14  37  29  41  22
+pass 5: min 22, swap:        5  10  13  14  22  29  41  37
+pass 6: min 29, no swap:     5  10  13  14  22  29  41  37
+pass 7: min 37, swap:        5  10  13  14  22  29  37  41

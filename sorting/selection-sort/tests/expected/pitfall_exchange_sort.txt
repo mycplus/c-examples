@@ -1,0 +1,3 @@
+exchange sort:  25227840 swaps
+selection sort: 9992 swaps
+both results sorted and identical

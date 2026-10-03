@@ -1,0 +1,17 @@
+building a heap: comparisons (and per element)
+input                n       bottom-up (down)         insertion (up)
+random           10000         18848 ( 1.88)         22946 ( 2.29)
+sorted           10000         19982 ( 2.00)        113631 (11.36)
+reversed         10000          9999 ( 1.00)          9999 ( 1.00)
+10 distinct      10000         18108 ( 1.81)         19900 ( 1.99)
+random         1000000       1881471 ( 1.88)       2282710 ( 2.28)
+sorted         1000000       1999974 ( 2.00)      17951445 (17.95)
+reversed       1000000        999999 ( 1.00)        999999 ( 1.00)
+10 distinct    1000000       1816919 ( 1.82)       1995276 ( 2.00)
+
+sorting n = 10000: comparisons; n log2 n = 132877
+input             heap_sort heap_sort_floyd
+random               235343         138789
+sorted               244460         142497
+reversed             226682         131029
+10 distinct          217379         138448

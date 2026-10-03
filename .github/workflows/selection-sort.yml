@@ -1,0 +1,45 @@
+name: Selection Sort
+
+on:
+  push:
+    paths: ['sorting/selection-sort/**', '.github/workflows/selection-sort.yml']
+  pull_request:
+    paths: ['sorting/selection-sort/**', '.github/workflows/selection-sort.yml']
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+        std: [11, 17]
+    defaults:
+      run:
+        working-directory: sorting/selection-sort
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test
+        run: |
+          cmake -S . -B build -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }}
+          cmake --build build
+          ctest --test-dir build --output-on-failure
+      - name: Sanitizers
+        run: |
+          cmake -S . -B asan -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }} \
+                -DCMAKE_C_FLAGS="-fsanitize=address,undefined -fno-sanitize-recover=all -g"
+          cmake --build asan
+          ctest --test-dir asan --output-on-failure
+
+  windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: sorting/selection-sort
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test (MSVC)
+        run: |
+          cmake -S . -B build
+          cmake --build build --config Release
+          ctest --test-dir build -C Release --output-on-failure

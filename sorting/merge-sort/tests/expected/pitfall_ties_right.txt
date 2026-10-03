@@ -1,0 +1,3 @@
+input:            2a 1b 2c 1d 2e
+right only if <:  1b 1d 2a 2c 2e
+right if <=:      1d 1b 2e 2c 2a

@@ -1,0 +1,6 @@
+n = 10000        inversions  comparisons        moves   binary cmp    moves-inv
+sorted                            0         9999            0       113631            0
+reversed                   49994942     49995000     49994942       123617            0
+random                     25183572     25193556     25183572       119071            0
+local (within 8)              17736        27735        17736       116503            0
+100 far swaps                810213       820212       810213       118834            0

@@ -1,0 +1,7 @@
+MERGE_SKIP_SORTED = 0, n = 10000
+input                 top-down   bottom-up    inversions   brute force
+sorted                   64608       71712             0             0
+reversed                 69034       64632      49994942      49994942
+random                  120346      123669      25183572      25183572
+local (within 8)         72573       76399         17736         17736
+100 far swaps            94861      100845        810213        810213

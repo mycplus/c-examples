@@ -1,0 +1,61 @@
+name: Merge Sort
+
+on:
+  push:
+    paths: ['sorting/merge-sort/**', '.github/workflows/merge-sort.yml']
+  pull_request:
+    paths: ['sorting/merge-sort/**', '.github/workflows/merge-sort.yml']
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+        std: [11, 17]
+    defaults:
+      run:
+        working-directory: sorting/merge-sort
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test
+        run: |
+          cmake -S . -B build -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }}
+          cmake --build build
+          ctest --test-dir build --output-on-failure
+      - name: Sanitizers
+        run: |
+          cmake -S . -B asan -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }} \
+                -DCMAKE_C_FLAGS="-fsanitize=address,undefined -fno-sanitize-recover=all -g"
+          cmake --build asan
+          ctest --test-dir asan --output-on-failure
+      - name: Pitfalls fail the way the article says
+        if: matrix.cc == 'gcc' && matrix.std == '11'
+        run: |
+          # midpoint_overflow.c: UndefinedBehaviorSanitizer must report the overflow
+          gcc -std=c11 -g -fsanitize=undefined -fno-sanitize-recover=all pitfalls/midpoint_overflow.c -o mo_ubsan
+          if ./mo_ubsan 2> ub.txt; then echo "UBSan did not report"; exit 1; fi
+          grep -q "signed integer overflow" ub.txt
+          # base_case.c: at -O0 with AddressSanitizer the recursion must overflow the stack
+          gcc -std=c11 -O0 -g -fsanitize=address pitfalls/base_case.c -o bc_asan
+          if timeout 60 ./bc_asan 2> bc.txt; then echo "no stack overflow"; exit 1; fi
+          grep -q "stack-overflow" bc.txt
+          # malloc_per_merge.c: n - 1 allocations and the same result
+          gcc -std=c11 -O2 pitfalls/malloc_per_merge.c -o mpm
+          ./mpm > mpm.txt
+          grep -q "999999 allocations" mpm.txt
+          grep -q "results identical" mpm.txt
+
+  windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: sorting/merge-sort
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test (MSVC)
+        run: |
+          cmake -S . -B build
+          cmake --build build --config Release
+          ctest --test-dir build -C Release --output-on-failure

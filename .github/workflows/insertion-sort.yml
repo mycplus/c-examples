@@ -1,0 +1,57 @@
+name: Insertion Sort
+
+on:
+  push:
+    paths: ['sorting/insertion-sort/**', '.github/workflows/insertion-sort.yml']
+  pull_request:
+    paths: ['sorting/insertion-sort/**', '.github/workflows/insertion-sort.yml']
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+        std: [11, 17]
+    defaults:
+      run:
+        working-directory: sorting/insertion-sort
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test
+        run: |
+          cmake -S . -B build -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }}
+          cmake --build build
+          ctest --test-dir build --output-on-failure
+      - name: Sanitizers
+        run: |
+          cmake -S . -B asan -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }} \
+                -DCMAKE_C_FLAGS="-fsanitize=address,undefined -fno-sanitize-recover=all -g"
+          cmake --build asan
+          ctest --test-dir asan --output-on-failure
+      - name: Pitfalls fail the way the article says
+        if: matrix.cc == 'gcc' && matrix.std == '11'
+        run: |
+          # unsigned_index.c: GCC must warn, and AddressSanitizer must report the read
+          if gcc -std=c11 -Wall -Wextra -Werror -c pitfalls/unsigned_index.c -o /dev/null 2> w1.txt; then echo "no warning"; exit 1; fi
+          grep -q "type-limits" w1.txt
+          gcc -std=c11 -g -O1 -fsanitize=address pitfalls/unsigned_index.c -o ui_asan
+          if ./ui_asan 2> a1.txt; then echo "ASan did not report"; exit 1; fi
+          grep -q "stack-buffer-underflow" a1.txt
+          # unsequenced.c: GCC must warn
+          if gcc -std=c11 -Wall -Wextra -Werror -c pitfalls/unsequenced.c -o /dev/null 2> w2.txt; then echo "no warning"; exit 1; fi
+          grep -q "sequence-point" w2.txt
+
+  windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: sorting/insertion-sort
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test (MSVC)
+        run: |
+          cmake -S . -B build
+          cmake --build build --config Release
+          ctest --test-dir build -C Release --output-on-failure

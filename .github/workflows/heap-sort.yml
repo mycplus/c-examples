@@ -1,0 +1,58 @@
+name: Heap Sort
+
+on:
+  push:
+    paths: ['sorting/heap-sort/**', '.github/workflows/heap-sort.yml']
+  pull_request:
+    paths: ['sorting/heap-sort/**', '.github/workflows/heap-sort.yml']
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+        std: [11, 17]
+    defaults:
+      run:
+        working-directory: sorting/heap-sort
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test
+        run: |
+          cmake -S . -B build -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }}
+          cmake --build build
+          ctest --test-dir build --output-on-failure
+      - name: Sanitizers
+        run: |
+          cmake -S . -B asan -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }} \
+                -DCMAKE_C_FLAGS="-fsanitize=address,undefined -fno-sanitize-recover=all -g"
+          cmake --build asan
+          ctest --test-dir asan --output-on-failure
+      - name: Pitfalls fail the way the article says
+        if: matrix.cc == 'gcc' && matrix.std == '11'
+        run: |
+          # unsigned_build.c: GCC must warn, and the program must hang (no crash, no report)
+          if gcc -std=c11 -Wall -Wextra -Werror -c pitfalls/unsigned_build.c -o /dev/null 2> w.txt; then echo "no warning"; exit 1; fi
+          grep -q "type-limits" w.txt
+          gcc -std=c11 -g -fsanitize=address,undefined pitfalls/unsigned_build.c -o ub_asan 2> /dev/null
+          rc=0; timeout 10 ./ub_asan > ub.txt 2>&1 || rc=$?
+          test "$rc" -eq 124
+          # child_bound.c: AddressSanitizer must report the read past the array
+          gcc -std=c11 -g -fsanitize=address pitfalls/child_bound.c -o cb_asan
+          if ./cb_asan 2> cb.txt; then echo "ASan did not report"; exit 1; fi
+          grep -q "stack-buffer-overflow" cb.txt
+
+  windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: sorting/heap-sort
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test (MSVC)
+        run: |
+          cmake -S . -B build
+          cmake --build build --config Release
+          ctest --test-dir build -C Release --output-on-failure

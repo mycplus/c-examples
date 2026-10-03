@@ -1,0 +1,7 @@
+n = 10000          comparisons     swaps  stable cmp    shifts  double cmp
+sorted                 49995000         0    49995000         0    50000000
+reversed               49995000      5000    49995000  49995000    25000000
+random                 49995000      9988    49995000  24610088    49961138
+10 distinct            49995000      8997    49995000  22693856    49990512
+
+swaps on 100 random permutations: mean 9990.40, predicted n - H(n) = 9990.21
