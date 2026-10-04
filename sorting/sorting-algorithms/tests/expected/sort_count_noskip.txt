@@ -1,0 +1,12 @@
+comparisons, n = 10000, MERGE_SKIP_SORTED = 0
+algorithm                sorted    reversed      random       local   far swaps 10 distinct
+insertion sort             9999    49995000    25193556       27735      820212    22705038
+selection sort         49995000    49995000    49995000    49995000    49995000    49995000
+bubble sort                9999    49995000    49921510       79876    49356256    49431497
+shell sort (Knuth)        75243      120161      236528       87799      142042      110265
+merge sort                64608       69034      120346       72573       94861      116401
+heap sort                244545      226687      235396      244391      244248      217761
+quicksort (middle)       143654      143674      200544      152490      143915      165387
+quicksort (last)       49790551    49822179      164900    16837669     2256065     5042178
+qsort() glibc             64608       69034      120346       72573       94861      116401
+every result matched a qsort() reference

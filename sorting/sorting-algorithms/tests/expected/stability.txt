@@ -1,0 +1,10 @@
+algorithm            equal keys kept in input order?
+insertion sort       yes
+selection sort       no
+bubble sort          yes
+shell sort (Knuth)   no
+merge sort           yes
+heap sort            no
+quicksort (middle)   no
+quicksort (last)     no
+qsort() glibc        yes
