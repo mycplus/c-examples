@@ -26,6 +26,9 @@ ctest --test-dir build --output-on-failure
 
 The tests compare `sort_count`, `sort_count_noskip` and `stability` output byte for byte with
 `tests/expected/`.
+The expected files record glibc's `qsort()`. With any other C library (MSVC, macOS, musl) the
+`qsort()` row is left out of the comparison, because those libraries use other algorithms;
+every other row is still compared byte for byte.
 
 ## Where each function comes from
 

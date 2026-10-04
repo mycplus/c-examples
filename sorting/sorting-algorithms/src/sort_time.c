@@ -7,6 +7,14 @@
 #include <time.h>
 #include "sorting.h"
 
+/* The row is labelled with the C library whose qsort() it measures. The
+ * article's numbers are glibc's; other libraries use other algorithms. */
+#ifdef __GLIBC__
+#define QSORT_LABEL "qsort() glibc"
+#else
+#define QSORT_LABEL "qsort() libc"
+#endif
+
 #define RUNS 5
 
 static int cmp_int(const void *pa, const void *pb)
@@ -64,7 +72,7 @@ int main(void)
         { "heap sort",          heap_sort,       0 },
         { "quicksort (middle)", quick_sort,      0 },
         { "quicksort (last)",   quick_sort_last, 0 },
-        { "qsort() glibc",      qsort_v,         0 },
+        { QSORT_LABEL,          qsort_v,         0 },
     };
     const size_t sizes[] = { 20000, 1000000 };
     unsigned long long xs = 88172645463325252ULL;

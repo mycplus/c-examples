@@ -40,6 +40,13 @@ add_test(NAME merge_count_output COMMAND ${CMAKE_COMMAND}
 # The same counting program with the skip check turned off
 add_executable(merge_count_noskip src/merge_count.c)
 target_compile_definitions(merge_count_noskip PRIVATE MERGE_SKIP_SORTED=0)
+# MSVC 19.44 (Visual Studio 2022) reports C4127, "conditional expression is
+# constant", for `if (MERGE_SKIP_SORTED && ...)` once the macro is 0, and /WX
+# turns it into an error. The constant is the point of this build, so that one
+# warning is switched off for this target only.
+if(MSVC)
+  target_compile_options(merge_count_noskip PRIVATE /wd4127)
+endif()
 add_test(NAME merge_count_noskip_output COMMAND ${CMAKE_COMMAND}
   -DPROG=$<TARGET_FILE:merge_count_noskip>
   -DEXPECTED=${CMAKE_CURRENT_SOURCE_DIR}/tests/expected/merge_count_noskip.txt

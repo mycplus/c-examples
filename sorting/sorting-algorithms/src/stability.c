@@ -9,6 +9,14 @@
 #define SORT_LESS(x, y) ((x) / 10000 < (y) / 10000)
 #include "sorting.c"
 
+/* The row is labelled with the C library whose qsort() it measures. The
+ * article's numbers are glibc's; other libraries use other algorithms. */
+#ifdef __GLIBC__
+#define QSORT_LABEL "qsort() glibc"
+#else
+#define QSORT_LABEL "qsort() libc"
+#endif
+
 #define N 1000
 
 static int cmp_key(const void *pa, const void *pb)
@@ -45,7 +53,7 @@ int main(void)
         { "heap sort",          heap_sort       },
         { "quicksort (middle)", quick_sort      },
         { "quicksort (last)",   quick_sort_last },
-        { "qsort() glibc",      qsort_v         },
+        { QSORT_LABEL,          qsort_v         },
     };
     static int input[N], work[N];
     unsigned long long xs = 88172645463325252ULL;

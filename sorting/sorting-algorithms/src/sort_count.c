@@ -11,6 +11,14 @@ static unsigned long long comparisons;
 #define SORT_LESS(x, y) (comparisons++, (x) < (y))
 #include "sorting.c"
 
+/* The row is labelled with the C library whose qsort() it measures. The
+ * article's numbers are glibc's; other libraries use other algorithms. */
+#ifdef __GLIBC__
+#define QSORT_LABEL "qsort() glibc"
+#else
+#define QSORT_LABEL "qsort() libc"
+#endif
+
 #define N 10000
 
 static unsigned long long xs = 88172645463325252ULL;   /* fixed seed */
@@ -72,7 +80,7 @@ int main(void)
         { "heap sort",          heap_sort       },
         { "quicksort (middle)", quick_sort      },
         { "quicksort (last)",   quick_sort_last },
-        { "qsort() glibc",      qsort_v         },
+        { QSORT_LABEL,          qsort_v         },
     };
     static int input[6][N], work[N], ref[N];
 
