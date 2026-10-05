@@ -1,0 +1,7 @@
+0/1 DP, capacities downward : 230
+0/1 DP, capacities upward   : 500
+Greedy by value/weight      : 210
+Weights x1    capacity     50  best 230  cells 204
+Weights x10   capacity    500  best 230  cells 2004
+Weights x100  capacity   5000  best 230  cells 20004
+Weights x1000 capacity  50000  best 230  cells 200004

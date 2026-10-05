@@ -1,0 +1,53 @@
+name: Knapsack
+
+on:
+  push:
+    paths: ['dynamic-programming/knapsack/**', '.github/workflows/knapsack.yml']
+  pull_request:
+    paths: ['dynamic-programming/knapsack/**', '.github/workflows/knapsack.yml']
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+        std: [11, 17]
+    defaults:
+      run:
+        working-directory: dynamic-programming/knapsack
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test
+        run: |
+          cmake -S . -B build -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }}
+          cmake --build build
+          ctest --test-dir build --output-on-failure
+      - name: Sanitizers
+        run: |
+          cmake -S . -B asan -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }} \
+                -DCMAKE_C_FLAGS="-fsanitize=address,undefined -fno-sanitize-recover=all -g"
+          cmake --build asan
+          ctest --test-dir asan --output-on-failure
+      - name: Pitfalls fail the way the article says
+        if: matrix.cc == 'gcc' && matrix.std == '11'
+        run: |
+          # stack_table.c: the small case prints 230, then AddressSanitizer reports the stack overflow
+          gcc -std=c11 -g -fsanitize=address pitfalls/stack_table.c -o st_asan
+          if ./st_asan > st_out.txt 2> st_err.txt; then echo "ASan did not report"; exit 1; fi
+          grep -q "small: 230" st_out.txt
+          grep -q "stack-overflow" st_err.txt
+
+  windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: dynamic-programming/knapsack
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test (MSVC)
+        run: |
+          cmake -S . -B build
+          cmake --build build --config Release
+          ctest --test-dir build -C Release --output-on-failure

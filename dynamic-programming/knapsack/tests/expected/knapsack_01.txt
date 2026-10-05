@@ -1,0 +1,5 @@
+Capacity 50, best value 230
+  take A  weight 10  value  60
+  take C  weight 30  value 120
+  take D  weight  5  value  50
+Weight used: 45 of 50

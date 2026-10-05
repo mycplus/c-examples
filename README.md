@@ -14,6 +14,7 @@ C source code examples and projects accompanying C programming tutorials on MYCP
 | [Ping](networking/ping/)                     | A minimal ICMP echo client implemented separately for Linux/macOS and Windows. | [![Ping](https://github.com/mycplus/c-examples/actions/workflows/ping.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/ping.yml)                                     |
 | [TCP Echo](networking/tcp-echo/)             | A TCP echo server and client implemented in C using POSIX sockets.             | [![TCP Echo](https://github.com/mycplus/c-examples/actions/workflows/tcp-echo.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/tcp-echo.yml)                         |
 | [Bubble Sort](sorting/bubble-sort/)          | C implementation of the Bubble Sort algorithm.                                 | [![Bubble Sort](https://github.com/mycplus/c-examples/actions/workflows/bubble-sort.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/bubble-sort.yml)                |
+| [Knapsack](dynamic-programming/knapsack/) | 0/1 knapsack by dynamic programming with item recovery, plus the fractional variant. | [![Knapsack](https://github.com/mycplus/c-examples/actions/workflows/knapsack.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/knapsack.yml) |
 
 
 ## About

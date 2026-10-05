@@ -1,0 +1,5 @@
+  D  value/weight 10.00  taken 100%
+  A  value/weight  6.00  taken 100%
+  B  value/weight  5.00  taken 100%
+  C  value/weight  4.00  taken  50%
+Fractional best value: 270.00
