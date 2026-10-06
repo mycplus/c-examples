@@ -1,0 +1,9 @@
+This machine is little-endian
+
+XRGB8888 green value:      0x0000FF00
+  bytes in memory:         00 FF 00 00
+RGB565 green value:        0x07E0
+  bytes in memory:         E0 07
+
+RGB(150,150,150) as RGB565 = 0x94B2
+  expanded back to 8 bits:  RGB(148,150,148)

@@ -1,0 +1,40 @@
+name: pixel-formats
+on:
+  push:
+    paths: ['graphics/pixel-formats/**', '.github/workflows/pixel-formats.yml']
+  pull_request:
+    paths: ['graphics/pixel-formats/**', '.github/workflows/pixel-formats.yml']
+  workflow_dispatch:
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        cc: [gcc, clang]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and compare output (${{ matrix.cc }})
+        run: bash graphics/pixel-formats/tests/run_tests.sh ${{ matrix.cc }}
+  sanitizers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: AddressSanitizer + UBSan (gcc)
+        run: bash graphics/pixel-formats/tests/sanitizers.sh gcc
+  windows-msvc:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure and build with MSVC (/W4 /WX)
+        run: |
+          cmake -S graphics/pixel-formats -B build
+          cmake --build build --config Release
+      - name: Compare output
+        shell: bash
+        run: |
+          for name in color_formats palette_fade pitch; do
+            ./build/Release/$name.exe > out.txt
+            diff --strip-trailing-cr -u graphics/pixel-formats/tests/expected/$name.txt out.txt
+            echo "ok  msvc $name"
+          done
