@@ -1,0 +1,3 @@
+move 2 is illegal: disk 2 from A to C lands on disk 1
+3 disks: 7 moves (2^n - 1 = 7)
+solved: no

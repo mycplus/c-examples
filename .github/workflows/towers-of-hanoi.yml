@@ -1,0 +1,58 @@
+name: Towers of Hanoi
+
+on:
+  push:
+    paths: ['recursion/towers-of-hanoi/**', '.github/workflows/towers-of-hanoi.yml']
+  pull_request:
+    paths: ['recursion/towers-of-hanoi/**', '.github/workflows/towers-of-hanoi.yml']
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+        std: [11, 17]
+    defaults:
+      run:
+        working-directory: recursion/towers-of-hanoi
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test
+        run: |
+          cmake -S . -B build -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }}
+          cmake --build build
+          ctest --test-dir build --output-on-failure
+      - name: Sanitizers
+        run: |
+          cmake -S . -B asan -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }} \
+                -DCMAKE_C_FLAGS="-fsanitize=address,undefined -fno-sanitize-recover=all -g"
+          cmake --build asan
+          ctest --test-dir asan --output-on-failure
+      - name: Pitfalls fail the way the article says
+        if: matrix.cc == 'gcc' && matrix.std == '11'
+        run: |
+          # base_case_one.c: 3 disks work; 0 disks recurse until the stack overflows
+          gcc -std=c11 -O0 -g -fsanitize=address pitfalls/base_case_one.c -o bco
+          ./bco 3 > bco3.txt
+          grep -q "3 disks: 7 moves" bco3.txt
+          if timeout 60 ./bco 0 2> bco.txt; then echo "no stack overflow"; exit 1; fi
+          grep -q "stack-overflow" bco.txt
+          # shift_overflow.c: UndefinedBehaviorSanitizer reports the shift for n = 32
+          gcc -std=c11 -g -fsanitize=undefined -fno-sanitize-recover=all pitfalls/shift_overflow.c -o so
+          if ./so 32 2> so.txt; then echo "UBSan did not report"; exit 1; fi
+          grep -q "shift exponent 32 is too large for 32-bit type 'int'" so.txt
+
+  windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: recursion/towers-of-hanoi
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test (MSVC)
+        run: |
+          cmake -S . -B build
+          cmake --build build --config Release
+          ctest --test-dir build -C Release --output-on-failure
