@@ -1,0 +1,11 @@
+First solution, 8 x 8 board:
+ Q . . . . . . .
+ . . . . Q . . .
+ . . . . . . . Q
+ . . . . . Q . .
+ . . Q . . . . .
+ . . . . . . Q .
+ . Q . . . . . .
+ . . . Q . . . .
+92 solutions, 12 distinct under rotation and reflection.
+Squares tested: 15720. Queens placed: 2056.

@@ -1,0 +1,56 @@
+name: Eight Queens
+
+on:
+  push:
+    paths: ['recursion/eight-queens/**', '.github/workflows/eight-queens.yml']
+  pull_request:
+    paths: ['recursion/eight-queens/**', '.github/workflows/eight-queens.yml']
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+        std: [11, 17]
+    defaults:
+      run:
+        working-directory: recursion/eight-queens
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install SDL2
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq libsdl2-dev xvfb xdotool
+      - name: Build and test (with the SDL2 viewer)
+        run: |
+          cmake -S . -B build -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }}
+          cmake --build build
+          ctest --test-dir build --output-on-failure
+      - name: Sanitizers
+        run: |
+          cmake -S . -B asan -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }} \
+                -DCMAKE_C_FLAGS="-fsanitize=address,undefined -fno-sanitize-recover=all -g"
+          cmake --build asan
+          ctest --test-dir asan --output-on-failure
+      - name: The viewer responds to keys in a real (virtual) X window
+        if: matrix.cc == 'gcc' && matrix.std == '11'
+        run: sh tests/view_smoke.sh build/queens_view
+      - name: Builds without SDL2 too
+        if: matrix.cc == 'gcc' && matrix.std == '11'
+        run: |
+          cmake -S . -B nosdl -DCMAKE_DISABLE_FIND_PACKAGE_SDL2=ON
+          cmake --build nosdl
+          ctest --test-dir nosdl --output-on-failure
+
+  windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: recursion/eight-queens
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test the solver (MSVC, no SDL2)
+        run: |
+          cmake -S . -B build
+          cmake --build build --config Release
+          ctest --test-dir build -C Release --output-on-failure

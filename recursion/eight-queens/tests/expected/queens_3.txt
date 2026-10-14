@@ -1,0 +1,1 @@
+No way to place 3 queens on a 3 x 3 board.

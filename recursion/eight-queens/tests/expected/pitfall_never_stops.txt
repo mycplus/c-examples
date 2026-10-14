@@ -1,0 +1,1 @@
+Row index reached -1 after 828 solutions (92 x 9).
