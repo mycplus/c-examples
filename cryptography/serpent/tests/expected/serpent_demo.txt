@@ -1,0 +1,6 @@
+key        000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+plaintext  53657270656e743a203132382d626974
+ciphertext 8f9d6a59c08901a421126fcffc13c5f6
+decrypts back: yes
+NESSIE vector:          match
+AES submission vector:  match

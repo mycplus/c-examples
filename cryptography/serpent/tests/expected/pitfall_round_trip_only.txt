@@ -1,0 +1,2 @@
+round trip succeeds:    1043 of 1043
+matches the test vector: 0 of 1043

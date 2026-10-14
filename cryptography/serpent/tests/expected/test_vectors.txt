@@ -1,0 +1,2 @@
+1043 vectors: 258 with 128-bit keys, 327 with 192-bit, 458 with 256-bit; 0 failed
+rejects 0- and 33-byte keys: yes; accepts a 1-byte key: yes
