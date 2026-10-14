@@ -1,0 +1,57 @@
+name: Cache Simulator
+
+on:
+  push:
+    paths: ['memory/cache-simulator/**', '.github/workflows/cache-simulator.yml']
+  pull_request:
+    paths: ['memory/cache-simulator/**', '.github/workflows/cache-simulator.yml']
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+        std: [11, 17]
+    defaults:
+      run:
+        working-directory: memory/cache-simulator
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test
+        run: |
+          cmake -S . -B build -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }}
+          cmake --build build
+          ctest --test-dir build --output-on-failure
+      - name: Sanitizers
+        run: |
+          cmake -S . -B asan -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }} \
+                -DCMAKE_C_FLAGS="-fsanitize=address,undefined -fno-sanitize-recover=all -g"
+          cmake --build asan
+          ctest --test-dir asan --output-on-failure
+      - name: A real Valgrind trace shows the column-order penalty
+        if: matrix.cc == 'gcc' && matrix.std == '11'
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq valgrind
+          for order in row col; do
+            valgrind --tool=lackey --trace-mem=yes --log-file=$order.trace ./build/matrix_sum $order
+            ./build/cachesim 32768 assoc:8 lru 64 $order.trace | tee $order.txt
+          done
+          row=$(sed -n 's/^Cache misses: //p' row.txt)
+          col=$(sed -n 's/^Cache misses: //p' col.txt)
+          echo "row misses $row, column misses $col"
+          test "$col" -gt $((5 * row))
+
+  windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: memory/cache-simulator
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test (MSVC)
+        run: |
+          cmake -S . -B build
+          cmake --build build --config Release
+          ctest --test-dir build -C Release --output-on-failure

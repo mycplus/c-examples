@@ -1,0 +1,6 @@
+Cache: 1024 bytes, 64-byte blocks, 2-way, 8 sets, LRU
+Memory reads: 2
+Memory writes: 2
+Cache hits: 4
+Cache misses: 2
+Hit rate: 66.67%

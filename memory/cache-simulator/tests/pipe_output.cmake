@@ -1,0 +1,20 @@
+# Runs GEN with GEN_ARGS, feeds its output to SIM with SIM_ARGS (comma-separated,
+# trace file last) and compares SIM's output with EXPECTED. Carriage returns
+# are removed first, because Windows writes \r\n line endings.
+string(REPLACE "," ";" gen_args "${GEN_ARGS}")
+string(REPLACE "," ";" sim_args "${SIM_ARGS}")
+set(trace "${CMAKE_CURRENT_BINARY_DIR}/${NAME}.trace")
+execute_process(COMMAND ${GEN} ${gen_args} OUTPUT_FILE ${trace} RESULT_VARIABLE rc)
+if(NOT rc EQUAL 0)
+  message(FATAL_ERROR "${GEN} exited with ${rc}")
+endif()
+execute_process(COMMAND ${SIM} ${sim_args} ${trace} OUTPUT_VARIABLE out RESULT_VARIABLE rc)
+if(NOT rc EQUAL 0)
+  message(FATAL_ERROR "${SIM} exited with ${rc}")
+endif()
+file(READ ${EXPECTED} want)
+string(REPLACE "\r" "" out "${out}")
+string(REPLACE "\r" "" want "${want}")
+if(NOT out STREQUAL want)
+  message(FATAL_ERROR "output differs from ${EXPECTED}:\n${out}")
+endif()

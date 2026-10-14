@@ -16,6 +16,7 @@ C source code examples and projects accompanying C programming tutorials on MYCP
 | [Bubble Sort](sorting/bubble-sort/)          | C implementation of the Bubble Sort algorithm.                                 | [![Bubble Sort](https://github.com/mycplus/c-examples/actions/workflows/bubble-sort.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/bubble-sort.yml)                |
 | [Knapsack](dynamic-programming/knapsack/) | 0/1 knapsack by dynamic programming with item recovery, plus the fractional variant. | [![Knapsack](https://github.com/mycplus/c-examples/actions/workflows/knapsack.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/knapsack.yml) |
 | [Towers of Hanoi](recursion/towers-of-hanoi/) | Recursive and iterative Towers of Hanoi, with any single move computed directly. | [![Towers of Hanoi](https://github.com/mycplus/c-examples/actions/workflows/towers-of-hanoi.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/towers-of-hanoi.yml) |
+| [Cache Simulator](memory/cache-simulator/) | A set-associative cache with LRU and FIFO replacement that reads Valgrind memory traces. | [![Cache Simulator](https://github.com/mycplus/c-examples/actions/workflows/cache-simulator.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/cache-simulator.yml) |
 
 
 ## About

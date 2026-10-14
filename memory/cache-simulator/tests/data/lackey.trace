@@ -1,0 +1,8 @@
+==1234== Lackey, an example Valgrind tool
+I  04016b20,3
+ L 1ffefffd40,8
+ S 1ffefffd48,8
+ M 1ffefffd40,8
+I  04016b23,4
+ L 1ffefffd7c,8
+==1234==

@@ -1,0 +1,6 @@
+Cache: 128 bytes, 64-byte blocks, 2-way, 1 set, FIFO
+Memory reads: 7
+Memory writes: 2
+Cache hits: 1
+Cache misses: 7
+Hit rate: 12.50%
