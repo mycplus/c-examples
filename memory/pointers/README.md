@@ -31,12 +31,12 @@ cmake --build build
 ctest --test-dir build --output-on-failure
 ```
 
-To build, test, sanitize and check everything in one go and get a results table, run `./run_all.sh` (Ubuntu or WSL) or `.\run_all.ps1` (Windows, from a Developer PowerShell).
+To build, test, sanitize and check everything in one go and get a results table, run `sh run_all.sh` (Ubuntu or WSL) or `.\run_all.ps1` (Windows, from a Developer PowerShell).
 
 The programs in `pitfalls/` are not part of the CMake build because they are meant to fail. Run them on Linux with GCC:
 
 ```sh
-./pitfalls/run_pitfalls.sh
+sh pitfalls/run_pitfalls.sh
 ```
 
 ## What the build checks

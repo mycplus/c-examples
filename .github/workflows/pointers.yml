@@ -50,7 +50,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y valgrind
       - name: Each broken program still fails the way the article says
         run: |
-          ./pitfalls/run_pitfalls.sh out > pitfalls.log 2>&1
+          sh ./pitfalls/run_pitfalls.sh out > pitfalls.log 2>&1
           for expected in \
               "heap-use-after-free" "attempting double-free" "Direct leak of 400 byte" \
               "heap-buffer-overflow" "SEGV on unknown address" "data is still NULL" \
@@ -61,7 +61,7 @@ jobs:
       - name: Index and pointer loops compile to assembly (informational)
         working-directory: memory/pointers/asm
         run: |
-          for cc in gcc clang; do for o in -O0 -O2; do ./compare.sh $cc $o; done; done
+          for cc in gcc clang; do for o in -O0 -O2; do sh ./compare.sh $cc $o; done; done
 
   msvc:
     runs-on: windows-latest
