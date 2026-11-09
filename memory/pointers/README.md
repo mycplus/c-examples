@@ -20,7 +20,7 @@ Companion code for [Pointers in C: From Addresses to Function Pointers](https://
 | `src/double_pointer.c` | A function that hands back a new allocation, and `char **argv` |
 | `pitfalls/` | Deliberately broken programs: dangling pointer, use after free, double free, leak, heap overflow, NULL dereference, pointer passed by value, `sizeof` on a parameter, writing through `const`, writing to a string literal, an uninitialized pointer, `void *` misuse, and the `int* a, b` declaration trap. `run_pitfalls.sh` builds and runs them all |
 | `asm/` | `sum()` written with an index and with a pointer; `compare.sh` compiles both to assembly and compares them |
-| `run_all.sh`, `run_all.ps1` | One-command verification: `run_all.sh` (Ubuntu or WSL) builds with GCC and Clang, runs the tests and sanitizers and checks the pitfall diagnostics; `run_all.ps1` (Windows, MSVC) builds and runs the tests. Both print a Markdown table |
+| `run_all.sh`, `run_all.ps1` | One-command verification: `run_all.sh` (Ubuntu or WSL) builds with GCC and Clang, runs the tests and sanitizers and checks the pitfall diagnostics; `run_all.ps1` (Windows, MSVC, C11 and C17) builds and runs the tests. Both print a Markdown table |
 | `tests/` | Unit tests, and the expected output of every demo |
 
 ## Build and test
