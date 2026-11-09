@@ -59,8 +59,10 @@ jobs:
           if ./fp > fp.out 2> fp.log; then echo "free_preorder: expected an ASan report"; exit 1; fi
           grep -q "AddressSanitizer: heap-use-after-free" fp.log || { cat fp.log; exit 1; }
           # Recursion one frame per level overflows the call stack on a deep chain.
+          # The article measured an 8 MiB stack; runners may allow more, so set it.
+          echo "runner stack limit: $(ulimit -s); this check uses 8192 KiB"
           gcc -std=c11 -O2 -g -fsanitize=address src/deep_tree.c -o deep
-          if ./deep 1000000 recursive > deep.out 2> deep.log; then echo "deep_tree: expected a stack overflow"; exit 1; fi
+          if (ulimit -s 8192 && ./deep 1000000 recursive > deep.out 2> deep.log); then echo "deep_tree: expected a stack overflow"; exit 1; fi
           grep -q "AddressSanitizer: stack-overflow" deep.log || { cat deep.log; exit 1; }
           echo "all four pitfalls and the stack overflow behave as described"
 
