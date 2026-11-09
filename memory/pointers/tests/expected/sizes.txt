@@ -1,0 +1,10 @@
+type             sizeof     p + 1 moves
+char             1          1 bytes
+short            2          2 bytes
+int              4          4 bytes
+double           8          8 bytes
+struct reading   16         16 bytes
+
+sizeof(char *)           = 8
+sizeof(double *)         = 8
+sizeof(struct reading *) = 8

@@ -1,0 +1,1 @@
+reader sees 2, anchor wrote a = 10, fixed sees 10

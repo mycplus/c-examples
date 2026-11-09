@@ -1,0 +1,10 @@
+Initial list:
+  [1] Pay invoice
+  [2] Write report
+  [3] Email Sam
+After removing "Email Sam":
+  [1] Pay invoice
+  [2] Write report
+Reversed:
+  [2] Write report
+  [1] Pay invoice

@@ -1,0 +1,7 @@
+after swap: x = 9, y = 3
+min 19.0, max 24.5, mean 21.75
+"42" -> 42
+"-7" -> -7
+"12abc" -> rejected
+"" -> rejected
+"99999999999" -> rejected

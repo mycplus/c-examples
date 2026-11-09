@@ -1,0 +1,75 @@
+name: pointers
+
+on:
+  push:
+    paths: ['memory/pointers/**', '.github/workflows/pointers.yml']
+  pull_request:
+    paths: ['memory/pointers/**', '.github/workflows/pointers.yml']
+
+defaults:
+  run:
+    working-directory: memory/pointers
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+        std: [11, 17]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }} -DCMAKE_BUILD_TYPE=Release
+      - name: Build (warnings are errors)
+        run: cmake --build build
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
+
+  sanitizers:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tests and demos under ASan, UBSan and LeakSanitizer
+        run: |
+          flags="-std=c11 -Wall -Wextra -pedantic -Werror -g -fsanitize=address,undefined -fno-sanitize-recover=all"
+          for t in pointer_arith functions text dynamic_array linked_list generic; do
+            gcc $flags tests/test_$t.c -o t_$t && ./t_$t
+          done
+          for p in basics address_demo sizes arrays functions strings const_pointers \
+                   dynamic_array linked_list callbacks generic_swap double_pointer; do
+            gcc $flags src/$p.c -o d_$p && ./d_$p alpha beta > /dev/null
+          done
+
+  pitfalls:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Valgrind
+        run: sudo apt-get update && sudo apt-get install -y valgrind
+      - name: Each broken program still fails the way the article says
+        run: |
+          ./pitfalls/run_pitfalls.sh out > pitfalls.log 2>&1
+          for expected in \
+              "heap-use-after-free" "attempting double-free" "Direct leak of 400 byte" \
+              "heap-buffer-overflow" "SEGV on unknown address" "data is still NULL" \
+              "Wsizeof-array-argument" "assignment of read-only location" "exit status 139" \
+              "Use of uninitialised value" "invalid use of void expression" "sizeof b = 4"; do
+            grep -q -- "$expected" pitfalls.log || { echo "missing: $expected"; exit 1; }
+          done
+      - name: Index and pointer loops compile to assembly (informational)
+        working-directory: memory/pointers/asm
+        run: |
+          for cc in gcc clang; do for o in -O0 -O2; do ./compare.sh $cc $o; done; done
+
+  msvc:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build
+      - name: Build (/W4 /WX)
+        run: cmake --build build --config Release
+      - name: Test
+        run: ctest --test-dir build -C Release --output-on-failure

@@ -1,0 +1,5 @@
+score = 70
+*p    = 70
+p == &score: yes
+after *p = *p + 21, score = 91
+nothing is NULL

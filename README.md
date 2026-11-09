@@ -19,6 +19,7 @@ C source code examples and projects accompanying C programming tutorials on MYCP
 | [Eight Queens](recursion/eight-queens/) | N-queens by backtracking, distinct solutions under symmetry, and an SDL2 viewer. | [![Eight Queens](https://github.com/mycplus/c-examples/actions/workflows/eight-queens.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/eight-queens.yml) |
 | [Cache Simulator](memory/cache-simulator/) | A set-associative cache with LRU and FIFO replacement that reads Valgrind memory traces. | [![Cache Simulator](https://github.com/mycplus/c-examples/actions/workflows/cache-simulator.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/cache-simulator.yml) |
 | [Serpent](cryptography/serpent/) | The Serpent block cipher with 1,043 test vectors and a libgcrypt cross-check. | [![Serpent](https://github.com/mycplus/c-examples/actions/workflows/serpent.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/serpent.yml) |
+| [Pointers](memory/pointers/) | Pointers from `&` and `*` to function pointers, with real-life examples, tests and sanitizer-checked pitfalls. | [![Pointers](https://github.com/mycplus/c-examples/actions/workflows/pointers.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/pointers.yml) |
 
 
 ## About

@@ -1,0 +1,15 @@
+By name:
+  Lena   48000
+  Maya   52000
+  Omar   61000
+  Raj    61000
+By salary, highest first:
+  Omar   61000
+  Raj    61000
+  Maya   52000
+  Lena   48000
+Calculator table:
+  12 + 4 = 16
+  12 - 4 = 8
+  12 * 4 = 48
+  12 / 4 = 3

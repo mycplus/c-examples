@@ -1,0 +1,6 @@
+sizeof(a) = 20, sizeof(p) = 8
+a[3] = 40, *(a + 3) = 40, *(p + 3) = 40
+&a[3] - &a[0] = 3 elements
+*q++   gave 10, q is now at index 1
+(*q)++ gave 20, a[1] is now 21, q is still at index 1
+*++q   gave 30, q is now at index 2

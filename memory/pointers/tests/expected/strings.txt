@@ -1,0 +1,3 @@
+greeting: hello, sizeof(greeting) = 8
+buffer:   Jello, sizeof(buffer)   = 6
+"  pointers   are just   addresses " has 4 words
