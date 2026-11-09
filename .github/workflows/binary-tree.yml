@@ -1,0 +1,76 @@
+name: binary-tree
+
+on:
+  push:
+    paths: ['data-structures/binary-tree/**', '.github/workflows/binary-tree.yml']
+  pull_request:
+    paths: ['data-structures/binary-tree/**', '.github/workflows/binary-tree.yml']
+
+defaults:
+  run:
+    working-directory: data-structures/binary-tree
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+        std: [11, 17]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }} -DCMAKE_BUILD_TYPE=Release
+      - name: Build (warnings are errors)
+        run: cmake --build build
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
+
+  sanitizers:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tests and demo under ASan, UBSan and LeakSanitizer
+        run: |
+          flags="-std=c11 -Wall -Wextra -pedantic -Werror -g -fsanitize=address,undefined -fno-sanitize-recover=all"
+          gcc $flags tests/test_bst.c -o t && ./t
+          gcc $flags src/bst.c -o d && ./d > /dev/null
+      - name: The article's pitfalls behave as described
+        run: |
+          set -o pipefail
+          # Insert through a by-value pointer: the tree stays empty, the nodes leak.
+          gcc -std=c11 -g -fsanitize=address pitfalls/insert_by_value.c -o ibv
+          if ./ibv > ibv.out 2> ibv.log; then echo "insert_by_value: expected a leak report"; exit 1; fi
+          grep -q "after 5 inserts: size 0, root NULL" ibv.out || { cat ibv.out; exit 1; }
+          grep -q "Direct leak of 120 byte(s) in 5 object(s)" ibv.log || { cat ibv.log; exit 1; }
+          # A check that only compares parent and child accepts a tree that is not a BST.
+          gcc -std=c11 -Wall -Wextra -pedantic -Werror pitfalls/naive_is_bst.c -o nib
+          ./nib | tee nib.out
+          grep -q "local check:  BST" nib.out && grep -q "range check:  not a BST" nib.out && grep -q "contains 60:  no" nib.out
+          # Removing with the wrong key leaves the successor in the tree twice.
+          gcc -std=c11 -Wall -Wextra -pedantic -Werror pitfalls/remove_wrong_key.c -o rwk
+          ./rwk | tee rwk.out
+          grep -q "after removing 30: 20 35 35 40" rwk.out
+          # free() before reading the children: GCC warns, ASan reports the read.
+          gcc -std=c11 -Wall -Wextra -c pitfalls/free_preorder.c -o /dev/null 2> fp.warn || true
+          grep -q "Wuse-after-free" fp.warn || { cat fp.warn; exit 1; }
+          gcc -std=c11 -g -fsanitize=address -w pitfalls/free_preorder.c -o fp
+          if ./fp > fp.out 2> fp.log; then echo "free_preorder: expected an ASan report"; exit 1; fi
+          grep -q "AddressSanitizer: heap-use-after-free" fp.log || { cat fp.log; exit 1; }
+          # Recursion one frame per level overflows the call stack on a deep chain.
+          gcc -std=c11 -O2 -g -fsanitize=address src/deep_tree.c -o deep
+          if ./deep 1000000 recursive > deep.out 2> deep.log; then echo "deep_tree: expected a stack overflow"; exit 1; fi
+          grep -q "AddressSanitizer: stack-overflow" deep.log || { cat deep.log; exit 1; }
+          echo "all four pitfalls and the stack overflow behave as described"
+
+  msvc:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build
+      - name: Build (/W4 /WX)
+        run: cmake --build build --config Release
+      - name: Test
+        run: ctest --test-dir build -C Release --output-on-failure

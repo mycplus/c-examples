@@ -1,0 +1,18 @@
+inserted:    50 30 70 20 40 60 80 35 45 65
+preorder:    50 30 20 40 35 45 70 60 65 80
+inorder:     20 30 35 40 45 50 60 65 70 80
+postorder:   20 35 45 40 30 65 60 80 70 50
+level order: 50 30 70 20 40 60 80 35 45 65
+size 10, height 3
+contains 45: yes, contains 55: no
+insert 40 again: 0
+
+remove 30 (two children)
+inorder:     20 35 40 45 50 60 65 70 80
+level order: 50 35 70 20 40 60 80 45 65
+
+remove 50 (root), 20 (leaf)
+inorder:     35 40 45 60 65 70 80
+level order: 60 35 70 40 65 80 45
+size 7, height 3
+remove 99: not found
