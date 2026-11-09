@@ -1,0 +1,72 @@
+name: serial-chat
+
+on:
+  push:
+    paths: ['networking/serial-chat/**', '.github/workflows/serial-chat.yml']
+  pull_request:
+    paths: ['networking/serial-chat/**', '.github/workflows/serial-chat.yml']
+
+defaults:
+  run:
+    working-directory: networking/serial-chat
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+        std: [11, 17]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install socat (virtual null-modem cable for the chat test)
+        run: sudo apt-get update && sudo apt-get install -y socat
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }}
+      - name: Build (warnings are errors)
+        run: cmake --build build
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
+
+  sanitizers:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install socat
+        run: sudo apt-get update && sudo apt-get install -y socat
+      - name: Tests and demos under ASan, UBSan and LeakSanitizer
+        run: |
+          f="-std=c11 -Wall -Wextra -pedantic -Werror -Iinclude -g -fsanitize=address,undefined -fno-sanitize-recover=all"
+          gcc $f tests/test_frame.c src/frame.c -o t && ./t
+          gcc $f src/frame_demo.c src/frame.c -o d1 && ./d1 > /dev/null
+          gcc $f src/crc_experiment.c src/frame.c -o d2 && ./d2 100 > /dev/null
+          gcc $f src/pty_loopback.c src/serial_posix.c src/frame.c -lutil -o d3 && ./d3 > /dev/null
+          gcc $f -pthread src/chat.c src/serial_posix.c src/frame.c -o d4 && sh tests/chat_test.sh ./d4
+
+  windows-mingw:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install MinGW-w64
+        run: sudo apt-get update && sudo apt-get install -y gcc-mingw-w64-x86-64
+      - name: Cross-compile the Windows build (warnings are errors)
+        run: |
+          f="-std=c11 -Wall -Wextra -pedantic -Werror -Iinclude"
+          x86_64-w64-mingw32-gcc $f src/chat.c src/serial_win32.c src/frame.c -o chat.exe
+          x86_64-w64-mingw32-gcc $f tests/test_frame.c src/frame.c -o test_frame.exe
+
+  msvc:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        std: [11, 17]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_C_STANDARD=${{ matrix.std }}
+      - name: Build (/W4 /WX)
+        run: cmake --build build --config Release
+      - name: Test
+        run: ctest --test-dir build -C Release --output-on-failure

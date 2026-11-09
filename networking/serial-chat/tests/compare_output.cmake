@@ -1,0 +1,12 @@
+# Runs PROG (with optional ARGS) and compares its stdout with EXPECTED, ignoring CR so Windows passes.
+separate_arguments(arg_list NATIVE_COMMAND "${ARGS}")
+execute_process(COMMAND ${PROG} ${arg_list} OUTPUT_VARIABLE actual RESULT_VARIABLE rc)
+if(NOT rc EQUAL 0)
+  message(FATAL_ERROR "${PROG} exited with ${rc}")
+endif()
+file(READ ${EXPECTED} expected)
+string(REPLACE "\r" "" actual "${actual}")
+string(REPLACE "\r" "" expected "${expected}")
+if(NOT actual STREQUAL expected)
+  message(FATAL_ERROR "Output differs from ${EXPECTED}:\n${actual}")
+endif()

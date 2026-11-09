@@ -1,0 +1,9 @@
+payloads: 1-64 random bytes; damage applied to the encoded bytes on the wire
+
+damage                          trials  rejected    intact   WRONG MSG
+1 bit flipped                   200000    200000         0           0
+2 bits flipped                  200000    200000         0           0
+burst of 2-16 bits              200000    200000         0           0
+4 bytes replaced at random     2000000   1999971         0          29
+
+expected WRONG MSG for random damage: about trials / 65536 = 30.5

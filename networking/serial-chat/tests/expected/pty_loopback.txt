@@ -1,0 +1,3 @@
+B received: "hello from A"
+A received 11 bytes, identical to what B sent: yes
+serial_read with nothing to receive returned 0

@@ -1,0 +1,12 @@
+CRC-16/CCITT-FALSE of "123456789" = 0x29B1
+
+payload:               48 69 C0 21 DB  (5 bytes)
+on the wire:           C0 48 69 DB DC 21 DB DD C1 DA C0  (11 bytes)
+
+clean frame                    -> OK "PING"
+one bit flipped                -> bad CRC
+one byte lost                  -> bad CRC
+noise before the frame         -> bad CRC OK "PING"
+two frames back to back        -> OK "ONE" OK "TWO"
+closing END lost               -> OK "ONE" OK "TWO"
+a data byte turned into END    -> empty
