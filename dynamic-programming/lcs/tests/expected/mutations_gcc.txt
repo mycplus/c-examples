@@ -1,0 +1,10 @@
+mistake                                              result
+a match extends the cell above, not the diagonal     caught: a="ABCBDAB" b="BDCABA": got "?BDAB" and length 4, wanted length 4
+min instead of max of the two neighbours             caught: AddressSanitizer: heap-buffer-overflow in lcs_string (lcs.c:86)
+characters compared one position off                 caught: a="ABC" b="DEF": got "?" and length 0, wanted length 0
+the two rows are never swapped                       caught: a="ABC" b="ABC": got "ABC" and length 0, wanted length 3
+no room for the terminating NUL                      caught: AddressSanitizer: heap-buffer-overflow in lcs_string (lcs.c:80)
+a literal returned for an empty LCS                  caught: AddressSanitizer: SEGV
+the diff swaps - and +                               caught: AddressSanitizer: global-buffer-overflow in lcs_diff (lcs.c:176)
+walk-back prefers left instead of up on a tie        passes: still a correct LCS
+mistakes the tests miss: 0

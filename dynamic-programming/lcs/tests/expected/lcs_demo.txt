@@ -1,0 +1,17 @@
+Table of LCS lengths for ABCBDAB and BDCABA:
+       B D C A B A
+     0 0 0 0 0 0 0
+  A  0 0 0 0 1 1 1
+  B  0 1 1 1 1 2 2
+  C  0 1 1 2 2 2 2
+  B  0 1 1 2 2 3 3
+  D  0 1 2 2 2 3 3
+  A  0 1 2 2 3 3 4
+  B  0 1 2 2 3 4 4
+
+ABCBDAB        BDCABA         length 4: "BCBA"
+BDCABA         ABCBDAB        length 4: "BDAB"
+AGGTAB         GXTXAYB        length 4: "GTAB"
+dynamic        programming    length 3: "ami"
+abc            xyz            length 0: ""
+               anything       length 0: ""

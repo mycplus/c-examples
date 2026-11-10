@@ -1,0 +1,8 @@
+ length   calls, random DNA   calls, no common letter   table cells
+      2                  11                        11             9
+      4                  26                       139            25
+      6                 261                      1847            49
+      8                 362                     25739            81
+     10               15341                    369511           121
+     12              117850                   5408311           169
+     14              141953                  80233199           225

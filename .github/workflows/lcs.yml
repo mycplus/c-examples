@@ -1,0 +1,56 @@
+name: LCS
+
+on:
+  push:
+    paths: ['dynamic-programming/lcs/**', '.github/workflows/lcs.yml']
+  pull_request:
+    paths: ['dynamic-programming/lcs/**', '.github/workflows/lcs.yml']
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+        std: [11, 17]
+    defaults:
+      run:
+        working-directory: dynamic-programming/lcs
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test
+        run: |
+          cmake -S . -B build -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }}
+          cmake --build build
+          ctest --test-dir build --output-on-failure
+      - name: Sanitizers
+        run: |
+          cmake -S . -B asan -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }} \
+                -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_FLAGS="-fsanitize=address,undefined -fno-sanitize-recover=all -g"
+          cmake --build asan
+          ctest --test-dir asan --output-on-failure
+      - name: Freeing a string literal is caught
+        run: |
+          if ASAN_OPTIONS=detect_leaks=0 ./asan/pitfall_free_literal > out.txt 2> err.txt; then
+            echo "expected a crash"; exit 1
+          fi
+          grep -q "ERROR: AddressSanitizer" err.txt
+      - name: Agrees with GNU diff --minimal
+        run: python3 tests/compare_gnu_diff.py build/lcs_diff
+      - name: Every deliberate mistake is caught
+        if: matrix.std == '11'
+        run: python3 tests/mutations.py ${{ matrix.cc }}
+
+  windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: dynamic-programming/lcs
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test (MSVC)
+        run: |
+          cmake -S . -B build
+          cmake --build build --config Release
+          ctest --test-dir build -C Release --output-on-failure
