@@ -1,0 +1,7 @@
+sizeof scores = 20 bytes, sizeof scores[0] = 4 bytes
+index  value  byte offset from scores[0]
+    0     78      0
+    1     92      4
+    2     85      8
+    3     64     12
+    4     90     16

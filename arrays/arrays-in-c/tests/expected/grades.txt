@@ -1,0 +1,2 @@
+6 tests, total 482, average 80.33
+best 92, worst 64, 3 above average

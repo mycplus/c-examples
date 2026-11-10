@@ -1,0 +1,5 @@
+sizeof grid = 48 bytes, one row = 16 bytes
+  0  4  8 12   <- row 0
+ 16 20 24 28   <- row 1
+ 32 36 40 44   <- row 2
+grid[2][1] = 32 sits at (2 * 4 + 1) * 4 = 36 bytes

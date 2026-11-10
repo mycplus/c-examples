@@ -1,0 +1,55 @@
+name: arrays-in-c
+
+on:
+  push:
+    paths: ['arrays/arrays-in-c/**', '.github/workflows/arrays-in-c.yml']
+  pull_request:
+    paths: ['arrays/arrays-in-c/**', '.github/workflows/arrays-in-c.yml']
+
+defaults:
+  run:
+    working-directory: arrays/arrays-in-c
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+        std: [11, 17]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }}
+      - name: Build (warnings are errors)
+        run: cmake --build build
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
+
+  sanitizers:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tests and demos under ASan, UBSan and LeakSanitizer
+        run: |
+          f="-std=c11 -Wall -Wextra -pedantic -Werror -g -fsanitize=address,undefined -fno-sanitize-recover=all"
+          gcc $f tests/test_arrays.c -o t && ./t
+          for p in declare layout grades functions copy_compare playlist seating row_major; do
+            gcc $f src/$p.c -o d_$p && ./d_$p > /dev/null
+          done
+
+  msvc:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        std: [11, 17]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build "-DCMAKE_C_STANDARD=${{ matrix.std }}"
+      - name: Build (/W4 /WX)
+        run: cmake --build build --config Release
+      - name: Test
+        run: ctest --test-dir build -C Release --output-on-failure
