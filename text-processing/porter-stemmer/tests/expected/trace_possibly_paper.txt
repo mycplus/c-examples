@@ -1,0 +1,10 @@
+possibly
+  step 1a  possibly
+  step 1b  possibly
+  step 1c  possibli
+  step 2   possibli
+  step 3   possibli
+  step 4   possibli
+  step 5a  possibli
+  step 5b  possibli
+stem: possibli

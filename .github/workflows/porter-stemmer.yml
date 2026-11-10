@@ -1,0 +1,52 @@
+name: Porter Stemmer
+
+on:
+  push:
+    paths: ['text-processing/porter-stemmer/**', '.github/workflows/porter-stemmer.yml']
+  pull_request:
+    paths: ['text-processing/porter-stemmer/**', '.github/workflows/porter-stemmer.yml']
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+        std: [11, 17]
+    defaults:
+      run:
+        working-directory: text-processing/porter-stemmer
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test
+        run: |
+          cmake -S . -B build -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }}
+          cmake --build build
+          ctest --test-dir build --output-on-failure
+      - name: Sanitizers
+        run: |
+          cmake -S . -B asan -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }} \
+                -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_FLAGS="-fsanitize=address,undefined -fno-sanitize-recover=all -g"
+          cmake --build asan
+          ctest --test-dir asan --output-on-failure
+      - name: Every deliberate mistake changes at least one stem
+        run: python3 tests/mutations.py ${{ matrix.cc }}
+      - name: Agrees with NLTK word for word
+        if: matrix.cc == 'gcc' && matrix.std == '11'
+        run: |
+          python3 -m pip install --quiet "nltk==3.10.4"
+          python3 tests/compare_nltk.py build/stem
+
+  windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: text-processing/porter-stemmer
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test (MSVC)
+        run: |
+          cmake -S . -B build
+          cmake --build build --config Release
+          ctest --test-dir build -C Release --output-on-failure

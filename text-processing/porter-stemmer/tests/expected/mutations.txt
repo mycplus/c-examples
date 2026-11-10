@@ -1,0 +1,11 @@
+mistake                                  stems changed  example
+y is always a consonant                             90  bygone: bygon -> bygone
+y is always a vowel                                 59  abeyance: abey -> abeyanc
+falls back to a shorter suffix                      89  agreement: agreement -> agreem
+measures the whole word, not the stem             3745  abate: abat -> ab
+step 4 needs m > 0 instead of m > 1               3737  abate: abat -> ab
+-ion without the s or t condition                   44  annexions: annexion -> annex
+*o forgets the w, x, y exception                   125  baying: bai -> baye
+step 1b skips the tidy-up                         1292  abbreviated: abbrevi -> abbreviat
+step 3 runs before step 2                          137  aesthetically: aesthet -> aesthetic
+mistakes the vocabulary test would miss: 0

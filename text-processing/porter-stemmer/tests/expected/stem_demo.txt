@@ -1,0 +1,22 @@
+One stem for related words:
+  connect          -> connect
+  connected        -> connect
+  connecting       -> connect
+  connection       -> connect
+  connections      -> connect
+Stems are keys, not dictionary words:
+  caresses         -> caress
+  ponies           -> poni
+  hopping          -> hop
+  filing           -> file
+  happy            -> happi
+  relational       -> relat
+  generalizations  -> gener
+  probate          -> probat
+  controlling      -> control
+  university       -> univers
+  universe         -> univers
+Where Porter's code and the 1980 paper differ:
+  as               standard: as           paper: a
+  possibly         standard: possibl      paper: possibli
+  archaeology      standard: archaeolog   paper: archaeologi

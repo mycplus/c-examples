@@ -1,0 +1,10 @@
+generalizations
+  step 1a  generalization
+  step 1b  generalization
+  step 1c  generalization
+  step 2   generalize
+  step 3   general
+  step 4   gener
+  step 5a  gener
+  step 5b  gener
+stem: gener

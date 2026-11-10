@@ -1,0 +1,6 @@
+words:                      42603
+changed by the stemmer:     27959 (65.6%)
+letters removed:            17.8%
+distinct stems:             25749
+standard and paper differ:  67 words
+stem changes if stemmed again: 1752 words
