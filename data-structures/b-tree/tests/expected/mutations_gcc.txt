@@ -1,0 +1,11 @@
+mistake                                              result
+split leaves the median in the left node             caught: AddressSanitizer: heap-use-after-free in node_free (btree.c:43)
+split moves the wrong children                       caught: AddressSanitizer: heap-use-after-free in lower_bound (btree.c:52)
+only the root is split before inserting              caught: AddressSanitizer: heap-buffer-overflow in btree_insert (btree.c:175)
+search finds the first key > k, not >= k             caught: FAILED line 171: btree_search(tree, 7, &v) && v == 700
+deletion enters a child with only t-1 keys           caught: FAILED line 188: btree_check(tree) == NULL
+predecessor copied up but not deleted                caught: t=2 op 343: a key is outside the range its ancestors allow
+borrowing from the left forgets the child pointer    caught: AddressSanitizer: heap-use-after-free in node_free (btree.c:43)
+merge with the left sibling enters the wrong child   caught: AddressSanitizer: heap-use-after-free in lower_bound (btree.c:52)
+an empty root is kept                                caught: AddressSanitizer: SEGV in merge_children (btree.c:211)
+mistakes the tests miss: 0

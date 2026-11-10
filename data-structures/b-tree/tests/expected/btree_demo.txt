@@ -1,0 +1,11 @@
+After 18 inserts: 18 keys, 9 nodes, height 3, valid
+[50]
+[10 20 30] [80]
+[1 5] [12 15] [25] [33 35] [55 60 65] [85 90 95]
+search 65: found, value 650, 3 nodes read
+search 66: not found
+After removing 20, 1 and 5: 15 keys, 8 nodes, height 3, valid
+[50]
+[15 30] [80]
+[10 12] [25] [33 35] [55 60 65] [85 90 95]
+keys in [30, 60]: 30 33 35 50 55 60  (6 keys)

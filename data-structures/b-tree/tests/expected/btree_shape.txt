@@ -1,0 +1,12 @@
+1000000 keys
+order         t  height   bound      nodes    full reads/search
+random        2      16      19     570283   58.5%        15.43
+random        4       9      10     216942   65.9%         8.78
+random       16       5       5      46911   68.8%         4.95
+random       64       4       4      11372   69.2%         3.99
+random      256       3       3       2752   71.1%         3.00
+ascending     2      19      19     999988   33.3%        18.00
+ascending     4      10      10     333329   42.9%         9.67
+ascending    16       5       5      66666   48.4%         4.93
+ascending    64       4       4      15873   49.6%         3.98
+ascending   256       3       3       3922   49.9%         3.00
