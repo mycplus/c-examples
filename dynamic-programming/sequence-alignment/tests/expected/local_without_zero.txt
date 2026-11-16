@@ -1,0 +1,4 @@
+zero floor, best cell (Smith-Waterman)    13
+zero floor, bottom-right corner            7
+no floor, best cell                       10
+no floor, bottom-right corner (global)     4

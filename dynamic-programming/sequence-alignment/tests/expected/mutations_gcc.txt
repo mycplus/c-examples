@@ -1,0 +1,14 @@
+mistake                                              result
+local cells not floored at zero                      caught: AddressSanitizer: heap-buffer-overflow in trace (align.c:151)
+extending a gap charged as opening one               caught: FAILED line 154: global s1="GAAAAAGATAGAGC" s2="GAAAAAGAAAC" open=8 extend=1: score 6, wanted 16
+the gap-open cost never charged                      caught: AddressSanitizer: stack-buffer-overflow in trace (align.c:168)
+global edge gaps without the opening cost            caught: FAILED line 151: global s1="ACG" s2="" open=8 extend=1: columns add up to -11, reported score -3
+the two letters looked up in the wrong order         caught: AddressSanitizer: stack-buffer-overflow in trace (align.c:168)
+local answer read from the bottom-right corner       caught: FAILED line 154: local s1="TGTTACGG" s2="GGTTGACTA" open=0 extend=2: score 7, wanted 13
+traceback buffer one column short                    caught: AddressSanitizer: heap-buffer-overflow in trace (align.c:184)
+top row letter taken one position off                caught: FAILED line 144: local s1="TGTTACGG" s2="GGTTGACTA" open=0 extend=2: top row "TTA-CG" is not s1[1, 6)
+local traceback runs past the start                  caught: AddressSanitizer: heap-buffer-overflow in trace (align.c:151)
+align_score never swaps its gap rows                 caught: FAILED line 169: align_score global s1="HEAGAWGHEE" s2="PAWHEAE": -17, wanted 1
+global traceback prefers a gap to a pair on a tie    passes: still an optimal alignment
+a gap in s1 never directly after a gap in s2         passes: still an optimal alignment
+mistakes the tests miss: 0

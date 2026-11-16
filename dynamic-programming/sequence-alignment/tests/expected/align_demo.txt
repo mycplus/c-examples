@@ -1,0 +1,36 @@
+Local, DNA, linear gaps
+GTT-AC
+||| ||
+GTTGAC
+score 13, letters 2-6 of the first and 2-7 of the second
+
+Global, DNA, linear gaps
+TGTT-ACGG
+ ||| ||  
+GGTTGACTA
+score 4
+
+Global, BLOSUM50, linear gaps
+HEAGAWGHE-E
+    || || |
+--P-AW-HEAE
+score 1
+
+Local, BLOSUM50, linear gaps
+AWGHE
+|| ||
+AW-HE
+score 28, letters 5-9 of the first and 2-5 of the second
+
+Global, DNA, linear gaps
+GAAAAAGATAGAGC
+|||||||| | | |
+GAAAAAGA-A-A-C
+score 27
+
+Global, DNA, affine gaps
+GAAAAAGATAGAGC
+||||||||   | |
+GAAAAAGA---AAC
+score 16
+
