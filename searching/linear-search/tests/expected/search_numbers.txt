@@ -1,0 +1,3 @@
+73: number 4 of 8
+0: number 6 of 8
+50: not found among 8 numbers

@@ -1,0 +1,3 @@
+==     with the literal "banana": 1
+==     with typed text "banana":  -1
+strcmp with typed text "banana":  1

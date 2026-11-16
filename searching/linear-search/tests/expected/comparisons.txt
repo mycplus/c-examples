@@ -1,0 +1,6 @@
+uniform keys, found:         50.49 comparisons (predicted (n + 1) / 2 = 50.50)
+keys not in the array:         100 comparisons (always n)
+Zipf keys, plain loop        39.66 comparisons
+Zipf keys, move-to-front     26.28 comparisons
+Zipf keys, transpose         19.71 comparisons
+Zipf keys, best fixed order  19.28 comparisons

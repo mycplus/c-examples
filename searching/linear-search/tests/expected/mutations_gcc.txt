@@ -1,0 +1,12 @@
+mistake                                              result
+loop runs one element too far (i <= n)               caught: AddressSanitizer: SEGV in linear_search (linear_search.c:7)
+sentinel never removed                               caught: FAILED line 64: one element, sentinel
+sentinel taken for a real match                      caught: FAILED line 64: one element, sentinel
+search_first steps one byte at a time                caught: UBSan at test_linear_search.c:54: load of misaligned address
+move-to-front shifts in the wrong direction          caught: FAILED line 109: move_to_front order n=43
+transpose overwrites instead of swapping             caught: FAILED line 122: transpose order n=54
+binary search never moves past mid                   caught: the tests did not finish in 30 s
+binary search finds the last match, not the first    caught: FAILED line 66: first of duplicates
+binary search ignores the last element               caught: AddressSanitizer: SEGV in binary_search (linear_search.c:63)
+binary search midpoint as (lo + hi) / 2              passes: still correct
+mistakes the tests miss: 0

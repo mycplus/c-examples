@@ -1,0 +1,54 @@
+name: Linear Search
+
+on:
+  push:
+    paths: ['searching/linear-search/**', '.github/workflows/linear-search.yml']
+  pull_request:
+    paths: ['searching/linear-search/**', '.github/workflows/linear-search.yml']
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+        std: [11, 17]
+    defaults:
+      run:
+        working-directory: searching/linear-search
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test
+        run: |
+          cmake -S . -B build -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }}
+          cmake --build build
+          ctest --test-dir build --output-on-failure
+      - name: Sanitizers
+        run: |
+          cmake -S . -B asan -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }} \
+                -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_FLAGS="-fsanitize=address,undefined -fno-sanitize-recover=all -g"
+          cmake --build asan
+          ctest --test-dir asan --output-on-failure
+      - name: The off-by-one read on the heap is caught
+        run: |
+          if ./asan/pitfall_off_by_one heap > out.txt 2> err.txt; then
+            echo "expected AddressSanitizer to stop the program"; exit 1
+          fi
+          grep -q "AddressSanitizer: heap-buffer-overflow" err.txt
+      - name: Every deliberate mistake is caught
+        if: matrix.std == '11'
+        run: python3 tests/mutations.py ${{ matrix.cc }}
+
+  windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: searching/linear-search
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test (MSVC)
+        run: |
+          cmake -S . -B build
+          cmake --build build --config Release
+          ctest --test-dir build -C Release --output-on-failure

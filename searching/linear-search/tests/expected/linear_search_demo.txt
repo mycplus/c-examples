@@ -1,0 +1,14 @@
+array:                 42 7 19 73 7 0 -5 88
+ 73 found at index 3 after 4 comparisons
+  7 found at index 1 after 2 comparisons
+  0 found at index 5 after 6 comparisons
+ 88 found at index 7 after 8 comparisons
+ 50 not found after 8 comparisons
+sentinel search for 88: index 7, for 50: -1
+array afterwards:      42 7 19 73 7 0 -5 88
+search_first for "notebook": notebook at index 1, price 3.50
+find 5 (was at 4):     5 1 2 3 4 6
+find 5 (was at 0):     5 1 2 3 4 6
+find 6 (was at 5):     6 5 1 2 3 4
+find 5 (was at 1):     5 6 1 2 3 4
+binary search in sorted copy for 7: index 2, for 50: -1
