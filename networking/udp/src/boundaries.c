@@ -74,9 +74,9 @@ int main(void)
     /* The same 300-byte datagram into a 4-byte buffer. */
     sendto(tx, big, 300, 0, (struct sockaddr *)&to, (socklen_t)sizeof to);
     sendto(tx, "next", 4, 0, (struct sockaddr *)&to, (socklen_t)sizeof to);
-    char small[4];
+    char tiny[4];             /* not "small": windows.h defines small as a macro */
     bool cut = false;
-    int n = receive(rx, small, (int)sizeof small, &cut);
+    int n = receive(rx, tiny, (int)sizeof tiny, &cut);
     printf("300 bytes into a 4-byte buffer: kept %d, truncated: %s\n", n, cut ? "yes" : "no");
     char buf[2048];
     n = receive(rx, buf, (int)sizeof buf, &cut);
