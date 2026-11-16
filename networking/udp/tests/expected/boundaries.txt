@@ -1,0 +1,7 @@
+sent datagrams of 5, 1, 300 and 0 bytes
+receive 1 returned 5 bytes
+receive 2 returned 1 bytes
+receive 3 returned 300 bytes
+receive 4 returned 0 bytes
+300 bytes into a 4-byte buffer: kept 4, truncated: yes
+the next receive returned the next datagram: 4 bytes, "next"

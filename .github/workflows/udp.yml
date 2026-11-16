@@ -1,0 +1,57 @@
+name: udp
+
+on:
+  push:
+    paths: ['networking/udp/**', '.github/workflows/udp.yml']
+  pull_request:
+    paths: ['networking/udp/**', '.github/workflows/udp.yml']
+
+defaults:
+  run:
+    working-directory: networking/udp
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+        std: [11, 17]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }}
+      - name: Build (warnings are errors)
+        run: cmake --build build
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
+
+  sanitizers:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: All programs under ASan, UBSan and LeakSanitizer
+        run: |
+          f="-std=c11 -Wall -Wextra -pedantic -Werror -Iinclude -g -fsanitize=address,undefined -fno-sanitize-recover=all"
+          mkdir -p san
+          for p in udp-sender udp-receiver boundaries connected loss_test; do
+            gcc $f src/$p.c src/udp.c -o san/$p
+          done
+          ./san/boundaries && ./san/connected && ./san/loss_test 3000 4096
+          bash tests/sender_receiver_test.sh san
+
+  msvc:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        std: [11, 17]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build "-DCMAKE_C_STANDARD=${{ matrix.std }}"
+      - name: Build (/W4 /WX)
+        run: cmake --build build --config Release
+      - name: Test
+        run: ctest --test-dir build -C Release --output-on-failure

@@ -1,0 +1,3 @@
+unconnected sendto to a closed port returned 5
+connected send to the same port returned 5
+the next recv failed: port unreachable (nobody is listening)
