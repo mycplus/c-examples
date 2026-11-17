@@ -1,0 +1,4 @@
+4 levels; showing info and above
+[info   ] server started on port 8080
+[warning] disk 91% full
+[error  ] payment service unreachable

@@ -1,0 +1,10 @@
+# order status
+1001 paid
+1002 paid
+1001 shipped
+1002 cancelled
+1003 paid
+1001 cancelled
+1003 refunded
+1001 delivered
+1004 shipped

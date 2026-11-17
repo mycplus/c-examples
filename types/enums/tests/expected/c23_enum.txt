@@ -1,0 +1,6 @@
+sizeof(enum status_byte)  = 1
+sizeof(enum status_plain) = 4
+struct with byte enum:  4 bytes
+struct with plain enum: 8 bytes
+1,000,000 shipments: 4000000 vs 8000000 bytes
+MAX_UPLOAD = 5368709120

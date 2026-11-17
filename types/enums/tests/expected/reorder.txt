@@ -1,0 +1,4 @@
+value  saved as   read as   
+1      paid       paid      
+2      shipped    on hold     <- wrong
+3      delivered  shipped     <- wrong

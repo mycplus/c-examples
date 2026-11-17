@@ -1,0 +1,7 @@
+tuesday = 1
+red (0)
+green (2)
+amber (1)
+red (0)
+sizeof(Signal) = 1, sizeof(Weekday) = 4
+Signal::red = 0, Light::red = 1: same name, two scopes, no clash

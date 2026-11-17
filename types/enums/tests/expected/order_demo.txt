@@ -1,0 +1,16 @@
+order 1001: pending -> paid
+order 1002: pending -> paid
+order 1001: paid -> shipped
+order 1002: paid -> cancelled
+order 1003: pending -> paid
+order 1001: shipped -> cancelled not allowed
+order 1003: "refunded" is not a status, ignored
+order 1001: shipped -> delivered
+order 1004: pending -> shipped not allowed
+
+Final status (stored as numbers):
+  order 1001  delivered = 4
+  order 1002  cancelled = 5
+  order 1003  paid      = 2
+  order 1004  pending   = 1
+3 updates rejected

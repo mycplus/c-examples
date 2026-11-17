@@ -1,0 +1,3 @@
+4 levels; showing warning and above
+[warning] disk 91% full
+[error  ] payment service unreachable

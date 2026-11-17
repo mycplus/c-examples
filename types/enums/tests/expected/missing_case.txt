@@ -1,0 +1,5 @@
+status 0: 5 days
+status 1: 4 days
+status 2: 2 days
+status 3: 0 days
+status 4: -1 days

@@ -1,0 +1,7 @@
+viewer   0x1: read
+editor   0x3: read write
+owner    0xF: read write share delete
+editor+  0x7: read write share
+owner-   0x7: read write share
+viewer can read and share? no
+editor can read and share? yes

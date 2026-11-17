@@ -1,0 +1,8 @@
+WEDNESDAY = 2, SUNDAY = 6
+weekend? no
+HTTP_OK = 200, HTTP_CREATED = 201, HTTP_NOT_FOUND = 404
+fan 0: off
+fan 1: low
+fan 2: medium
+fan 3: high (max)
+sizeof(enum weekday) = 4, sizeof(int) = 4
