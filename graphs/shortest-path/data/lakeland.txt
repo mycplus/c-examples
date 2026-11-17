@@ -1,0 +1,22 @@
+# Lakeland road map: town,town,kilometres (every road runs both ways)
+Ashford,Bramley,45
+Ashford,Corwen,62
+Ashford,Fairhaven,240
+Bramley,Corwen,30
+Bramley,Dunmore,74
+Corwen,Dunmore,51
+Corwen,Elmstead,88
+Dunmore,Elmstead,40
+Dunmore,Glenrock,97
+Elmstead,Fairhaven,66
+Elmstead,Harlow Bay,120
+Fairhaven,Harlow Bay,58
+Glenrock,Harlow Bay,83
+Glenrock,Ironbridge,64
+Harlow Bay,Juniper,101
+Ironbridge,Juniper,49
+Ironbridge,Larkspur,92
+Juniper,Larkspur,37
+
+# An island with its own ferry road, not connected to the mainland
+Kestrel Point,Seal Rock,12

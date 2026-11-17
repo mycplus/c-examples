@@ -1,0 +1,4 @@
+From      To          k outer   k inner
+Ashford   Bramley         271  no route
+Ashford   Corwen          241  no route
+2 of 10 pairs wrong with k innermost

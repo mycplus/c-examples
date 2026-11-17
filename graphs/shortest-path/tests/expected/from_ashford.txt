@@ -1,0 +1,15 @@
+Distances from Ashford (Dijkstra)
+
+  Ashford            0 km  via -
+  Bramley           45 km  via Ashford
+  Corwen            62 km  via Ashford
+  Fairhaven        216 km  via Elmstead
+  Dunmore          113 km  via Corwen
+  Elmstead         150 km  via Corwen
+  Glenrock         210 km  via Dunmore
+  Harlow Bay       270 km  via Elmstead
+  Ironbridge       274 km  via Glenrock
+  Juniper          323 km  via Ironbridge
+  Larkspur         360 km  via Juniper
+  Kestrel Point  no route
+  Seal Rock      no route

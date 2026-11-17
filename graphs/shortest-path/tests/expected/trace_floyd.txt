@@ -1,0 +1,34 @@
+Start: direct roads only
+           Ashford Bramley  Corwen Dunmore
+Ashford          0      45      62       -
+Bramley         45       0      30      74
+Corwen          62      30       0      51
+Dunmore          -      74      51       0
+
+After allowing stops at Ashford (k = 0)
+           Ashford Bramley  Corwen Dunmore
+Ashford          0      45      62       -
+Bramley         45       0      30      74
+Corwen          62      30       0      51
+Dunmore          -      74      51       0
+
+After allowing stops at Bramley (k = 1)
+           Ashford Bramley  Corwen Dunmore
+Ashford          0      45      62     119
+Bramley         45       0      30      74
+Corwen          62      30       0      51
+Dunmore        119      74      51       0
+
+After allowing stops at Corwen (k = 2)
+           Ashford Bramley  Corwen Dunmore
+Ashford          0      45      62     113
+Bramley         45       0      30      74
+Corwen          62      30       0      51
+Dunmore        113      74      51       0
+
+After allowing stops at Dunmore (k = 3)
+           Ashford Bramley  Corwen Dunmore
+Ashford          0      45      62     113
+Bramley         45       0      30      74
+Corwen          62      30       0      51
+Dunmore        113      74      51       0

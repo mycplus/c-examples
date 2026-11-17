@@ -1,0 +1,11 @@
+Larkspur to Ashford (Floyd-Warshall)
+
+  From           To             Road km  Total km
+  Larkspur       Juniper             37        37
+  Juniper        Ironbridge          49        86
+  Ironbridge     Glenrock            64       150
+  Glenrock       Dunmore             97       247
+  Dunmore        Corwen              51       298
+  Corwen         Ashford             62       360
+
+Total: 360 km over 6 roads

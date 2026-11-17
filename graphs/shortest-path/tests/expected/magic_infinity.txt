@@ -1,0 +1,5 @@
+With 9999 meaning "no road":
+  Rotterdam to Vladivostok: 9999  (reported as no route)
+With a sentinel no real distance can reach:
+  Rotterdam to Vladivostok: 11610 km
+INT_MAX + 1200 in 32-bit two's complement: -2147482449

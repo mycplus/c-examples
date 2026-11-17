@@ -1,0 +1,25 @@
+settle Ashford      at 0
+    Bramley      45 via Ashford
+    Corwen       62 via Ashford
+    Fairhaven    240 via Ashford
+settle Bramley      at 45
+    Dunmore      119 via Bramley
+settle Corwen       at 62
+    Dunmore      113 via Corwen
+    Elmstead     150 via Corwen
+settle Dunmore      at 113
+    Glenrock     210 via Dunmore
+settle Elmstead     at 150
+    Fairhaven    216 via Elmstead
+    Harlow Bay   270 via Elmstead
+settle Glenrock     at 210
+    Ironbridge   274 via Glenrock
+settle Fairhaven    at 216
+settle Harlow Bay   at 270
+    Juniper      371 via Harlow Bay
+settle Ironbridge   at 274
+    Juniper      323 via Ironbridge
+    Larkspur     366 via Ironbridge
+settle Juniper      at 323
+    Larkspur     360 via Juniper
+settle Larkspur     at 360

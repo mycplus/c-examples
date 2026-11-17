@@ -1,0 +1,6 @@
+# A small map for following Floyd-Warshall by hand
+Ashford,Bramley,45
+Ashford,Corwen,62
+Bramley,Corwen,30
+Bramley,Dunmore,74
+Corwen,Dunmore,51

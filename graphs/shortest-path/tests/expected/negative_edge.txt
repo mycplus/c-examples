@@ -1,0 +1,5 @@
+Place      Dijkstra  Bellman-Ford
+Depot          0 Wh          0 Wh
+Ridge        800 Wh        800 Wh
+Valley       500 Wh        400 Wh   <- wrong
+Town         800 Wh        700 Wh   <- wrong

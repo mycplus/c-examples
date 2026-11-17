@@ -1,0 +1,11 @@
+Ashford to Larkspur (Dijkstra)
+
+  From           To             Road km  Total km
+  Ashford        Corwen              62        62
+  Corwen         Dunmore             51       113
+  Dunmore        Glenrock            97       210
+  Glenrock       Ironbridge          64       274
+  Ironbridge     Juniper             49       323
+  Juniper        Larkspur            37       360
+
+Total: 360 km over 6 roads
