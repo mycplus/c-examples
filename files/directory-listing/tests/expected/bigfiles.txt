@@ -1,0 +1,5 @@
+7 files, 6,671 bytes in fixture
+
+        5,000   74%  docs/images/logo.png
+        1,234   18%  docs/guide.md
+          300    4%  src/main.c

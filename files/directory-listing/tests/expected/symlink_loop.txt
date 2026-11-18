@@ -1,0 +1,11 @@
+lstat("loop/self"): a symbolic link, not followed
+stat("loop/self"):  a directory (the link was followed)
+
+A walker that follows links:
+  depth  1: loop/self
+  depth  2: loop/self/self
+  ...
+  depth 39: ...f/self/self/self/self/self/self
+  depth 40: ...f/self/self/self/self/self/self
+  stopped at depth 41: Too many levels of symbolic links
+40 directories visited, all of them the same one

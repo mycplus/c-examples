@@ -1,0 +1,7 @@
+Directory: fixture
+
+Modified (UTC)    Type            Size  Name
+2023-11-14 22:13  <DIR>                 docs
+2023-11-14 22:13  <DIR>                 src
+
+2 directories, 0 files, 0 bytes (4 not shown)

@@ -1,0 +1,71 @@
+name: directory-listing
+
+on:
+  push:
+    paths: ['files/directory-listing/**', '.github/workflows/directory-listing.yml']
+  pull_request:
+    paths: ['files/directory-listing/**', '.github/workflows/directory-listing.yml']
+
+defaults:
+  run:
+    working-directory: files/directory-listing
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+        std: [11, 17]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }}
+      - name: Build (warnings are errors)
+        run: cmake --build build
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
+
+  sanitizers:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: ASan and UBSan, every test
+        run: |
+          cmake -S . -B asan -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_C_FLAGS=-fsanitize=address,undefined -fno-sanitize-recover=all -g"
+          cmake --build asan
+          ctest --test-dir asan --output-on-failure
+      - name: The unchecked path is caught
+        run: |
+          if ./asan/pitfall_path_buffer unchecked > out.txt 2> err.txt; then
+            echo "expected AddressSanitizer to stop the program"; exit 1
+          fi
+          grep -q "stack-buffer-overflow" err.txt
+      - name: Every deliberate mistake is caught
+        run: python3 tests/mutations.py gcc
+
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test
+        run: |
+          cmake -S . -B build
+          cmake --build build
+          ctest --test-dir build --output-on-failure
+
+  msvc:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        std: [11, 17]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build "-DCMAKE_C_STANDARD=${{ matrix.std }}"
+      - name: Build (/W4 /WX)
+        run: cmake --build build --config Release
+      - name: Test
+        run: ctest --test-dir build -C Release --output-on-failure

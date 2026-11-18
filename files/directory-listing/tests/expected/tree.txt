@@ -1,0 +1,13 @@
+fixture
+|-- docs/
+|   |-- images/
+|   |   `-- logo.png
+|   `-- guide.md
+|-- src/
+|   |-- main.c
+|   `-- util.c
+|-- café.txt
+|-- empty.txt
+`-- notes.txt
+
+3 directories, 7 files

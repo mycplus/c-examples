@@ -1,0 +1,4 @@
+build*/
+results-*.md
+msvc-build-*.log
+build-*.log

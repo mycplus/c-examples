@@ -1,0 +1,6 @@
+Directory: fixture/docs
+
+Modified (UTC)    Type            Size  Name
+2023-11-14 22:13                 1,234  guide.md
+
+0 directories, 1 file, 1,234 bytes (1 not shown)

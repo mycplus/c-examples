@@ -1,0 +1,11 @@
+Directory: fixture
+
+Modified (UTC)    Type            Size  Name
+2023-11-14 22:13  <DIR>                 docs
+2023-11-14 22:13  <DIR>                 src
+2023-11-14 22:13                    42  .secret
+2024-06-01 12:00                     7  café.txt
+2023-11-14 22:13                     0  empty.txt
+2024-06-01 12:00                    10  notes.txt
+
+2 directories, 4 files, 59 bytes

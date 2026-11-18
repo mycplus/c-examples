@@ -1,0 +1,8 @@
+fixture
+|-- docs/
+|-- src/
+|-- café.txt
+|-- empty.txt
+`-- notes.txt
+
+2 directories, 3 files

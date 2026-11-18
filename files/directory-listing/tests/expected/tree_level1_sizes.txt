@@ -1,0 +1,8 @@
+[    6,671]  fixture
+|-- [    6,234]  docs/
+|-- [      420]  src/
+|-- [        7]  café.txt
+|-- [        0]  empty.txt
+`-- [       10]  notes.txt
+
+2 directories, 3 files

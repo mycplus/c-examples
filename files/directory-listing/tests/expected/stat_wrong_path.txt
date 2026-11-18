@@ -1,0 +1,7 @@
+stat(name)               fstatat(dir, name)   name
+fails: no such file      7 bytes              café.txt
+fails: no such file      directory            docs
+fails: no such file      0 bytes              empty.txt
+fails: no such file      10 bytes             notes.txt
+fails: no such file      directory            src
+stat(name) failed for 5 of 5 entries; fstatat() for 0

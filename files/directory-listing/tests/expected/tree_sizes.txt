@@ -1,0 +1,14 @@
+[    6,713]  fixture
+|-- [    6,234]  docs/
+|   |-- [    5,000]  images/
+|   |   `-- [    5,000]  logo.png
+|   `-- [    1,234]  guide.md
+|-- [      420]  src/
+|   |-- [      300]  main.c
+|   `-- [      120]  util.c
+|-- [       42]  .secret
+|-- [        7]  café.txt
+|-- [        0]  empty.txt
+`-- [       10]  notes.txt
+
+3 directories, 8 files
