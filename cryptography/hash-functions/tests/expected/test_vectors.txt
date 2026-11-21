@@ -1,0 +1,4 @@
+known answers: 16
+message lengths: 306 (each also split at every offset up to 130 bytes)
+HMAC-SHA-256 vectors: 6
+failures: 0

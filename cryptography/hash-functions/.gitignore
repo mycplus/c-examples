@@ -1,0 +1,7 @@
+*.log
+results-*.md
+build*/
+asan/
+bin/
+obj/
+__pycache__/

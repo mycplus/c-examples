@@ -1,0 +1,12 @@
+MD5 collision: two 128-byte inputs that differ in 6 bytes
+  differing offsets: 19 45 59 83 109 123
+  MD5      79054025255fb1a26e4bc422aef54eb4  (input 1)
+  MD5      79054025255fb1a26e4bc422aef54eb4  (input 2)
+  SHA-256  8d12236e5c4ed9f4e790db4d868fd5c399df267e18ff65c1107c328228cffc98  (input 1)
+  SHA-256  b9fef2a8fc93b05e7701e97196fda6c4fbeea25ff8e64fdfee7015eca8fa617d  (input 2)
+
+SHA-1 collision: two 640-byte inputs that differ in 331 bytes
+  SHA-1    8ac60ba76f1999a1ab70223f225aefdc78d4ddc0  (input 1)
+  SHA-1    8ac60ba76f1999a1ab70223f225aefdc78d4ddc0  (input 2)
+  SHA-256  3ead211681cec93d265c8ac123dd062e105408cebf82fa6e2b126f4f40bcb88c  (input 1)
+  SHA-256  208feafe1c6a95c73f662514ac48761f25e1f3b74922521a98d9ce287f4a2197  (input 2)

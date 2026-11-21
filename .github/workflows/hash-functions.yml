@@ -1,0 +1,51 @@
+name: Hash functions
+
+on:
+  push:
+    paths: ['cryptography/hash-functions/**', '.github/workflows/hash-functions.yml']
+  pull_request:
+    paths: ['cryptography/hash-functions/**', '.github/workflows/hash-functions.yml']
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+        std: [11, 17]
+    defaults:
+      run:
+        working-directory: cryptography/hash-functions
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install OpenSSL headers (the independent implementation)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq libssl-dev
+      - name: Build and test
+        run: |
+          cmake -S . -B build -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }}
+          cmake --build build
+          ctest --test-dir build --output-on-failure
+      - name: The OpenSSL comparison ran
+        run: ctest --test-dir build -N | grep -q against_openssl
+      - name: Sanitizers
+        run: |
+          cmake -S . -B asan -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }} \
+                -DCMAKE_C_FLAGS="-fsanitize=address,undefined -fno-sanitize-recover=all -g"
+          cmake --build asan
+          ctest --test-dir asan --output-on-failure
+      - name: Mutation check (every deliberate bug is caught)
+        run: python3 tests/mutations.py
+
+  windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: cryptography/hash-functions
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test (MSVC)
+        run: |
+          cmake -S . -B build
+          cmake --build build --config Release
+          ctest --test-dir build -C Release --output-on-failure

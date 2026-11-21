@@ -1,0 +1,15 @@
+SHA-256: the server signed "user=alice&amount=100" and published the tag
+  e7da690a0470ca564625a564b244ccb99cf48e787789a58ee5f54b8ab2241e83
+  forged message: user=alice&amount=100\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01(&amount=1000000
+  forged tag:     ffd77dbc478dba778355e4e7e3dadf417de6498f1a3ead93dacc8c68719ddbf9
+  the server accepts it (the attacker's guess of the secret length: 16)
+
+MD5: the server signed "user=alice&amount=100" and published the tag
+  f37ee67cd0ed5443f6c132f1072b1a04
+  forged message: user=alice&amount=100\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00(\x01\x00\x00\x00\x00\x00\x00&amount=1000000
+  forged tag:     ca74f7c43aaed622f1fd96c88312434d
+  the server accepts it (the attacker's guess of the secret length: 16)
+
+HMAC-SHA-256: the server signed "user=alice&amount=100" and published the tag
+  3420ed03142286a6ee0b807e904003be7ba31f9d73125450e0eae9492b156f1d
+  the same attack, guessing every secret length from 1 to 64: rejected every time

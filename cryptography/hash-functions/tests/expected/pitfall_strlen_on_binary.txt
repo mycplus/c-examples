@@ -1,0 +1,2 @@
+hashed with strlen():     1 bytes  ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb
+hashed with sizeof:       3 bytes  59b271ae1bbcb1d31d41929817f4b16fb439eb4f31520b5ad1d5ce98920a7138
