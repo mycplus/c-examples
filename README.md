@@ -31,6 +31,7 @@ C source code examples and projects accompanying C programming tutorials on MYCP
 | [Porter Stemmer](text-processing/porter-stemmer/) | The Porter stemming algorithm, checked word for word against 42,603 published test words. | [![Porter Stemmer](https://github.com/mycplus/c-examples/actions/workflows/porter-stemmer.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/porter-stemmer.yml) |
 | [Pointers](memory/pointers/) | Pointers from `&` and `*` to function pointers, with real-life examples, tests and sanitizer-checked pitfalls. | [![Pointers](https://github.com/mycplus/c-examples/actions/workflows/pointers.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/pointers.yml) |
 | [Directory Listing](files/directory-listing/) | List files in a directory on Linux and Windows: an ls/dir clone, a tree view and a largest-files finder, with symlink-safe walking. | [![Directory Listing](https://github.com/mycplus/c-examples/actions/workflows/directory-listing.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/directory-listing.yml) |
+| [Pattern Programs](loops/patterns/) | Pyramids, diamonds, hollow shapes, Floyd's and Pascal's triangles, drawn with loops and checked by shape rules at every size. | [![Pattern Programs](https://github.com/mycplus/c-examples/actions/workflows/patterns.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/patterns.yml) |
 
 
 ## About

@@ -1,0 +1,11 @@
+stars, then newline (correct)
+   *|
+  ***|
+ *****|
+*******|
+
+padded to 2n - 1 columns
+   *   |
+  ***  |
+ ***** |
+*******|

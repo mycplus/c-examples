@@ -1,0 +1,5 @@
+row  k                factorials         multiplicative
+20   10                   184756                 184756
+21   10                    98014                 352716  <- wrong
+22   11                    10792                 705432  <- wrong
+25   12                        2                5200300  <- wrong

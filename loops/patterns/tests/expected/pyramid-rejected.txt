@@ -1,0 +1,2 @@
+Number of rows (1-50): 
+Please enter a whole number from 1 to 50.
