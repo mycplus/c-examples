@@ -1,0 +1,11 @@
+mistake                                          result
+cycles not rejected                              caught: FAILED line 107: n=5 m=12: kruskal tree -31, brute force tree -16
+find follows only one parent link                caught: FAILED line 177: n=120 m=391: kruskal -74352154, prim -70420112
+path halving points a vertex at itself           caught: FAILED line 68: 0 and 3 are already joined
+edges sorted most expensive first                caught: FAILED line 74: sort with extreme weights
+comparator written as a subtraction              caught: UBSan at mst.c:62: signed integer overflow
+cheapest edge skipped                            caught: FAILED line 87: negative weights
+disconnected graph reported as a tree            caught: FAILED line 82: two separate parts have no spanning tree
+cost counts every edge examined                  caught: FAILED line 107: n=5 m=12: kruskal tree -34, brute force tree -16
+union by size reversed                           passes: still correct
+mistakes the tests miss: 0

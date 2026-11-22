@@ -1,0 +1,39 @@
+Possible cables (offices A to F, cost):
+  A-B  4
+  A-C  3
+  B-C  1
+  B-D  2
+  C-D  4
+  D-E  2
+  E-F  6
+  D-F  7
+  C-E  5
+  B-F  9
+
+Brute force: cheapest network costs 14, after checking 252 sets of 5 cables
+
+Kruskal, cheapest cable first:
+  B-C  1  take   (cables so far: 1, cost 1)
+  B-D  2  take   (cables so far: 2, cost 3)
+  D-E  2  take   (cables so far: 3, cost 5)
+  A-C  3  take   (cables so far: 4, cost 8)
+  A-B  4  skip   (A and B are already connected)
+  C-D  4  skip   (C and D are already connected)
+  C-E  5  skip   (C and E are already connected)
+  E-F  6  take   (cables so far: 5, cost 14)
+
+Kruskal's network (cost 14):
+  B-C  1
+  B-D  2
+  D-E  2
+  A-C  3
+  E-F  6
+Same cost as the brute force: yes
+
+Work as the network grows (n offices, 2n possible cables):
+  n cables       brute-force sets   Kruskal sorts
+  4      8                     56        8 cables
+  6     12                    792       12 cables
+  8     16                  11440       16 cables
+ 10     20                 167960       20 cables
+ 12     24                2496144       24 cables

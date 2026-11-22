@@ -1,0 +1,6 @@
+Kruskal's network (cost 14):
+  B-C  1
+  B-D  2
+  D-E  2
+  A-C  3
+  E-F  6

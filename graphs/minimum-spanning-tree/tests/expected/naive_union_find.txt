@@ -1,0 +1,3 @@
+20000 vertices joined in a row, then each one found:
+no balancing, no path compression:  199990000 links followed
+union by size and path halving:         39997 links followed

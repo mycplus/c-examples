@@ -1,0 +1,2 @@
+the 5 cheapest cables: B-C B-D D-E A-C A-B
+cost 12, offices connected to A: 5 of 6
