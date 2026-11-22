@@ -32,6 +32,7 @@ C source code examples and projects accompanying C programming tutorials on MYCP
 | [Pointers](memory/pointers/) | Pointers from `&` and `*` to function pointers, with real-life examples, tests and sanitizer-checked pitfalls. | [![Pointers](https://github.com/mycplus/c-examples/actions/workflows/pointers.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/pointers.yml) |
 | [Directory Listing](files/directory-listing/) | List files in a directory on Linux and Windows: an ls/dir clone, a tree view and a largest-files finder, with symlink-safe walking. | [![Directory Listing](https://github.com/mycplus/c-examples/actions/workflows/directory-listing.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/directory-listing.yml) |
 | [Pattern Programs](loops/patterns/) | Pyramids, diamonds, hollow shapes, Floyd's and Pascal's triangles, drawn with loops and checked by shape rules at every size. | [![Pattern Programs](https://github.com/mycplus/c-examples/actions/workflows/patterns.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/patterns.yml) |
+| [Defensive Programming](practices/defensive-programming/) | Checked input parsing, error codes, assertions, bounds and overflow checks, with sanitizer and analyzer tests. | [![Defensive Programming](https://github.com/mycplus/c-examples/actions/workflows/defensive-programming.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/defensive-programming.yml) |
 
 
 ## About

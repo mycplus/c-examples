@@ -1,0 +1,38 @@
+name: Defensive Programming
+
+on:
+  push:
+    paths: ['practices/defensive-programming/**', '.github/workflows/defensive-programming.yml']
+  pull_request:
+    paths: ['practices/defensive-programming/**', '.github/workflows/defensive-programming.yml']
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: practices/defensive-programming
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install Valgrind
+        run: sudo apt-get update && sudo apt-get install -y valgrind
+      - name: GCC and Clang, sanitizers, analyzer and deliberate mistakes
+        run: sh run_all.sh
+
+  msvc:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        std: [11, 17]
+    defaults:
+      run:
+        working-directory: practices/defensive-programming
+    steps:
+      - uses: actions/checkout@v5
+      - uses: ilammy/msvc-dev-cmd@v1
+      - name: Build (/W4 /WX) and test
+        run: |
+          cmake -S . -B build -A x64 "-DCMAKE_C_STANDARD=${{ matrix.std }}"
+          cmake --build build --config Release
+          ctest --test-dir build -C Release --output-on-failure

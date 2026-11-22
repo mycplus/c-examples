@@ -1,0 +1,3 @@
+# Keep the test data byte for byte (line endings matter).
+data/** -text
+tests/expected/* text eol=lf

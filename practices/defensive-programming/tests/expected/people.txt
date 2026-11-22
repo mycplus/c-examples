@@ -1,0 +1,16 @@
+ok    line 1: Ada Lovelace, 36
+ok    line 2: Alan Turing, 41
+error line 3: empty line
+error line 4: missing comma
+error line 5: empty name
+error line 6: not a number
+error line 7: extra characters after the number
+error line 8: number out of range
+error line 9: number out of range
+error line 10: number out of range
+ok    line 11: Barbara Liskov, 86
+error line 12: name longer than 32 characters
+error line 13: line longer than 80 characters
+ok    line 14: Edsger, 72
+ok    line 15: Niklaus, 89
+5 accepted, 10 rejected

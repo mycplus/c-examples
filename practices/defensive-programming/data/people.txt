@@ -1,0 +1,15 @@
+Ada Lovelace,36
+Alan Turing,41
+
+Grace Hopper
+,30
+Linus,abc
+Dennis,30x
+Ken,-3
+Bjarne,200
+Margaret,99999999999999999999
+Barbara Liskov, 86
+A name that is far too long for the field,20
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx,1
+Edsger,72
+Niklaus,89
