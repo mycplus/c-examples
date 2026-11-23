@@ -1,0 +1,19 @@
+Sliding Puzzle
+==============
+Slide the tiles into order, with the gap in the bottom-right corner.
+Type the number of a tile next to the gap to slide it into the gap.
+Board size (3 or 4): 1. Easy (20 random slides from the solved board)
+2. Hard (a fair random shuffle)
+Choose a difficulty (1-2): 
+Moves: 0
+  4  1  3
+  6  .  2
+  5  7  8
+Move which tile? (0 to give up): 
+Moves: 1
+  4  1  3
+  6  7  2
+  5  .  8
+Move which tile? (0 to give up): 
+
+Goodbye!
