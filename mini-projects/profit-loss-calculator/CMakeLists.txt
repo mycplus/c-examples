@@ -1,0 +1,3 @@
+add_executable(profit_loss_calculator profit_loss_calculator.c)
+mini_project_session(profit_loss_calculator session)
+mini_project_session(profit_loss_calculator eof)

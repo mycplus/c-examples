@@ -29,3 +29,4 @@ function(mini_project_session target name)
 endfunction()
 
 add_subdirectory(unit-converter)
+add_subdirectory(profit-loss-calculator)

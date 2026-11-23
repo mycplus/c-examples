@@ -1,0 +1,101 @@
+Profit and Loss Calculator
+==========================
+
+1. Profit or loss on a sale
+2. Selling price for a target profit or loss
+3. Break-even quantity
+0. Quit
+Choose an option (0-3): Cost price per unit: Selling price per unit: Quantity sold: Total cost:     1250.00
+Total revenue:  1500.00
+Result:         Profit of 250.00
+Markup (profit on cost):            20.00%
+Margin (profit on selling price):   16.67%
+
+1. Profit or loss on a sale
+2. Selling price for a target profit or loss
+3. Break-even quantity
+0. Quit
+Choose an option (0-3): Cost price per unit: Selling price per unit: Quantity sold: Total cost:     1250.00
+Total revenue:  1200.00
+Result:         Loss of 50.00
+Loss on cost:   4.00%
+
+1. Profit or loss on a sale
+2. Selling price for a target profit or loss
+3. Break-even quantity
+0. Quit
+Choose an option (0-3): Cost price per unit: Selling price per unit: Quantity sold: Total cost:     29.97
+Total revenue:  29.97
+Result:         No profit, no loss
+
+1. Profit or loss on a sale
+2. Selling price for a target profit or loss
+3. Break-even quantity
+0. Quit
+Choose an option (0-3): Cost price per unit: Selling price per unit: Quantity sold: Total cost:     0.00
+Total revenue:  10.00
+Result:         Profit of 10.00
+Markup (profit on cost):            not defined (cost price is 0)
+Margin (profit on selling price):   100.00%
+
+1. Profit or loss on a sale
+2. Selling price for a target profit or loss
+3. Break-even quantity
+0. Quit
+Choose an option (0-3): Cost price per unit: Please enter an amount such as 12.50 (0 to 1000000000, at most 2 decimal places).
+Cost price per unit: Please enter an amount such as 12.50 (0 to 1000000000, at most 2 decimal places).
+Cost price per unit: Please enter an amount such as 12.50 (0 to 1000000000, at most 2 decimal places).
+Cost price per unit: Please enter an amount such as 12.50 (0 to 1000000000, at most 2 decimal places).
+Cost price per unit: Please enter an amount such as 12.50 (0 to 1000000000, at most 2 decimal places).
+Cost price per unit: Selling price per unit: Quantity sold: Please enter a whole number from 1 to 1000000.
+Quantity sold: Total cost:     10.00
+Total revenue:  10.50
+Result:         Profit of 0.50
+Markup (profit on cost):            5.00%
+Margin (profit on selling price):   4.76%
+
+1. Profit or loss on a sale
+2. Selling price for a target profit or loss
+3. Break-even quantity
+0. Quit
+Choose an option (0-3): Cost price: Target percentage (negative for a loss): Selling price for 25% profit: 100.00
+
+1. Profit or loss on a sale
+2. Selling price for a target profit or loss
+3. Break-even quantity
+0. Quit
+Choose an option (0-3): Cost price: Target percentage (negative for a loss): Selling price for 15% profit: 22.99
+
+1. Profit or loss on a sale
+2. Selling price for a target profit or loss
+3. Break-even quantity
+0. Quit
+Choose an option (0-3): Cost price: Target percentage (negative for a loss): Please enter a percentage from -100 to 1000.
+Target percentage (negative for a loss): Selling price for 10% loss: 45.00
+
+1. Profit or loss on a sale
+2. Selling price for a target profit or loss
+3. Break-even quantity
+0. Quit
+Choose an option (0-3): Cost price: Target percentage (negative for a loss): Selling price for no profit and no loss: 10.00
+
+1. Profit or loss on a sale
+2. Selling price for a target profit or loss
+3. Break-even quantity
+0. Quit
+Choose an option (0-3): Fixed costs (rent, equipment, ...): Cost per unit: Selling price per unit: Each unit earns 15.00 toward fixed costs.
+Break-even quantity: 334 units
+
+1. Profit or loss on a sale
+2. Selling price for a target profit or loss
+3. Break-even quantity
+0. Quit
+Choose an option (0-3): Fixed costs (rent, equipment, ...): Cost per unit: Selling price per unit: Each unit earns nothing toward fixed costs (selling price <= cost per unit),
+so sales can never cover them.
+
+1. Profit or loss on a sale
+2. Selling price for a target profit or loss
+3. Break-even quantity
+0. Quit
+Choose an option (0-3): 
+Goodbye!

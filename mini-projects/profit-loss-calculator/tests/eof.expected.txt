@@ -1,0 +1,10 @@
+Profit and Loss Calculator
+==========================
+
+1. Profit or loss on a sale
+2. Selling price for a target profit or loss
+3. Break-even quantity
+0. Quit
+Choose an option (0-3): Cost price per unit: Selling price per unit: 
+
+Goodbye!
