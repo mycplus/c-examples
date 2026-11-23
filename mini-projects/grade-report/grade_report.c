@@ -23,7 +23,7 @@
 #define MAX_STUDENTS 30
 #define MAX_SUBJECTS 6
 #define NAME_SIZE    21   /* 20 characters + '\0' */
-#define SUBJECT_SIZE 9    /* 8 characters + '\0' (fits the 8-wide column) */
+#define SUBJECT_SIZE 8    /* 7 characters + '\0': always a space in the 8-wide column */
 
 static int    read_line(char *buf, size_t size);
 static int    read_int(const char *prompt, int lo, int hi, int *value);

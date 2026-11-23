@@ -1,8 +1,8 @@
 Student Grade Report
 ====================
 How many subjects (1-6)? Please enter a whole number from 1 to 6.
-How many subjects (1-6)? Name of subject 1: Name of subject 2: Please enter 1 to 8 characters.
-Name of subject 2: Name of subject 3: Please enter 1 to 8 characters.
+How many subjects (1-6)? Name of subject 1: Name of subject 2: Please enter 1 to 7 characters.
+Name of subject 2: Name of subject 3: Please enter 1 to 7 characters.
 Name of subject 3: How many students (1-30)? 
 Student 1 name:   Math mark (0-100):   Physics mark (0-100):   Chem mark (0-100): 
 Student 2 name:   Math mark (0-100):   Physics mark (0-100): Please enter a whole number from 0 to 100.

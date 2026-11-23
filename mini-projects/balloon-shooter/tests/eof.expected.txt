@@ -1,0 +1,30 @@
+Balloon Shooter
+===============
+Balloons rise from the bottom of the sky. Pop them before they escape.
+o = slow balloon (rises 1 row)    O = fast balloon (rises 2 rows)
+Your arrow flies while the balloons rise, so aim where a balloon WILL be.
+You have 15 arrows for 12 balloons.
+
+Turn 1    Arrows: 15    Popped: 0    Escaped: 0
+ 1 | . . . . . . . .
+ 2 | . . . . . . . .
+ 3 | . . . . . . . .
+ 4 | . . . . . . . .
+ 5 | . . . . . . . .
+ 6 | . . . . . . . .
+ 7 | . . . . . . . .
+ 8 | . O . . . . . .
+Shoot which row? (1-8, 0 to hold fire): POP! You hit a balloon in row 6.
+
+Turn 2    Arrows: 14    Popped: 1    Escaped: 0
+ 1 | . . . . . . . .
+ 2 | . . . . . . . .
+ 3 | . . . . . . . .
+ 4 | . . . . . . . .
+ 5 | . . . . . . . .
+ 6 | . . . . . . . .
+ 7 | . . . . . . . .
+ 8 | . . . . . o . .
+Shoot which row? (1-8, 0 to hold fire): 
+
+Goodbye!

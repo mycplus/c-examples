@@ -1,0 +1,191 @@
+Balloon Shooter
+===============
+Balloons rise from the bottom of the sky. Pop them before they escape.
+o = slow balloon (rises 1 row)    O = fast balloon (rises 2 rows)
+Your arrow flies while the balloons rise, so aim where a balloon WILL be.
+You have 15 arrows for 12 balloons.
+
+Turn 1    Arrows: 15    Popped: 0    Escaped: 0
+ 1 | . . . . . . . .
+ 2 | . . . . . . . .
+ 3 | . . . . . . . .
+ 4 | . . . . . . . .
+ 5 | . . . . . . . .
+ 6 | . . . . . . . .
+ 7 | . . . . . . . .
+ 8 | . . . . o . . .
+Shoot which row? (1-8, 0 to hold fire): Please enter a whole number from 0 to 8.
+Shoot which row? (1-8, 0 to hold fire): Please enter a whole number from 0 to 8.
+Shoot which row? (1-8, 0 to hold fire): You hold your fire.
+
+Turn 2    Arrows: 15    Popped: 0    Escaped: 0
+ 1 | . . . . . . . .
+ 2 | . . . . . . . .
+ 3 | . . . . . . . .
+ 4 | . . . . . . . .
+ 5 | . . . . . . . .
+ 6 | . . . . . . . .
+ 7 | . . . . o . . .
+ 8 | . . . . . . . .
+Shoot which row? (1-8, 0 to hold fire): Your arrow missed row 7.
+
+Turn 3    Arrows: 14    Popped: 0    Escaped: 0
+ 1 | . . . . . . . .
+ 2 | . . . . . . . .
+ 3 | . . . . . . . .
+ 4 | . . . . . . . .
+ 5 | . . . . . . . .
+ 6 | . . . . o . . .
+ 7 | . . . . . . . .
+ 8 | . . . O . . . .
+Shoot which row? (1-8, 0 to hold fire): POP! You hit a balloon in row 6.
+
+Turn 4    Arrows: 13    Popped: 1    Escaped: 0
+ 1 | . . . . . . . .
+ 2 | . . . . . . . .
+ 3 | . . . . . . . .
+ 4 | . . . . . . . .
+ 5 | . . . . o . . .
+ 6 | . . . . . . . .
+ 7 | . . . . . . . .
+ 8 | . . . . . . O .
+Shoot which row? (1-8, 0 to hold fire): Your arrow missed row 5.
+
+Turn 5    Arrows: 12    Popped: 1    Escaped: 0
+ 1 | . . . . . . . .
+ 2 | . . . . . . . .
+ 3 | . . . . . . . .
+ 4 | . . . . o . . .
+ 5 | . . . . . . . .
+ 6 | . . . . . . O .
+ 7 | . . . . . . . .
+ 8 | . . . . . O . .
+Shoot which row? (1-8, 0 to hold fire): POP! You hit a balloon in row 4.
+
+Turn 6    Arrows: 11    Popped: 2    Escaped: 0
+ 1 | . . . . . . . .
+ 2 | . . . . . . . .
+ 3 | . . . . o . . .
+ 4 | . . . . . . . .
+ 5 | . . . . . . . .
+ 6 | . . . . . O . .
+ 7 | . . . . . . . .
+ 8 | . . O . . . . .
+Shoot which row? (1-8, 0 to hold fire): Your arrow missed row 3.
+
+Turn 7    Arrows: 10    Popped: 2    Escaped: 0
+ 1 | . . . . . . . .
+ 2 | . . . . o . . .
+ 3 | . . . . . . . .
+ 4 | . . . . . O . .
+ 5 | . . . . . . . .
+ 6 | . . O . . . . .
+ 7 | . . . . . . . .
+ 8 | . o . . . . . .
+Shoot which row? (1-8, 0 to hold fire): POP! You hit a balloon in row 2.
+
+Turn 8    Arrows: 9    Popped: 3    Escaped: 0
+ 1 | . . . . o . . .
+ 2 | . . . . . . . .
+ 3 | . . . . . . . .
+ 4 | . . O . . . . .
+ 5 | . . . . . . . .
+ 6 | . . . . . . . .
+ 7 | . o . . . . . .
+ 8 | . . . . . o . .
+Shoot which row? (1-8, 0 to hold fire): A balloon escaped!
+Your arrow missed row 1.
+
+Turn 9    Arrows: 8    Popped: 3    Escaped: 1
+ 1 | . . . . . . . .
+ 2 | . . O . . . . .
+ 3 | . . . . . . . .
+ 4 | . . . . . . . .
+ 5 | . . . . . . . .
+ 6 | . o . . . . . .
+ 7 | . . . . . o . .
+ 8 | . . . . . . o o
+Shoot which row? (1-8, 0 to hold fire): A balloon escaped!
+Your arrow missed row 2.
+
+Turn 10    Arrows: 7    Popped: 3    Escaped: 2
+ 1 | . . . . . . . .
+ 2 | . . . . . . . .
+ 3 | . . . . . . . .
+ 4 | . . . . . . . .
+ 5 | . o . . . . . .
+ 6 | . . . . . o . .
+ 7 | . . . . . . o o
+ 8 | O . o . . . . .
+Shoot which row? (1-8, 0 to hold fire): POP! You hit a balloon in row 5.
+
+Turn 11    Arrows: 6    Popped: 4    Escaped: 2
+ 1 | . . . . . . . .
+ 2 | . . . . . . . .
+ 3 | . . . . . . . .
+ 4 | . o . . . . . .
+ 5 | . . . . . . . .
+ 6 | O . . . . . o o
+ 7 | . . o . . . . .
+ 8 | . . . o . . . .
+Shoot which row? (1-8, 0 to hold fire): POP! You hit a balloon in row 4.
+
+Turn 12    Arrows: 5    Popped: 5    Escaped: 2
+ 1 | . . . . . . . .
+ 2 | . . . . . . . .
+ 3 | . o . . . . . .
+ 4 | . . . . . . . .
+ 5 | . . . . . . o o
+ 6 | . . o . . . . .
+ 7 | . . . o . . . .
+ 8 | . . . . . . . .
+Shoot which row? (1-8, 0 to hold fire): Your arrow missed row 3.
+
+Turn 13    Arrows: 4    Popped: 5    Escaped: 2
+ 1 | . . . . . . . .
+ 2 | . o . . . . . .
+ 3 | . . . . . . . .
+ 4 | . . . . . . o o
+ 5 | . . o . . . . .
+ 6 | . . . o . . . .
+ 7 | . . . . . . . .
+ 8 | . . . . . . . .
+Shoot which row? (1-8, 0 to hold fire): Your arrow missed row 2.
+
+Turn 14    Arrows: 3    Popped: 5    Escaped: 2
+ 1 | . o . . . . . .
+ 2 | . . . . . . . .
+ 3 | . . . . . . o o
+ 4 | . . o . . . . .
+ 5 | . . . o . . . .
+ 6 | . . . . . . . .
+ 7 | . . . . . . . .
+ 8 | . . . . . . . .
+Shoot which row? (1-8, 0 to hold fire): A balloon escaped!
+Your arrow missed row 1.
+
+Turn 15    Arrows: 2    Popped: 5    Escaped: 3
+ 1 | . . . . . . . .
+ 2 | . . . . . . o o
+ 3 | . . o . . . . .
+ 4 | . . . o . . . .
+ 5 | . . . . . . . .
+ 6 | . . . . . . . .
+ 7 | . . . . . . . .
+ 8 | . . . . . . . .
+Shoot which row? (1-8, 0 to hold fire): POP! You hit a balloon in row 2.
+
+Turn 16    Arrows: 1    Popped: 6    Escaped: 3
+ 1 | . . . . . . o o
+ 2 | . . . . . . . .
+ 3 | . . . o . . . .
+ 4 | . . . . . . . .
+ 5 | . . . . . . . .
+ 6 | . . . . . . . .
+ 7 | . . . . . . . .
+ 8 | . . . . . . . .
+Shoot which row? (1-8, 0 to hold fire): A balloon escaped!
+A balloon escaped!
+Your arrow missed row 1.
+
+Out of arrows! You popped 6 of 12 balloons.
