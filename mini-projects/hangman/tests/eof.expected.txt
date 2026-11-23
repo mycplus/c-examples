@@ -1,0 +1,29 @@
+Hangman
+=======
+Guess the word one letter at a time. 6 wrong guesses and you lose.
+
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+Word:   _ _ _ _ _ _ _
+Missed: (none)
+Guesses left: 6
+Guess a letter: Yes! E appears 1 time.
+
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+Word:   _ _ _ _ _ E _
+Missed: (none)
+Guesses left: 6
+Guess a letter: 
+
+Goodbye!

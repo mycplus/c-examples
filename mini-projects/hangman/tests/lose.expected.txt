@@ -1,0 +1,97 @@
+Hangman
+=======
+Guess the word one letter at a time. 6 wrong guesses and you lose.
+
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+Word:   _ _ _ _ _ _
+Missed: (none)
+Guesses left: 6
+Guess a letter: Yes! A appears 1 time.
+
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+Word:   _ _ _ _ A _
+Missed: (none)
+Guesses left: 6
+Guess a letter: No B in the word.
+
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+Word:   _ _ _ _ A _
+Missed: B
+Guesses left: 5
+Guess a letter: No C in the word.
+
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+Word:   _ _ _ _ A _
+Missed: B C
+Guesses left: 4
+Guess a letter: No D in the word.
+
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========
+Word:   _ _ _ _ A _
+Missed: B C D
+Guesses left: 3
+Guess a letter: No E in the word.
+
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+Word:   _ _ _ _ A _
+Missed: B C D E
+Guesses left: 2
+Guess a letter: No F in the word.
+
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+Word:   _ _ _ _ A _
+Missed: B C D E F
+Guesses left: 1
+Guess a letter: No G in the word.
+
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+Word:   _ _ _ _ A _
+You lose. The word was SYNTAX.

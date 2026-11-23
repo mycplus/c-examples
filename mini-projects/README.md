@@ -8,6 +8,7 @@ Fifteen beginner C projects, each one file using only the standard library, that
 | --- | --- | --- |
 | Unit Converter | Menu loops, functions, lookup tables, safe number input | [unit-converter/](unit-converter/) |
 | Profit and Loss Calculator | `if`/`else`, money in whole cents, parsing numbers by hand, percentages | [profit-loss-calculator/](profit-loss-calculator/) |
+| Hangman | Strings, character arrays, lookup arrays, nested loops, command-line arguments | [hangman/](hangman/) |
 
 ## Build one project
 

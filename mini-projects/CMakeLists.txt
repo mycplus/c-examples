@@ -30,3 +30,4 @@ endfunction()
 
 add_subdirectory(unit-converter)
 add_subdirectory(profit-loss-calculator)
+add_subdirectory(hangman)

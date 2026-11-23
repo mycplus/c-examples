@@ -1,0 +1,136 @@
+Hangman
+=======
+Guess the word one letter at a time. 6 wrong guesses and you lose.
+
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+Word:   _ _ _ _ _ _ _ _ _ _
+Missed: (none)
+Guesses left: 6
+Guess a letter: Yes! R appears 3 times.
+
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+Word:   _ R _ _ R _ _ _ _ R
+Missed: (none)
+Guesses left: 6
+Guess a letter: Yes! E appears 1 time.
+
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+Word:   _ R _ _ R _ _ _ E R
+Missed: (none)
+Guesses left: 6
+Guess a letter: You already guessed E. Try another letter.
+
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+Word:   _ R _ _ R _ _ _ E R
+Missed: (none)
+Guesses left: 6
+Guess a letter: Please type a single letter from A to Z.
+Guess a letter: Please type a single letter from A to Z.
+Guess a letter: Please type a single letter from A to Z.
+Guess a letter: No X in the word.
+
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+Word:   _ R _ _ R _ _ _ E R
+Missed: X
+Guesses left: 5
+Guess a letter: No Z in the word.
+
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+Word:   _ R _ _ R _ _ _ E R
+Missed: X Z
+Guesses left: 4
+Guess a letter: Yes! P appears 1 time.
+
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+Word:   P R _ _ R _ _ _ E R
+Missed: X Z
+Guesses left: 4
+Guess a letter: Yes! O appears 1 time.
+
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+Word:   P R O _ R _ _ _ E R
+Missed: X Z
+Guesses left: 4
+Guess a letter: Yes! G appears 1 time.
+
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+Word:   P R O G R _ _ _ E R
+Missed: X Z
+Guesses left: 4
+Guess a letter: Yes! A appears 1 time.
+
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+Word:   P R O G R A _ _ E R
+Missed: X Z
+Guesses left: 4
+Guess a letter: Yes! M appears 2 times.
+
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+Word:   P R O G R A M M E R
+You win! The word was PROGRAMMER. Wrong guesses: 2.
