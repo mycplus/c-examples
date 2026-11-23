@@ -2,7 +2,7 @@
 
 A menu-driven unit converter for length, mass, temperature and volume. You pick a category, a "from" unit, a "to" unit and a value; the program prints the converted value and goes back to the menu until you choose 0 or the input ends. Length, mass and volume convert through a base unit using a lookup table of exact factors, and temperature uses its own formulas through Celsius. Every number is read safely, so letters, `12abc`, `nan`, negative lengths and temperatures below absolute zero are rejected with a clear message.
 
-This project is part of [C Mini Projects for Beginners](https://www.mycplus.com/programming/c/c-mini-projects/#unit-converter) on MYCPLUS.
+This project is part of [C Mini Projects for Beginners](https://www.mycplus.com/programming/c/mini-projects-in-c/#unit-converter) on MYCPLUS.
 
 ## Build
 

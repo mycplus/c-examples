@@ -2,7 +2,7 @@
 
 A menu-driven calculator for a small shop owner or a commerce student. It works out the profit or loss on a sale (with markup and margin percentages), the selling price that gives a target profit or loss, and the break-even quantity that covers fixed costs. Money is stored as whole cents in a `long long`, so totals are exact, and every amount is parsed by hand so that a third decimal place, a sign or a comma is rejected instead of silently rounded.
 
-This project is part of [C Mini Projects for Beginners](https://www.mycplus.com/programming/c/c-mini-projects/#profit-loss-calculator) on MYCPLUS.
+This project is part of [C Mini Projects for Beginners](https://www.mycplus.com/programming/c/mini-projects-in-c/#profit-loss-calculator) on MYCPLUS.
 
 ## Build
 

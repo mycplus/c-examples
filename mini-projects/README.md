@@ -1,6 +1,6 @@
 # C Mini Projects for Beginners
 
-Fifteen beginner C projects, each one file using only the standard library, that accompany the article [C Mini Projects for Beginners](https://www.mycplus.com/programming/c/c-mini-projects/) on MYCPLUS.
+Fifteen beginner C projects, each one file using only the standard library, that accompany the article [C Mini Projects for Beginners](https://www.mycplus.com/programming/c/mini-projects-in-c/) on MYCPLUS.
 
 [![c-mini-projects](https://github.com/mycplus/c-examples/actions/workflows/c-mini-projects.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/c-mini-projects.yml)
 
