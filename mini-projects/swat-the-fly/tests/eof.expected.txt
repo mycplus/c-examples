@@ -1,0 +1,22 @@
+Swat the Fly
+============
+Watch the fly hop along the wall, then swat the spot where it lands.
+Each round it hops once more. You have 3 lives.
+
+Round 1 of 10    Lives: 3    Score: 0
+
+  1  2  3  4  5  6  7  8  9
+  .  F  .  .  .  .  .  .  .
+
+The fly buzzes 3 times: right, right, right
+Where did it land? Swat a spot (1-9): SPLAT! You got it on 5.
+
+Round 2 of 10    Lives: 3    Score: 1
+
+  1  2  3  4  5  6  7  8  9
+  .  .  .  .  .  F  .  .  .
+
+The fly buzzes 4 times: right, right, left, right
+Where did it land? Swat a spot (1-9): 
+
+Goodbye!

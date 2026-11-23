@@ -9,6 +9,7 @@ Fifteen beginner C projects, each one file using only the standard library, that
 | Unit Converter | Menu loops, functions, lookup tables, safe number input | [unit-converter/](unit-converter/) |
 | Profit and Loss Calculator | `if`/`else`, money in whole cents, parsing numbers by hand, percentages | [profit-loss-calculator/](profit-loss-calculator/) |
 | Hangman | Strings, character arrays, lookup arrays, nested loops, command-line arguments | [hangman/](hangman/) |
+| Swat the Fly | Your own random number generator, `uint32_t`, arrays, game state, command-line seed | [swat-the-fly/](swat-the-fly/) |
 
 ## Build one project
 

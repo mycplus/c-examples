@@ -1,0 +1,51 @@
+Swat the Fly
+============
+Watch the fly hop along the wall, then swat the spot where it lands.
+Each round it hops once more. You have 3 lives.
+
+Round 1 of 10    Lives: 3    Score: 0
+
+  1  2  3  4  5  6  7  8  9
+  .  .  .  .  .  .  .  F  .
+
+The fly buzzes 3 times: left, left, left
+Where did it land? Swat a spot (1-9): SPLAT! You got it on 5.
+
+Round 2 of 10    Lives: 3    Score: 1
+
+  1  2  3  4  5  6  7  8  9
+  .  .  .  .  .  F  .  .  .
+
+The fly buzzes 4 times: right, left, left, right
+Where did it land? Swat a spot (1-9): Please enter a whole number from 1 to 9.
+Where did it land? Swat a spot (1-9): Please enter a whole number from 1 to 9.
+Where did it land? Swat a spot (1-9): Missed! The fly landed on 6.
+Its path: 6 -> 7 -> 6 -> 5 -> 6
+
+Round 3 of 10    Lives: 2    Score: 1
+
+  1  2  3  4  5  6  7  8  9
+  .  .  .  .  .  F  .  .  .
+
+The fly buzzes 5 times: right, right, left, left, right
+Where did it land? Swat a spot (1-9): SPLAT! You got it on 7.
+
+Round 4 of 10    Lives: 2    Score: 2
+
+  1  2  3  4  5  6  7  8  9
+  .  .  .  .  .  .  .  F  .
+
+The fly buzzes 6 times: right, left, left, left, left, right
+Where did it land? Swat a spot (1-9): Missed! The fly landed on 6.
+Its path: 8 -> 9 -> 8 -> 7 -> 6 -> 5 -> 6
+
+Round 5 of 10    Lives: 1    Score: 2
+
+  1  2  3  4  5  6  7  8  9
+  .  .  .  F  .  .  .  .  .
+
+The fly buzzes 7 times: left, right, left, right, right, left, left
+Where did it land? Swat a spot (1-9): Missed! The fly landed on 3.
+Its path: 4 -> 3 -> 4 -> 3 -> 4 -> 5 -> 4 -> 3
+
+Game over. You swatted 2 of 5 flies.

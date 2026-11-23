@@ -256,7 +256,7 @@ static long long round_to_cents(double amount_in_cents)
 
 /* Prints total cost, total revenue, the result (profit, loss or neither)
  * and the percentages: markup (on cost) and margin (on selling price) for
- * a profit, loss on cost for a loss. A percentage of 0 is "not defined". */
+ * a profit, loss on cost for a loss. A percentage of a zero total is "not defined". */
 static void sale_report(long long cost, long long price, int quantity)
 {
     long long total_cost = cost * quantity;
