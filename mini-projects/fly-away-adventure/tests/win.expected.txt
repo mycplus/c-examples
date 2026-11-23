@@ -1,0 +1,69 @@
+Fly Away
+========
+Your flight MC101 to Lisbon leaves in 15 minutes. Get to the gate and board!
+Every action takes a minute. Looking around, checking your bag and help are free.
+Type help for the commands.
+
+== Taxi drop-off ==
+Your taxi is about to pull away. The terminal doors are to the north.
+Exits: north
+You see: passport
+[15 min] > 
+== Taxi drop-off ==
+Your taxi is about to pull away. The terminal doors are to the north.
+Exits: north
+You see: passport
+[15 min] > 
+== Check-in hall ==
+A check-in agent waves you over. Security is to the north.
+Exits: north, south
+You see: boarding pass
+[14 min] > The agent says: "Passport, please."
+[13 min] > 
+== Taxi drop-off ==
+Your taxi is about to pull away. The terminal doors are to the north.
+Exits: north
+You see: passport
+[12 min] > You take the passport.
+[11 min] > 
+== Check-in hall ==
+A check-in agent waves you over. Security is to the north.
+Exits: north, south
+You see: boarding pass
+[10 min] > I don't understand "dance". Type help for the commands.
+[10 min] > The agent hands you a boarding pass: MC101, Gate A3.
+[9 min] > 
+== Security ==
+A guard checks boarding passes. A sign says: no liquids past this point.
+Exits: north, south
+[8 min] > The guard points at your water: no liquids past this point.
+[7 min] > You drop the water.
+[6 min] > You are carrying: passport, boarding pass.
+[6 min] > 
+== Departures hall ==
+A screen flashes: MC101 to Lisbon - GATE CHANGE - now boarding at Gate B7. Gate A3 is to the west, Gate B7 to the east and a cafe to the north.
+Exits: north, east, west
+[5 min] > 
+== Gate A3 ==
+The sign above the desk says: MC204 to Oslo.
+Exits: east
+[4 min] > This gate is for MC204 to Oslo. Check the departures screen.
+[3 min] > 
+== Departures hall ==
+A screen flashes: MC101 to Lisbon - GATE CHANGE - now boarding at Gate B7. Gate A3 is to the west, Gate B7 to the east and a cafe to the north.
+Exits: north, east, west
+[2 min] > 
+== Gate B7 ==
+MC101 to Lisbon. The last passengers are boarding.
+Exits: west
+[1 min] > [1 min] > Commands:
+  n, s, e, w      walk north, south, east or west (or: go north)
+  take ITEM       pick something up
+  drop ITEM       put something down
+  look            describe this place again (free)
+  inventory, i    list what you carry (free)
+  board           board the plane
+  help            show this list (free)
+  quit            give up
+[1 min] > 
+You board MC101 with 0 minutes to spare. Have a good trip!

@@ -13,6 +13,7 @@ Fifteen beginner C projects, each one file using only the standard library, that
 | Student Grade Report | 1D and 2D arrays, averages, highest and lowest, letter grades, formatted tables | [grade-report/](grade-report/) |
 | Balloon Shooter | Structs, an array of structs, `enum`, a game loop, a 2D grid built from data | [balloon-shooter/](balloon-shooter/) |
 | Sliding Number Puzzle | 2D arrays in a struct, Fisher-Yates shuffle, inversions and solvability, legal moves | [sliding-puzzle/](sliding-puzzle/) |
+| Fly Away: Airport Text Adventure | A data-driven world, `enum`s, designated initializers, parsing commands, game state in a struct | [fly-away-adventure/](fly-away-adventure/) |
 
 ## Build one project
 

@@ -1,0 +1,55 @@
+Fly Away
+========
+Your flight MC101 to Lisbon leaves in 15 minutes. Get to the gate and board!
+Every action takes a minute. Looking around, checking your bag and help are free.
+Type help for the commands.
+
+== Taxi drop-off ==
+Your taxi is about to pull away. The terminal doors are to the north.
+Exits: north
+You see: passport
+[15 min] > 
+== Check-in hall ==
+A check-in agent waves you over. Security is to the north.
+Exits: north, south
+You see: boarding pass
+[14 min] > 
+== Security ==
+A guard checks boarding passes. A sign says: no liquids past this point.
+Exits: north, south
+[13 min] > The guard says: "Boarding pass, please."
+[12 min] > 
+== Check-in hall ==
+A check-in agent waves you over. Security is to the north.
+Exits: north, south
+You see: boarding pass
+[11 min] > 
+== Taxi drop-off ==
+Your taxi is about to pull away. The terminal doors are to the north.
+Exits: north
+You see: passport
+[10 min] > You take the passport.
+[9 min] > There is no passport here.
+[8 min] > 
+== Check-in hall ==
+A check-in agent waves you over. Security is to the north.
+Exits: north, south
+You see: boarding pass
+[7 min] > The agent hands you a boarding pass: MC101, Gate A3.
+[6 min] > 
+== Security ==
+A guard checks boarding passes. A sign says: no liquids past this point.
+Exits: north, south
+[5 min] > You drop the water.
+[4 min] > 
+== Departures hall ==
+A screen flashes: MC101 to Lisbon - GATE CHANGE - now boarding at Gate B7. Gate A3 is to the west, Gate B7 to the east and a cafe to the north.
+Exits: north, east, west
+[3 min] > 
+== Cafe ==
+It smells of fresh coffee. The queue is long.
+Exits: south
+You see: coffee
+[2 min] > The queue is long. Three minutes later, you have a coffee.
+
+The gate has closed. You missed your flight.

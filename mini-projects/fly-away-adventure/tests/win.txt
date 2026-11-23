@@ -1,0 +1,20 @@
+look
+N
+take boarding pass
+s
+take passport
+n
+dance
+take boarding pass
+go north
+n
+drop water
+i
+n
+w
+board
+e
+e
+
+help
+board

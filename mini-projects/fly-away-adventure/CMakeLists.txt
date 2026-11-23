@@ -1,0 +1,4 @@
+add_executable(fly_away_adventure fly_away_adventure.c)
+mini_project_session(fly_away_adventure win)
+mini_project_session(fly_away_adventure lose)
+mini_project_session(fly_away_adventure eof)
