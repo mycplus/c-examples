@@ -1,0 +1,3 @@
+add_executable(unit_converter unit_converter.c)
+mini_project_session(unit_converter session)
+mini_project_session(unit_converter eof)
