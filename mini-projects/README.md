@@ -10,6 +10,7 @@ Fifteen beginner C projects, each one file using only the standard library, that
 | Profit and Loss Calculator | `if`/`else`, money in whole cents, parsing numbers by hand, percentages | [profit-loss-calculator/](profit-loss-calculator/) |
 | Hangman | Strings, character arrays, lookup arrays, nested loops, command-line arguments | [hangman/](hangman/) |
 | Swat the Fly | Your own random number generator, `uint32_t`, arrays, game state, command-line seed | [swat-the-fly/](swat-the-fly/) |
+| Student Grade Report | 1D and 2D arrays, averages, highest and lowest, letter grades, formatted tables | [grade-report/](grade-report/) |
 
 ## Build one project
 

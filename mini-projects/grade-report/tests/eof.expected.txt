@@ -1,0 +1,6 @@
+Student Grade Report
+====================
+How many subjects (1-6)? Name of subject 1: Name of subject 2: How many students (1-30)? 
+Student 1 name:   Math mark (0-100): 
+
+Goodbye!
