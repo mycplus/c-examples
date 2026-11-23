@@ -1,0 +1,1 @@
+first.png 320x200 -> thumb.png 64x40

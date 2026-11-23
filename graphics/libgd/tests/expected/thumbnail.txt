@@ -1,0 +1,1 @@
+first.jpg 320x200 -> thumb.jpg 100x63

@@ -1,0 +1,3 @@
+chart.png: PNG 480x300
+  (0, 0) #FFFFFF
+  (358, 258) #1A6FD4

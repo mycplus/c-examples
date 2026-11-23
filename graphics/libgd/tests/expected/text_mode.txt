@@ -1,0 +1,4 @@
+fopen mode "wb": first bytes 89 50 4E 47 0D 0A 1A 0A
+  read back: a valid 64x64 PNG
+fopen mode "w":  first bytes 89 50 4E 47 0D 0A 1A 0A
+  read back: a valid 64x64 PNG

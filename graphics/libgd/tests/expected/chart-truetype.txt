@@ -1,0 +1,1 @@
+chart-ft.png: 6 bars, title in a TrueType font

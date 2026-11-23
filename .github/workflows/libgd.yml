@@ -1,0 +1,67 @@
+name: libgd
+
+on:
+  push:
+    paths: ['graphics/libgd/**', '.github/workflows/libgd.yml']
+  pull_request:
+    paths: ['graphics/libgd/**', '.github/workflows/libgd.yml']
+
+defaults:
+  run:
+    working-directory: graphics/libgd
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cc: [gcc, clang]
+        std: [11, 17]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install LibGD
+        run: sudo apt-get update && sudo apt-get install -y libgd-dev fonts-dejavu-core
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_C_COMPILER=${{ matrix.cc }} -DCMAKE_C_STANDARD=${{ matrix.std }}
+      - name: Build (warnings are errors)
+        run: cmake --build build
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
+
+  sanitizers:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install LibGD
+        run: sudo apt-get update && sudo apt-get install -y libgd-dev fonts-dejavu-core
+      - name: ASan and UBSan, every test
+        run: |
+          cmake -S . -B asan -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_C_FLAGS=-fsanitize=address,undefined -fno-sanitize-recover=all -g"
+          cmake --build asan
+          ctest --test-dir asan --output-on-failure
+      - name: The pitfalls are reported
+        run: |
+          if ./asan/pitfall_png_buffer_leak leak 2> leak.txt; then exit 1; fi
+          grep -q "Direct leak" leak.txt
+          if ./asan/pitfall_unchecked_load tests/files/huge.png unchecked 2> null.txt; then exit 1; fi
+          grep -q "null pointer" null.txt
+      - name: Every deliberate mistake is caught
+        run: python3 tests/mutations.py gcc
+
+  msvc:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        std: [11, 17]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install LibGD with vcpkg
+        run: vcpkg install "libgd[core,png,jpeg,freetype]:x64-windows"
+      - name: Configure
+        run: cmake -S . -B build "-DCMAKE_C_STANDARD=${{ matrix.std }}" "-DCMAKE_TOOLCHAIN_FILE=$env:VCPKG_INSTALLATION_ROOT\scripts\buildsystems\vcpkg.cmake" -DVCPKG_TARGET_TRIPLET=x64-windows
+      - name: Build (/W4 /WX)
+        run: cmake --build build --config Release
+      - name: Test
+        run: ctest --test-dir build -C Release --output-on-failure

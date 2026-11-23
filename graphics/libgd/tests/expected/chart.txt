@@ -1,0 +1,1 @@
+chart.png: 6 bars, title in LibGD's built-in font

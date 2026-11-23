@@ -1,0 +1,4 @@
+palette image: 256 colors allocated, 44 allocations returned -1
+source gradient: 65536 colors
+resampled into a true-color image: 16384 colors
+resampled into a palette image:    256 colors

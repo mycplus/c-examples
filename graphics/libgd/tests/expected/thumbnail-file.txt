@@ -1,0 +1,1 @@
+thumb.jpg: JPEG 100x63
