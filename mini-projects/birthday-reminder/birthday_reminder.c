@@ -547,8 +547,9 @@ static int load_list(BirthdayList *list, const char *path, Date today)
 }
 
 /* Saves everyone to path the safe way, as the address book does: write
- * path.tmp, close it and check for errors, remove the old file, then rename
- * the new one. It runs after every change, so there is never anything
+ * path.tmp, close it and check for errors, then rename the new file over
+ * the old one (removing the old one first only where rename requires it, as
+ * on Windows). It runs after every change, so there is never anything
  * unsaved and no "changed" flag is needed. Prints nothing on success.
  * Returns 1 on success; otherwise prints why and returns 0. */
 static int save_list(const BirthdayList *list, const char *path)
@@ -568,11 +569,21 @@ static int save_list(const BirthdayList *list, const char *path)
                 SEPARATOR, p->name);
     }
     int failed = ferror(f);
-    if (fclose(f) != 0 || failed ||
-        (remove(path) != 0 && errno != ENOENT) || rename(tmp, path) != 0) {
+    if (fclose(f) != 0 || failed) {
         printf("Could not save: %s\n", strerror(errno));
         remove(tmp);
         return 0;
+    }
+    /* rename() replaces the old file in one step on Linux and macOS. On
+     * Windows it fails if the old file exists, so remove that and try
+     * again. If the second try fails too, FILE.tmp is now the only copy
+     * of the data, so it is kept, never deleted. */
+    if (rename(tmp, path) != 0) {
+        remove(path);
+        if (rename(tmp, path) != 0) {
+            printf("Could not save: %s. Your birthdays are in %s.\n", strerror(errno), tmp);
+            return 0;
+        }
     }
     return 1;
 }

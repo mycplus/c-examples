@@ -75,7 +75,7 @@ The first line is `name,phone,email`, then one contact per line. A field that co
 - Copying structs with `=`: the email list sorts a copy, so the stored order never changes
 - Deleting from an array by shifting the later elements down with `memmove`
 - CSV done properly: quoting fields that contain commas or quotes, and reading them back
-- A safe save: write `FILE.tmp`, check it, then `remove()` the old file and `rename()` the new one
+- A safe save: write `FILE.tmp`, check it, then `rename()` it over the old file (removing the old file first only where `rename()` requires it, as on Windows). If that fails, `FILE.tmp` is kept, never deleted
 - Validating a phone number and an email address (simply: real email validation is much harder)
 - Remembering unsaved changes with a `bool` and asking before quitting
 

@@ -359,7 +359,8 @@ static int load_file(Buffer *buf, const char *path)
 }
 
 /* Writes every line, each followed by '\n', to path the safe way: write
- * path.tmp, close it, remove the old file and rename the new one. On
+ * path.tmp, close it, then rename the new file over the old one (removing
+ * the old one first only where rename requires it, as on Windows). On
  * success path becomes the buffer's file (so "w NAME" is "save as") and
  * the changed flag is cleared. Returns 1 on success, else prints why and 0. */
 static int save_file(Buffer *buf, const char *path)
@@ -376,11 +377,21 @@ static int save_file(Buffer *buf, const char *path)
     for (int i = 0; i < buf->count; i++)
         fprintf(f, "%s\n", buf->lines[i]);
     int failed = ferror(f);
-    if (fclose(f) != 0 || failed ||
-        (remove(path) != 0 && errno != ENOENT) || rename(tmp, path) != 0) {
+    if (fclose(f) != 0 || failed) {
         printf("Could not save: %s\n", strerror(errno));
         remove(tmp);
         return 0;
+    }
+    /* rename() replaces the old file in one step on Linux and macOS. On
+     * Windows it fails if the old file exists, so remove that and try
+     * again. If the second try fails too, FILE.tmp is now the only copy
+     * of the data, so it is kept, never deleted. */
+    if (rename(tmp, path) != 0) {
+        remove(path);
+        if (rename(tmp, path) != 0) {
+            printf("Could not save: %s. Your lines are in %s.\n", strerror(errno), tmp);
+            return 0;
+        }
     }
     if (path != buf->path)
         strcpy(buf->path, path);                /* save as: later w commands use it */

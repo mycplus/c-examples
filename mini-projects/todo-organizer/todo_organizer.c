@@ -522,8 +522,9 @@ static int load_list(TaskList *list, const char *path)
 }
 
 /* Saves every task to path the safe way, as the address book does: write
- * path.tmp, close it and check for errors, remove the old file, then rename
- * the new one. Prints nothing on success. Returns 1 on success; otherwise
+ * path.tmp, close it and check for errors, then rename the new file over
+ * the old one (removing the old one first only where rename requires it, as
+ * on Windows). Prints nothing on success. Returns 1 on success; otherwise
  * prints why and returns 0. */
 static int save_list(const TaskList *list, const char *path)
 {
@@ -541,11 +542,21 @@ static int save_list(const TaskList *list, const char *path)
         fprintf(f, "%d|%d|%s|%s\n", t->done, t->priority, t->due[0] ? t->due : "-", t->text);
     }
     int failed = ferror(f);
-    if (fclose(f) != 0 || failed ||
-        (remove(path) != 0 && errno != ENOENT) || rename(tmp, path) != 0) {
+    if (fclose(f) != 0 || failed) {
         printf("Could not save: %s\n", strerror(errno));
         remove(tmp);
         return 0;
+    }
+    /* rename() replaces the old file in one step on Linux and macOS. On
+     * Windows it fails if the old file exists, so remove that and try
+     * again. If the second try fails too, FILE.tmp is now the only copy
+     * of the data, so it is kept, never deleted. */
+    if (rename(tmp, path) != 0) {
+        remove(path);
+        if (rename(tmp, path) != 0) {
+            printf("Could not save: %s. Your tasks are in %s.\n", strerror(errno), tmp);
+            return 0;
+        }
     }
     return 1;
 }
