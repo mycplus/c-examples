@@ -2,3 +2,5 @@ build*/
 results-*.md
 *.log
 *.wav
+*-diary.txt
+diary*.txt

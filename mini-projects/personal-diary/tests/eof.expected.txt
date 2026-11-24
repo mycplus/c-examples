@@ -1,0 +1,12 @@
+Personal Diary
+==============
+Diary file: diary-eof.txt
+Today is 2026-12-01.
+
+1. Write an entry
+2. Read all entries
+3. Search
+0. Quit
+Choose an option (0-3): Entry for 2026-12-01: 
+
+Goodbye!

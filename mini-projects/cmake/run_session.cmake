@@ -1,7 +1,12 @@
-# Runs PROG (with optional ARGS) with INPUT as stdin and compares its stdout with EXPECTED.
+# Runs PROG (with optional ARGS) in WORKDIR with INPUT as stdin and compares its stdout
+# with EXPECTED. If REMOVE names a file, it is deleted first so the test starts clean.
 # CR characters are ignored so the same expected files pass on Windows.
+if(REMOVE)
+  file(REMOVE "${REMOVE}")
+endif()
 separate_arguments(arg_list NATIVE_COMMAND "${ARGS}")
 execute_process(COMMAND ${PROG} ${arg_list}
+                WORKING_DIRECTORY ${WORKDIR}
                 INPUT_FILE ${INPUT}
                 OUTPUT_VARIABLE actual
                 RESULT_VARIABLE rc

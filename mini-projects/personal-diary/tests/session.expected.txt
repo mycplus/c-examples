@@ -1,0 +1,78 @@
+Personal Diary
+==============
+Diary file: diary-session.txt
+Today is 2026-12-01.
+
+1. Write an entry
+2. Read all entries
+3. Search
+0. Quit
+Choose an option (0-3): 
+Your diary is empty.
+
+1. Write an entry
+2. Read all entries
+3. Search
+0. Quit
+Choose an option (0-3): Search for: 
+Your diary is empty.
+
+1. Write an entry
+2. Read all entries
+3. Search
+0. Quit
+Choose an option (0-3): Entry for 2026-12-01: Saved.
+
+1. Write an entry
+2. Read all entries
+3. Search
+0. Quit
+Choose an option (0-3): Entry for 2026-12-01: Please enter 1 to 200 characters.
+Entry for 2026-12-01: Saved.
+
+1. Write an entry
+2. Read all entries
+3. Search
+0. Quit
+Choose an option (0-3): 
+Your diary (2 entries)
+  1. 2026-12-01  Started the C mini projects.
+  2. 2026-12-01  Finished the Unit Converter.
+
+1. Write an entry
+2. Read all entries
+3. Search
+0. Quit
+Choose an option (0-3): Search for: 
+1 entry contains "unit":
+  2. 2026-12-01  Finished the Unit Converter.
+
+1. Write an entry
+2. Read all entries
+3. Search
+0. Quit
+Choose an option (0-3): Search for: 
+1 entry contains "C MINI":
+  1. 2026-12-01  Started the C mini projects.
+
+1. Write an entry
+2. Read all entries
+3. Search
+0. Quit
+Choose an option (0-3): Search for: 
+No entries contain "python".
+
+1. Write an entry
+2. Read all entries
+3. Search
+0. Quit
+Choose an option (0-3): Search for: Please enter 1 to 40 characters.
+Search for: 
+No entries contain "2026-12".
+
+1. Write an entry
+2. Read all entries
+3. Search
+0. Quit
+Choose an option (0-3): 
+Goodbye!

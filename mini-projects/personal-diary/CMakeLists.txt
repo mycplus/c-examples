@@ -1,0 +1,6 @@
+add_executable(personal_diary personal_diary.c)
+mini_project_session(personal_diary session  ARGS "--file diary-session.txt --today 2026-12-01" REMOVE diary-session.txt)
+mini_project_session(personal_diary persist1 ARGS "--today 2026-12-01 --file diary-persist.txt" REMOVE diary-persist.txt)
+mini_project_session(personal_diary persist2 ARGS "--file diary-persist.txt --today 2026-12-02")
+set_tests_properties(personal_diary_persist2 PROPERTIES DEPENDS personal_diary_persist1)
+mini_project_session(personal_diary eof      ARGS "--file diary-eof.txt --today 2026-12-01" REMOVE diary-eof.txt)

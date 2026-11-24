@@ -1,0 +1,26 @@
+Personal Diary
+==============
+Diary file: diary-persist.txt
+Today is 2026-12-02.
+
+1. Write an entry
+2. Read all entries
+3. Search
+0. Quit
+Choose an option (0-3): Entry for 2026-12-02: Saved.
+
+1. Write an entry
+2. Read all entries
+3. Search
+0. Quit
+Choose an option (0-3): 
+Your diary (2 entries)
+  1. 2026-12-01  Day one.
+  2. 2026-12-02  Day two.
+
+1. Write an entry
+2. Read all entries
+3. Search
+0. Quit
+Choose an option (0-3): 
+Goodbye!
