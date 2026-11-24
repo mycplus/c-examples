@@ -1,0 +1,6 @@
+add_executable(todo_organizer todo_organizer.c)
+mini_project_session(todo_organizer session  ARGS "--file todo-session.txt --today 2026-12-01" REMOVE todo-session.txt)
+mini_project_session(todo_organizer persist1 ARGS "--file todo-persist.txt --today 2026-12-01" REMOVE todo-persist.txt)
+mini_project_session(todo_organizer persist2 ARGS "--today 2026-12-03 --file todo-persist.txt")
+set_tests_properties(todo_organizer_persist2 PROPERTIES DEPENDS todo_organizer_persist1)
+mini_project_session(todo_organizer eof      ARGS "--file todo-eof.txt --today 2026-12-01" REMOVE todo-eof.txt)

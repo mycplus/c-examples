@@ -1,0 +1,29 @@
+To-Do Organizer
+===============
+Today is 2026-12-01.
+No file todo-persist.txt yet: starting a new list.
+
+1. List tasks
+2. Add a task
+3. Mark a task as done
+4. Delete a task
+5. Remove completed tasks
+0. Quit
+Choose an option (0-5): Task: Priority (1 high, 2 medium, 3 low): Due date (YYYY-MM-DD, or press Enter for none): Added task 1.
+
+1. List tasks
+2. Add a task
+3. Mark a task as done
+4. Delete a task
+5. Remove completed tasks
+0. Quit
+Choose an option (0-5): Task: Priority (1 high, 2 medium, 3 low): Due date (YYYY-MM-DD, or press Enter for none): Added task 2.
+
+1. List tasks
+2. Add a task
+3. Mark a task as done
+4. Delete a task
+5. Remove completed tasks
+0. Quit
+Choose an option (0-5): 
+Goodbye!

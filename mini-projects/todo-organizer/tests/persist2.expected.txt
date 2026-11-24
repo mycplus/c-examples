@@ -1,0 +1,45 @@
+To-Do Organizer
+===============
+Today is 2026-12-03.
+Loaded 2 tasks from todo-persist.txt.
+
+1. List tasks
+2. Add a task
+3. Mark a task as done
+4. Delete a task
+5. Remove completed tasks
+0. Quit
+Choose an option (0-5): 
+To-do list: 2 tasks, 0 done (room for 4)
+  #  Done  Priority  Due         Task
+  1  [ ]   high      2026-12-02  Pay rent  (overdue)
+  2  [ ]   low       -           Water | feed the plants
+
+1. List tasks
+2. Add a task
+3. Mark a task as done
+4. Delete a task
+5. Remove completed tasks
+0. Quit
+Choose an option (0-5): Mark which task as done? (0 to cancel): Marked task 1 as done: Pay rent
+
+1. List tasks
+2. Add a task
+3. Mark a task as done
+4. Delete a task
+5. Remove completed tasks
+0. Quit
+Choose an option (0-5): 
+To-do list: 2 tasks, 1 done (room for 4)
+  #  Done  Priority  Due         Task
+  2  [ ]   low       -           Water | feed the plants
+  1  [x]   high      2026-12-02  Pay rent
+
+1. List tasks
+2. Add a task
+3. Mark a task as done
+4. Delete a task
+5. Remove completed tasks
+0. Quit
+Choose an option (0-5): 
+Goodbye!
