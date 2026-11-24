@@ -1,0 +1,9 @@
+a 0
+Fish list
+.
+r
+fish
+cat
+p
+w
+q

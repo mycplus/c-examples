@@ -1,0 +1,9 @@
+Text Editor
+===========
+Editing notes-eof.txt (new file).
+Type h for help.
+edit> Adding after line 0. Type a line with just . to stop.
+Added 1 line.
+edit*> 
+
+Goodbye!

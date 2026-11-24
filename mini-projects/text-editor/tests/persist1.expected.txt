@@ -1,0 +1,9 @@
+Text Editor
+===========
+Editing notes-persist.txt (new file).
+Type h for help.
+edit> Adding after line 0. Type a line with just . to stop.
+Added 3 lines.
+edit*> Save changes to notes-persist.txt? (y/n): Wrote 3 lines to notes-persist.txt.
+
+Goodbye!

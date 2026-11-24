@@ -1,0 +1,14 @@
+Text Editor
+===========
+Editing notes-persist.txt: 3 lines.
+Type h for help.
+edit> Adding after line 0. Type a line with just . to stop.
+Added 1 line.
+edit*> Find: Replace with: Replaced 4 occurrences in 3 lines.
+edit*>    1  Fish list
+   2  one cat
+   3  two cat
+   4  red cat blue cat
+edit*> Wrote 4 lines to notes-persist.txt.
+edit> 
+Goodbye!

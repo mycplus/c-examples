@@ -20,6 +20,7 @@ Fifteen beginner C projects, each one file using only the standard library, that
 | Birthday Reminder | Date arithmetic, a `Date` struct by value, leap years, sorting by a calculated key, reuse | [birthday-reminder/](birthday-reminder/) |
 | To-Do Organizer | `malloc`, `realloc` and `free`, a growing array, sorting pointers, leak checking | [todo-organizer/](todo-organizer/) |
 | Library Management System | Related structs linked by ID, data integrity rules, date arithmetic, fines in cents | [library-management/](library-management/) |
+| Text Editor | A line editor: an array of strings, `memmove`, building strings, command parsing, save as | [text-editor/](text-editor/) |
 
 ## Build one project
 

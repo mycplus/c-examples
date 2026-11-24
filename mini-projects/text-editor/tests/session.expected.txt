@@ -1,0 +1,42 @@
+Text Editor
+===========
+Editing notes-session.txt (new file).
+Type h for help.
+edit> The file is empty.
+edit> Adding after line 0. Type a line with just . to stop.
+Added 4 lines.
+edit*>    1  Shopping list
+   2  milk
+   3  bread
+   4    eggs (12)
+edit*> Adding after line 1. Type a line with just . to stop.
+Added 1 line.
+edit*> Line 3: milk
+New text: Changed line 3.
+edit*> Find: Replace with: Replaced 1 occurrence in 1 line.
+edit*> Find: Replace with: No line contains "xyz".
+edit*> Find: Nothing to find.
+edit*>    3  oat milk
+1 line contains "MILK".
+edit*> Line numbers go from 1 to 5.
+edit*> Deleted 1 line.
+edit*>    2  oat milk
+   3  sourdough bread
+edit*> Unknown command. Type h for help.
+edit*> Commands (N and M are line numbers):
+  p [N [M]]   print all lines, line N, or lines N to M
+  a [N]       add lines after line N (0 = at the top; default: at the end)
+  c N         change line N
+  d N [M]     delete line N, or lines N to M
+  f WORD      find lines containing WORD (ignoring case)
+  r           replace text in every line (exact match)
+  w [NAME]    write the file, or save it as NAME
+  q           quit
+  h           show this help
+edit*> Wrote 4 lines to notes-session.txt.
+edit> Adding after line 4. Type a line with just . to stop.
+Added 1 line.
+edit*> Save changes to notes-session.txt? (y/n): Please answer y or n.
+Save changes to notes-session.txt? (y/n): Changes discarded.
+
+Goodbye!

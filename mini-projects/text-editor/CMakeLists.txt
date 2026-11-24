@@ -1,0 +1,6 @@
+add_executable(text_editor text_editor.c)
+mini_project_session(text_editor session  ARGS "notes-session.txt" REMOVE notes-session.txt)
+mini_project_session(text_editor persist1 ARGS "notes-persist.txt" REMOVE notes-persist.txt)
+mini_project_session(text_editor persist2 ARGS "notes-persist.txt")
+set_tests_properties(text_editor_persist2 PROPERTIES DEPENDS text_editor_persist1)
+mini_project_session(text_editor eof      ARGS "notes-eof.txt" REMOVE notes-eof.txt)
