@@ -175,6 +175,16 @@ static void test_rules(void)
     CHECK(try_entry(&bank, e) == RULE_BAD_TEXT);
     strcpy(e.holder, "A|B");
     CHECK(try_entry(&bank, e) == RULE_BAD_TEXT);
+    strcpy(e.holder, "Al");
+    strcpy(e.address, "1 Bay\x1b Road");           /* an escape character */
+    CHECK(try_entry(&bank, e) == RULE_BAD_TEXT);
+    strcpy(e.address, "x");
+
+    /* Control characters are never stored: they would reach the terminal. */
+    CHECK(bank_text_ok("Ana\rLopez", 2, NAME_SIZE) == 0);
+    CHECK(bank_text_ok("Ana\x1b[2J", 2, NAME_SIZE) == 0);
+    CHECK(bank_text_ok("Ana\tLopez", 2, NAME_SIZE) == 0);
+    CHECK(bank_text_ok("Ana Lopez", 2, NAME_SIZE) == 1);
 
     CHECK(try_entry(&bank, make(ENTRY_DEPOSIT, 100001, 0)) == RULE_BAD_AMOUNT);
     CHECK(try_entry(&bank, make(ENTRY_DEPOSIT, 100001, MAX_AMOUNT + 1)) == RULE_BAD_AMOUNT);

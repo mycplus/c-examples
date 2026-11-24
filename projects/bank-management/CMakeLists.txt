@@ -90,6 +90,9 @@ bank_case(eof ARGS "--file bank-eof.txt --today 2026-12-01" REMOVE bank-eof.txt)
 bank_case(eof_nofile ARGS "--verify --file bank-eof.txt" NO_OUT ERR eof_nofile.expected.txt ERR_PREFIX
           EXIT 2 DEPENDS eof)
 
+# A holder name with a control character (ESC) is refused with its own message.
+bank_case(text_control ARGS "--file bank-text.txt --today 2026-12-01" REMOVE bank-text.txt)
+
 # Command line mistakes.
 bank_case(usage ARGS "--today 2027-02-29" NO_OUT ERR usage.expected.txt EXIT 1)
 
@@ -97,7 +100,7 @@ bank_case(usage ARGS "--today 2027-02-29" NO_OUT ERR usage.expected.txt EXIT 1)
 # with --verify in its own folder. The loader must stop at the damaged line.
 foreach(broken bad-header torn-line gap balance-mismatch overdraft daily-limit closed
                unknown-account wrong-number double-interest wrong-interest close-not-empty
-               date-backwards bad-type fields pipe-text)
+               date-backwards bad-type fields pipe-text control-text)
   bank_case(data_${broken} ARGS "--verify --file ledger.txt" COPY data/${broken}.txt
             ERR data/${broken}.expected.txt EXIT 2 DIR data-${broken})
 endforeach()

@@ -1,0 +1,1 @@
+ledger.txt line 2: the holder name or address is empty, too long or contains "|" or a control character

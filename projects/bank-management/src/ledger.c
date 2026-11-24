@@ -285,7 +285,7 @@ void rule_reason(const Bank *bank, const Entry *entry, Rule rule, char *why, siz
         snprintf(why, why_size, "the date is earlier than the previous entry");
         break;
     case RULE_BAD_TEXT:
-        snprintf(why, why_size, "the holder name or address is empty, too long or contains \"|\"");
+        snprintf(why, why_size, "the holder name or address is empty, too long or contains \"|\" or a control character");
         break;
     case RULE_BALANCE_MISMATCH:
         expected = bank_balance_after(bank, entry, 0);

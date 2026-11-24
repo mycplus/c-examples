@@ -9,6 +9,7 @@
  * (say, every balance at the end of each month) and replay only the
  * entries after the latest snapshot. */
 #define _CRT_SECURE_NO_WARNINGS     /* MSVC: allow the standard strcpy() */
+#include <ctype.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -137,13 +138,19 @@ Cents bank_money_held(const Bank *bank)
 }
 
 /* Returns 1 if text can be stored as a holder name or address: from
- * min_len to size - 1 characters and no '|' (the ledger's field
- * separator). Forbidding the character is simpler than quoting it. */
+ * min_len to size - 1 characters, no '|' (the ledger's field separator)
+ * and no control characters (they would be printed to the terminal as
+ * they are). Forbidding the character is simpler than quoting it. */
 int bank_text_ok(const char *text, size_t min_len, size_t size)
 {
     size_t len = strlen(text);
 
-    return len >= min_len && len <= size - 1 && strchr(text, '|') == NULL;
+    if (len < min_len || len > size - 1 || strchr(text, '|') != NULL)
+        return 0;
+    for (const char *p = text; *p != '\0'; p++)
+        if (iscntrl((unsigned char)*p))
+            return 0;
+    return 1;
 }
 
 /* Returns 1 if amount is a valid single transaction: 0.01 to 1,000,000.00. */
@@ -155,7 +162,7 @@ static int amount_ok(Cents amount)
 /* Decides whether entry may be added to the bank, and returns RULE_OK or
  * the first rule it breaks. The checks run in this order:
  *   1. the date is not earlier than the previous entry's date;
- *   2. the rules for this type of entry (section 3 of the brief);
+ *   2. the rules for this type of entry (listed in the README);
  *   3. balance_after (and other_balance_after) equal what applying the
  *      entry would really produce.
  *
@@ -279,8 +286,9 @@ static int grow(void **items, size_t *capacity, size_t count, size_t item_size)
 
 /* Adds entry to the bank's list of entries and updates the account(s) it
  * touches; an OPEN entry adds a new account. The entry must already have
- * passed bank_check(). Returns 1 on success, or 0 if memory ran out, in
- * which case nothing was changed. */
+ * passed bank_check(). Returns 1 on success, or 0 if memory ran out or
+ * an account in the entry does not exist (which bank_check() rules out);
+ * in either case nothing was changed. */
 int bank_apply(Bank *bank, const Entry *entry)
 {
     void *items;
@@ -297,8 +305,14 @@ int bank_apply(Bank *bank, const Entry *entry)
         bank->accounts = items;
     }
 
+    /* A guard: never follow a NULL account pointer, even if a caller
+     * forgot bank_check(). */
     Account *a = bank_find(bank, entry->account);
-    Account *b = NULL;
+    Account *b = entry->type == ENTRY_TRANSFER ? bank_find(bank, entry->other) : NULL;
+    if (entry->type != ENTRY_OPEN && a == NULL)
+        return 0;
+    if (entry->type == ENTRY_TRANSFER && b == NULL)
+        return 0;
     switch (entry->type) {
     case ENTRY_OPEN:
         a = &bank->accounts[bank->account_count++];
@@ -315,7 +329,6 @@ int bank_apply(Bank *bank, const Entry *entry)
         a->balance = entry->balance_after;
         break;
     case ENTRY_TRANSFER:
-        b = bank_find(bank, entry->other);
         a->balance = entry->balance_after;
         b->balance = entry->other_balance_after;
         break;

@@ -1,0 +1,34 @@
+Bank Management System
+======================
+Today is 2026-12-01.
+No ledger bank-text.txt yet: starting a new bank.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): Holder name: Please use printable characters only.
+Holder name: Address: Account type (1 = Savings, 2 = Current): Opening deposit: Opened savings account 100001 for Ana Lopez with 1,000.00.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): 
+Goodbye!

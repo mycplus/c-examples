@@ -99,7 +99,7 @@ The menu and the loader use the same function (`bank_check`), so a hand-edited l
 
 - **Savings** accounts earn 3.00% a year, paid monthly, and may not go below 0.00. **Current** accounts earn no interest and may go overdrawn down to -500.00.
 - Account numbers start at 100001 and go up by 1. Closed accounts keep their numbers, so a number is never reused.
-- A holder name is 2 to 30 characters and an address 1 to 50; neither may contain `|`.
+- A holder name is 2 to 30 characters and an address 1 to 50; neither may contain `|` or control characters.
 - Opening an account needs a deposit of at least 1,000.00.
 - Deposits, withdrawals and transfers are 0.01 to 1,000,000.00 each.
 - At most 5,000.00 in cash may be withdrawn from one account per day (transfers do not count).

@@ -19,6 +19,7 @@
  *     read -> build an Entry -> bank_prepare -> bank_check -> ledger_append -> bank_apply
  * and returns 0 when input ended, 1 otherwise. */
 #define _CRT_SECURE_NO_WARNINGS     /* MSVC: allow the standard strcpy() */
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -57,6 +58,7 @@ static int  do_interest(Teller *t);
 static int  do_update(Teller *t);
 static int  do_close(Teller *t);
 static int  read_account(Teller *t, const char *prompt, int allow_closed, const Account **out);
+static int  has_control(const char *text);
 static int  read_field(const char *prompt, char *out, size_t size, size_t min_len, const char *keep);
 static Entry new_entry(const Teller *t, EntryType type, int account);
 static Rule prepare_and_check(Teller *t, Entry *entry);
@@ -544,10 +546,21 @@ static int read_account(Teller *t, const char *prompt, int allow_closed, const A
     return 1;
 }
 
+/* Returns 1 if text contains a control character: a tab, a carriage
+ * return, or an escape (which could start a sequence that clears the
+ * screen when the name is printed later). Otherwise returns 0. */
+static int has_control(const char *text)
+{
+    for (; *text != '\0'; text++)
+        if (iscntrl((unsigned char)*text))
+            return 1;
+    return 0;
+}
+
 /* Prints prompt and reads a holder name or address into out (size bytes),
  * without spaces at either end. It must be min_len to size - 1 characters
- * and must not contain '|', the ledger's field separator; anything else
- * asks again. If keep is not NULL, an empty answer keeps that old value
+ * and must not contain '|', the ledger's field separator, or control
+ * characters; anything else asks again, with a message saying which. If keep is not NULL, an empty answer keeps that old value
  * (read_text() cannot be used for that, because it rejects empty input).
  * Returns 1 on success, 0 at end of input. */
 static int read_field(const char *prompt, char *out, size_t size, size_t min_len, const char *keep)
@@ -566,6 +579,8 @@ static int read_field(const char *prompt, char *out, size_t size, size_t min_len
         }
         if (strchr(buf, '|') != NULL) {
             printf("Please do not use the | character.\n");
+        } else if (has_control(buf)) {
+            printf("Please use printable characters only.\n");
         } else if (strlen(buf) < min_len || strlen(buf) > size - 1) {
             printf("Please enter %d to %d characters.\n", (int)min_len, (int)(size - 1));
         } else {
