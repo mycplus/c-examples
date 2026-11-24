@@ -1,0 +1,6 @@
+add_executable(address_book address_book.c)
+mini_project_session(address_book session  ARGS "--file contacts-session.csv" REMOVE contacts-session.csv)
+mini_project_session(address_book persist1 ARGS "--file contacts-persist.csv" REMOVE contacts-persist.csv)
+mini_project_session(address_book persist2 ARGS "--file contacts-persist.csv")
+set_tests_properties(address_book_persist2 PROPERTIES DEPENDS address_book_persist1)
+mini_project_session(address_book eof      ARGS "--file contacts-eof.csv" REMOVE contacts-eof.csv)

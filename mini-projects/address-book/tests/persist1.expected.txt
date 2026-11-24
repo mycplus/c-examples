@@ -1,0 +1,32 @@
+Address Book
+============
+No file contacts-persist.csv yet: starting a new address book.
+
+1. List contacts by name
+2. List contacts by email
+3. Add a contact
+4. Search
+5. Delete a contact
+6. Save
+0. Quit
+Choose an option (0-6): Name: Phone: Email: Added Smith, John.
+
+1. List contacts by name
+2. List contacts by email
+3. Add a contact
+4. Search
+5. Delete a contact
+6. Save
+0. Quit
+Choose an option (0-6): Name: Phone: Email: Added Ana "Ani" Lopez.
+
+1. List contacts by name
+2. List contacts by email
+3. Add a contact
+4. Search
+5. Delete a contact
+6. Save
+0. Quit
+Choose an option (0-6): Save your changes? (y/n): Saved 2 contacts to contacts-persist.csv.
+
+Goodbye!

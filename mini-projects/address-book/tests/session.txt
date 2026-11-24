@@ -1,0 +1,31 @@
+1
+3
+Smith, John
++44 20 7946 0000
+js@example.co.uk
+3
+Ana "Ani" Lopez
+555 CALL
+(555) 010-0199
+ana@
+lopez.ana@example
+lopez.ana@example.com
+3
+SMITH, JOHN
+ben Kim
+555-0142
+bkim@example.org
+1
+2
+4
+EXAMPLE.ORG
+4
+0199
+4
+nobody
+5
+4
+2
+1
+6
+0

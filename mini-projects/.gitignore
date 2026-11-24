@@ -4,3 +4,5 @@ results-*.md
 *.wav
 *-diary.txt
 diary*.txt
+contacts*.csv
+*.tmp

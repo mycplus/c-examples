@@ -16,6 +16,7 @@ Fifteen beginner C projects, each one file using only the standard library, that
 | Fly Away: Airport Text Adventure | A data-driven world, `enum`s, designated initializers, parsing commands, game state in a struct | [fly-away-adventure/](fly-away-adventure/) |
 | Mini Piano | `math.h`, generating a sine wave, writing a binary WAV file byte by byte, `strtok` | [mini-piano/](mini-piano/) |
 | Personal Diary | Text files, file modes, `errno`, dates with `time.h`, leap years, case-insensitive search | [personal-diary/](personal-diary/) |
+| Address Book | Arrays of structs, `qsort` and comparison functions, CSV files, a safe save, `memmove` | [address-book/](address-book/) |
 
 ## Build one project
 

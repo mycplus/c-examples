@@ -1,0 +1,145 @@
+Address Book
+============
+No file contacts-session.csv yet: starting a new address book.
+
+1. List contacts by name
+2. List contacts by email
+3. Add a contact
+4. Search
+5. Delete a contact
+6. Save
+0. Quit
+Choose an option (0-6): 
+The address book is empty.
+
+1. List contacts by name
+2. List contacts by email
+3. Add a contact
+4. Search
+5. Delete a contact
+6. Save
+0. Quit
+Choose an option (0-6): Name: Phone: Email: Added Smith, John.
+
+1. List contacts by name
+2. List contacts by email
+3. Add a contact
+4. Search
+5. Delete a contact
+6. Save
+0. Quit
+Choose an option (0-6): Name: Phone: Please use digits, spaces and + - ( ) only, with at least 3 digits.
+Phone: Email: That does not look like an email address.
+Email: That does not look like an email address.
+Email: Added Ana "Ani" Lopez.
+
+1. List contacts by name
+2. List contacts by email
+3. Add a contact
+4. Search
+5. Delete a contact
+6. Save
+0. Quit
+Choose an option (0-6): Name: A contact named SMITH, JOHN already exists.
+Name: Phone: Email: Added ben Kim.
+
+1. List contacts by name
+2. List contacts by email
+3. Add a contact
+4. Search
+5. Delete a contact
+6. Save
+0. Quit
+Choose an option (0-6): 
+  #  Name                      Phone                 Email
+  1  Ana "Ani" Lopez           (555) 010-0199        lopez.ana@example.com
+  2  ben Kim                   555-0142              bkim@example.org
+  3  Smith, John               +44 20 7946 0000      js@example.co.uk
+
+1. List contacts by name
+2. List contacts by email
+3. Add a contact
+4. Search
+5. Delete a contact
+6. Save
+0. Quit
+Choose an option (0-6): 
+  #  Name                      Phone                 Email
+  2  ben Kim                   555-0142              bkim@example.org
+  3  Smith, John               +44 20 7946 0000      js@example.co.uk
+  1  Ana "Ani" Lopez           (555) 010-0199        lopez.ana@example.com
+
+1. List contacts by name
+2. List contacts by email
+3. Add a contact
+4. Search
+5. Delete a contact
+6. Save
+0. Quit
+Choose an option (0-6): Search for: 
+1 contact found:
+  #  Name                      Phone                 Email
+  2  ben Kim                   555-0142              bkim@example.org
+
+1. List contacts by name
+2. List contacts by email
+3. Add a contact
+4. Search
+5. Delete a contact
+6. Save
+0. Quit
+Choose an option (0-6): Search for: 
+1 contact found:
+  #  Name                      Phone                 Email
+  1  Ana "Ani" Lopez           (555) 010-0199        lopez.ana@example.com
+
+1. List contacts by name
+2. List contacts by email
+3. Add a contact
+4. Search
+5. Delete a contact
+6. Save
+0. Quit
+Choose an option (0-6): Search for: 
+No contacts match "nobody".
+
+1. List contacts by name
+2. List contacts by email
+3. Add a contact
+4. Search
+5. Delete a contact
+6. Save
+0. Quit
+Choose an option (0-6): Delete which number? (0 to cancel): Please enter a whole number from 0 to 3.
+Delete which number? (0 to cancel): Deleted ben Kim.
+
+1. List contacts by name
+2. List contacts by email
+3. Add a contact
+4. Search
+5. Delete a contact
+6. Save
+0. Quit
+Choose an option (0-6): 
+  #  Name                      Phone                 Email
+  1  Ana "Ani" Lopez           (555) 010-0199        lopez.ana@example.com
+  2  Smith, John               +44 20 7946 0000      js@example.co.uk
+
+1. List contacts by name
+2. List contacts by email
+3. Add a contact
+4. Search
+5. Delete a contact
+6. Save
+0. Quit
+Choose an option (0-6): Saved 2 contacts to contacts-session.csv.
+
+1. List contacts by name
+2. List contacts by email
+3. Add a contact
+4. Search
+5. Delete a contact
+6. Save
+0. Quit
+Choose an option (0-6): 
+Goodbye!
