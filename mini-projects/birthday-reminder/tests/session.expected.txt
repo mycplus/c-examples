@@ -1,0 +1,131 @@
+Birthday Reminder
+=================
+Today is 2026-12-01.
+No file birthdays-session.txt yet: starting a new list.
+
+No birthdays saved yet.
+
+1. Show reminders
+2. List all birthdays
+3. Add a birthday
+4. Delete a birthday
+0. Quit
+Choose an option (0-4): 
+No birthdays saved yet.
+
+1. Show reminders
+2. List all birthdays
+3. Add a birthday
+4. Delete a birthday
+0. Quit
+Choose an option (0-4): 
+No birthdays saved yet.
+
+1. Show reminders
+2. List all birthdays
+3. Add a birthday
+4. Delete a birthday
+0. Quit
+Choose an option (0-4): Name: Birth date (YYYY-MM-DD): Added Carla Diaz.
+
+1. Show reminders
+2. List all birthdays
+3. Add a birthday
+4. Delete a birthday
+0. Quit
+Choose an option (0-4): Name: Birth date (YYYY-MM-DD): Please enter a real past date from 1900-01-01, as YYYY-MM-DD.
+Birth date (YYYY-MM-DD): Please enter a real past date from 1900-01-01, as YYYY-MM-DD.
+Birth date (YYYY-MM-DD): Please enter a real past date from 1900-01-01, as YYYY-MM-DD.
+Birth date (YYYY-MM-DD): Please enter a real past date from 1900-01-01, as YYYY-MM-DD.
+Birth date (YYYY-MM-DD): Added Ana Lopez.
+
+1. Show reminders
+2. List all birthdays
+3. Add a birthday
+4. Delete a birthday
+0. Quit
+Choose an option (0-4): Name: A birthday for Ana Lopez is already saved.
+Name: Birth date (YYYY-MM-DD): Added ben Kim.
+
+1. Show reminders
+2. List all birthdays
+3. Add a birthday
+4. Delete a birthday
+0. Quit
+Choose an option (0-4): Name: Birth date (YYYY-MM-DD): Added Dev Patel.
+
+1. Show reminders
+2. List all birthdays
+3. Add a birthday
+4. Delete a birthday
+0. Quit
+Choose an option (0-4): Name: Birth date (YYYY-MM-DD): Added Frank Osei.
+
+1. Show reminders
+2. List all birthdays
+3. Add a birthday
+4. Delete a birthday
+0. Quit
+Choose an option (0-4): Name: Birth date (YYYY-MM-DD): Added Zoe Park.
+
+1. Show reminders
+2. List all birthdays
+3. Add a birthday
+4. Delete a birthday
+0. Quit
+Choose an option (0-4): 
+Coming up in the next 7 days:
+  today      Ana Lopez turns 36
+  in 7 days  ben Kim turns 25
+  in 7 days  Zoe Park turns 28
+
+1. Show reminders
+2. List all birthdays
+3. Add a birthday
+4. Delete a birthday
+0. Quit
+Choose an option (0-4): 
+All birthdays, soonest first:
+  #  Next        Name                      Turns  When
+  1  2026-12-01  Ana Lopez                    36  today
+  2  2026-12-08  ben Kim                      25  in 7 days
+  3  2026-12-08  Zoe Park                     28  in 7 days
+  4  2027-01-01  Frank Osei                   27  in 31 days
+  5  2027-02-28  Dev Patel                    23  in 89 days
+  6  2027-11-30  Carla Diaz                   42  in 364 days
+
+1. Show reminders
+2. List all birthdays
+3. Add a birthday
+4. Delete a birthday
+0. Quit
+Choose an option (0-4): Name to delete: Deleted Ana Lopez.
+
+1. Show reminders
+2. List all birthdays
+3. Add a birthday
+4. Delete a birthday
+0. Quit
+Choose an option (0-4): Name to delete: No birthday saved for "Nobody".
+
+1. Show reminders
+2. List all birthdays
+3. Add a birthday
+4. Delete a birthday
+0. Quit
+Choose an option (0-4): 
+All birthdays, soonest first:
+  #  Next        Name                      Turns  When
+  1  2026-12-08  ben Kim                      25  in 7 days
+  2  2026-12-08  Zoe Park                     28  in 7 days
+  3  2027-01-01  Frank Osei                   27  in 31 days
+  4  2027-02-28  Dev Patel                    23  in 89 days
+  5  2027-11-30  Carla Diaz                   42  in 364 days
+
+1. Show reminders
+2. List all birthdays
+3. Add a birthday
+4. Delete a birthday
+0. Quit
+Choose an option (0-4): 
+Goodbye!

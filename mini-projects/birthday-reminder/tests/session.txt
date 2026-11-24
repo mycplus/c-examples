@@ -1,0 +1,33 @@
+1
+2
+3
+Carla Diaz
+1985-11-30
+3
+Ana Lopez
+12-01
+1990-02-30
+2026-12-01
+1899-12-31
+1990-12-01
+3
+ANA LOPEZ
+ben Kim
+2001-12-08
+3
+Dev Patel
+2004-02-29
+3
+Frank Osei
+2000-01-01
+3
+Zoe Park
+1998-12-08
+1
+2
+4
+ana lopez
+4
+Nobody
+2
+0

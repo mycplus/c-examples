@@ -1,0 +1,35 @@
+Birthday Reminder
+=================
+Today is 2026-12-01.
+No file birthdays-persist.txt yet: starting a new list.
+
+No birthdays saved yet.
+
+1. Show reminders
+2. List all birthdays
+3. Add a birthday
+4. Delete a birthday
+0. Quit
+Choose an option (0-4): Name: Birth date (YYYY-MM-DD): Added Ana Lopez.
+
+1. Show reminders
+2. List all birthdays
+3. Add a birthday
+4. Delete a birthday
+0. Quit
+Choose an option (0-4): Name: Birth date (YYYY-MM-DD): Added Dev Patel.
+
+1. Show reminders
+2. List all birthdays
+3. Add a birthday
+4. Delete a birthday
+0. Quit
+Choose an option (0-4): Name: Birth date (YYYY-MM-DD): Added ben Kim.
+
+1. Show reminders
+2. List all birthdays
+3. Add a birthday
+4. Delete a birthday
+0. Quit
+Choose an option (0-4): 
+Goodbye!

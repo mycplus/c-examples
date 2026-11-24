@@ -1,0 +1,27 @@
+Birthday Reminder
+=================
+Today is 2027-02-28.
+Loaded 3 birthdays from birthdays-persist.txt.
+
+Coming up in the next 7 days:
+  today      Dev Patel turns 23
+
+1. Show reminders
+2. List all birthdays
+3. Add a birthday
+4. Delete a birthday
+0. Quit
+Choose an option (0-4): 
+All birthdays, soonest first:
+  #  Next        Name                      Turns  When
+  1  2027-02-28  Dev Patel                    23  today
+  2  2027-12-01  Ana Lopez                    37  in 276 days
+  3  2027-12-08  ben Kim                      26  in 283 days
+
+1. Show reminders
+2. List all birthdays
+3. Add a birthday
+4. Delete a birthday
+0. Quit
+Choose an option (0-4): 
+Goodbye!

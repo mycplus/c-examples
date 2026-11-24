@@ -1,0 +1,6 @@
+add_executable(birthday_reminder birthday_reminder.c)
+mini_project_session(birthday_reminder session  ARGS "--file birthdays-session.txt --today 2026-12-01" REMOVE birthdays-session.txt)
+mini_project_session(birthday_reminder persist1 ARGS "--file birthdays-persist.txt --today 2026-12-01" REMOVE birthdays-persist.txt)
+mini_project_session(birthday_reminder persist2 ARGS "--today 2027-02-28 --file birthdays-persist.txt")
+set_tests_properties(birthday_reminder_persist2 PROPERTIES DEPENDS birthday_reminder_persist1)
+mini_project_session(birthday_reminder eof      ARGS "--file birthdays-eof.txt --today 2026-12-01" REMOVE birthdays-eof.txt)
