@@ -1,0 +1,297 @@
+Library Management
+==================
+Today is 2026-12-01.
+No file library-session.txt yet: starting a new library.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): 
+No books yet.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): Title: Author: Copies (1-99): Added book 101.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): Title: Author: Copies (1-99): Added book 102.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): Title: Please do not use the | character.
+Title: Author: Copies (1-99): Please enter a whole number from 1 to 99.
+Copies (1-99): Added book 103.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): Title: Author: Copies (1-99): Added book 104.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): Name: Added member 1.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): Name: Added member 2.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): Name: Added member 3.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): Book ID: Member ID: Issued book 102 to Ana Lopez. Due back on 2026-12-15.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): Book ID: Member ID: No copies of book 102 are available.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): Book ID: There is no book 999.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): Book ID: Member ID: There is no member 9.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): Book ID: Member ID: Issued book 101 to Ana Lopez. Due back on 2026-12-15.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): Book ID: Member ID: Ana Lopez already has book 101.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): Book ID: Member ID: Issued book 101 to Ben Kim. Due back on 2026-12-15.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): Book ID: Member ID: Issued book 103 to Ana Lopez. Due back on 2026-12-15.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): Book ID: Member ID: Ana Lopez already has 3 books, the limit.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): 
+  ID  Title                          Author               Copies Available
+ 101  Learning C Step by Step        Ana Writer                2         0
+ 102  Data Structures in Practice    Ben Author                1         0
+ 103  A Short History of Computing   Cy Historian              1         0
+ 104  Practical Unix                 Dee Admin                 1         1
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): 
+4 loans, 0 overdue:
+Due         Book  Title                          Member               Status
+2026-12-15   101  Learning C Step by Step        Ana Lopez            due in 14 days
+2026-12-15   101  Learning C Step by Step        Ben Kim              due in 14 days
+2026-12-15   102  Data Structures in Practice    Ana Lopez            due in 14 days
+2026-12-15   103  A Short History of Computing   Ana Lopez            due in 14 days
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): Member ID: Ana Lopez still has 3 books on loan and cannot be removed.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): Member ID: Removed member 3 (Carla Diaz).
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): Book ID: Member ID: Ana Lopez returned book 102 on time.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): Book ID: Member ID: Ben Kim does not have book 104.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): 
+  ID  Name                 Books on loan
+   1  Ana Lopez            2
+   2  Ben Kim              1
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): 
+Goodbye!

@@ -1,0 +1,6 @@
+add_executable(library_management library_management.c)
+mini_project_session(library_management session  ARGS "--file library-session.txt --today 2026-12-01" REMOVE library-session.txt)
+mini_project_session(library_management persist1 ARGS "--file library-persist.txt --today 2026-12-01" REMOVE library-persist.txt)
+mini_project_session(library_management persist2 ARGS "--today 2026-12-20 --file library-persist.txt")
+set_tests_properties(library_management_persist2 PROPERTIES DEPENDS library_management_persist1)
+mini_project_session(library_management eof      ARGS "--file library-eof.txt --today 2026-12-01" REMOVE library-eof.txt)

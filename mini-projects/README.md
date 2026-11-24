@@ -19,6 +19,7 @@ Fifteen beginner C projects, each one file using only the standard library, that
 | Address Book | Arrays of structs, `qsort` and comparison functions, CSV files, a safe save, `memmove` | [address-book/](address-book/) |
 | Birthday Reminder | Date arithmetic, a `Date` struct by value, leap years, sorting by a calculated key, reuse | [birthday-reminder/](birthday-reminder/) |
 | To-Do Organizer | `malloc`, `realloc` and `free`, a growing array, sorting pointers, leak checking | [todo-organizer/](todo-organizer/) |
+| Library Management System | Related structs linked by ID, data integrity rules, date arithmetic, fines in cents | [library-management/](library-management/) |
 
 ## Build one project
 

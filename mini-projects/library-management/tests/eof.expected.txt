@@ -1,0 +1,28 @@
+Library Management
+==================
+Today is 2026-12-01.
+No file library-eof.txt yet: starting a new library.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): Book ID: There is no book 101.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): 
+
+Goodbye!

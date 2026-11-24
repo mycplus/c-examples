@@ -1,0 +1,67 @@
+Library Management
+==================
+Today is 2026-12-20.
+Loaded 1 book, 1 member and 1 loan from library-persist.txt.
+Overdue: 1 loan. Choose 7 to see them.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): 
+1 loan, 1 overdue:
+Due         Book  Title                          Member               Status
+2026-12-15   101  Learning C Step by Step        Ana Lopez            overdue by 5 days
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): Book ID: Member ID: Ana Lopez returned book 101 5 days late. Fine: 1.25
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): Book ID: Member ID: Issued book 101 to Ana Lopez. Due back on 2027-01-03.
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): 
+1 loan, 0 overdue:
+Due         Book  Title                          Member               Status
+2027-01-03   101  Learning C Step by Step        Ana Lopez            due in 14 days
+
+1. List books
+2. List members
+3. Add a book
+4. Add a member
+5. Issue a book
+6. Return a book
+7. Loans and overdue books
+8. Remove a member
+0. Quit
+Choose an option (0-8): 
+Goodbye!

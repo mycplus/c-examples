@@ -1,0 +1,65 @@
+1
+3
+Learning C Step by Step
+Ana Writer
+2
+3
+Data Structures in Practice
+Ben Author
+1
+3
+A | B
+A Short History of Computing
+Cy Historian
+0
+1
+3
+Practical Unix
+Dee Admin
+1
+4
+Ana Lopez
+4
+Ben Kim
+4
+Carla Diaz
+5
+102
+1
+5
+102
+2
+5
+999
+5
+101
+9
+5
+101
+1
+5
+101
+1
+5
+101
+2
+5
+103
+1
+5
+104
+1
+1
+7
+8
+1
+8
+3
+6
+102
+1
+6
+104
+2
+2
+0
