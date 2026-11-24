@@ -1,0 +1,1 @@
+ledger.txt line 16: account 100001 cannot be closed with a balance of 1,855.38

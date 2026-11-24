@@ -1,0 +1,1 @@
+Usage: bank_management [--file NAME] [--today YYYY-MM-DD] [--verify]

@@ -1,0 +1,1 @@
+Today (2027-01-15) is earlier than the last ledger entry (2027-01-31). Check the date and try again.

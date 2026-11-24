@@ -1,0 +1,448 @@
+Bank Management System
+======================
+Today is 2026-12-01.
+No ledger bank-session.txt yet: starting a new bank.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): 
+No accounts yet.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): Holder name: Address: Account type (1 = Savings, 2 = Current): Opening deposit: Opened savings account 100001 for Ana Lopez with 1,500.00.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): Holder name: Address: Account type (1 = Savings, 2 = Current): Opening deposit: The opening deposit must be at least 1,000.00.
+Opening deposit: Opened current account 100002 for Ben Kim with 2,500.50.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): Holder name: Please do not use the | character.
+Holder name: Address: Account type (1 = Savings, 2 = Current): Opening deposit: Opened savings account 100003 for Carla Diaz with 1,000.00.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): Account number: Amount: Deposited 250.75 to 100001. New balance: 1,750.75.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): Account number: There is no account 100009.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): Account number: Amount: Please enter an amount from 0.01 to 1,000,000.00, for example 250 or 250.75.
+Amount: Please enter an amount from 0.01 to 1,000,000.00, for example 250 or 250.75.
+Amount: Please enter an amount from 0.01 to 1,000,000.00, for example 250 or 250.75.
+Amount: Deposited 100.00 to 100001. New balance: 1,850.75.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): Account number: Amount: Insufficient funds: 100003 has 1,000.00 available.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): Account number: Amount: Withdrew 2,900.00 from 100002. New balance: -399.50.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): Account number: Amount: Insufficient funds: 100002 has 100.50 available, including the 500.00 overdraft.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): Account number: Amount: Deposited 9,000.00 to 100003. New balance: 10,000.00.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): Account number: Amount: Withdrew 4,000.00 from 100003. New balance: 6,000.00.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): Account number: Amount: Daily withdrawal limit: 100003 can withdraw 1,000.00 more today.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): Account number: Amount: Withdrew 1,000.00 from 100003. New balance: 5,000.00.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): From account: To account: Choose two different accounts.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): From account: To account: Amount: Transferred 399.50 from 100003 to 100002.
+New balances: 100003 4,600.50, 100002 0.00.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): Account number: Account 100001 still holds 1,850.75. Withdraw or transfer it first.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): Account number: Close account 100002 for Ben Kim? (y/n): Closed account 100002.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): Account number: Account 100002 is closed.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): Account number: Holder name [Ana Lopez]: Address [12 Harbour Road, Springfield]: Updated account 100001.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): Posted interest for 2026-12 to 2 account(s): 16.13 in total.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): Interest for 2026-12 was already posted. Nothing was changed.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): Account number: 
+Account 100001 (Savings, open)
+Holder:  Ana Lopez
+Address: 14 Harbour Road, Springfield
+Opened:  2026-12-01
+
+Date         No.  Description                     Debit       Credit        Balance
+2026-12-01     1  Opening deposit                           1,500.00       1,500.00
+2026-12-01     4  Cash deposit                                250.75       1,750.75
+2026-12-01     5  Cash deposit                                100.00       1,850.75
+2026-12-01    12  Details updated                                          1,850.75
+2026-12-01    13  Interest for 2026-12                          4.63       1,855.38
+Balance: 1,855.38
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): 
+Account Holder                         Type    Status         Balance
+100001  Ana Lopez                      Savings open          1,855.38
+100002  Ben Kim                        Current closed            0.00
+100003  Carla Diaz                     Savings open          4,612.00
+3 account(s): 2 open, 1 closed. Money held: 6,467.38.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): Search for: 
+Account Holder                         Type    Status         Balance
+100003  Carla Diaz                     Savings open          4,612.00
+1 account(s) found.
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): Search for: 
+No accounts match "zz".
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): Date (YYYY-MM-DD, or Enter for today): 
+Transactions on 2026-12-01:
+ No.  Account  Description                     Debit       Credit
+   1  100001   Opening deposit                           1,500.00
+   2  100002   Opening deposit                           2,500.50
+   3  100003   Opening deposit                           1,000.00
+   4  100001   Cash deposit                                250.75
+   5  100001   Cash deposit                                100.00
+   6  100002   Cash withdrawal              2,900.00
+   7  100003   Cash deposit                              9,000.00
+   8  100003   Cash withdrawal              4,000.00
+   9  100003   Cash withdrawal              1,000.00
+  10  100003   Transfer to 100002             399.50
+  10  100002   Transfer from 100003                        399.50
+  11  100002   Account closed
+  12  100001   Details updated
+  13  100001   Interest for 2026-12                          4.63
+  14  100003   Interest for 2026-12                         11.50
+
+Deposits:         6, total 14,351.25
+Withdrawals:      3, total 7,900.00
+Transfers:        1, total 399.50
+Interest paid:    2, total 16.13
+Net change in money held: 6,467.38
+
+ 1. Open an account
+ 2. Deposit
+ 3. Withdraw
+ 4. Transfer
+ 5. Account statement
+ 6. List all accounts
+ 7. Search by name
+ 8. Daily transaction report
+ 9. Post monthly interest
+10. Update holder details
+11. Close an account
+ 0. Quit
+Choose an option (0-11): 
+Goodbye!

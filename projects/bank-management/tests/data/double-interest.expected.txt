@@ -1,0 +1,1 @@
+ledger.txt line 16: interest for 2026-12 was already posted to account 100001

@@ -1,0 +1,1 @@
+OK: 3 account(s), 14 ledger entries, last entry 2026-12-01. Money held: 6,467.38.

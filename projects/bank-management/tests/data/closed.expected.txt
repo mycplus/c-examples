@@ -1,0 +1,1 @@
+ledger.txt line 16: account 100002 is closed

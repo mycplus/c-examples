@@ -1,0 +1,7 @@
+build*/
+asan/
+*.log
+bank*.txt
+*.tmp
+!tests/data/
+!tests/data/*.txt

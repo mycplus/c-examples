@@ -36,6 +36,7 @@ C source code examples and projects accompanying C programming tutorials on MYCP
 | [Defensive Programming](practices/defensive-programming/) | Checked input parsing, error codes, assertions, bounds and overflow checks, with sanitizer and analyzer tests. | [![Defensive Programming](https://github.com/mycplus/c-examples/actions/workflows/defensive-programming.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/defensive-programming.yml) |
 | [LibGD Images](graphics/libgd/) | Create PNG and JPEG images with LibGD: a chart, thumbnails and identicons, with header checks before decoding. | [![LibGD Images](https://github.com/mycplus/c-examples/actions/workflows/libgd.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/libgd.yml) |
 | [C Mini Projects](mini-projects/) | 15 beginner C projects, one file each: converters, games, file-based record keepers and a text editor. | [![C Mini Projects](https://github.com/mycplus/c-examples/actions/workflows/c-mini-projects.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/c-mini-projects.yml) |
+| [Bank Management System](projects/bank-management/) | A console bank in C: accounts, deposits, withdrawals, transfers and interest, kept in an append-only ledger that is checked line by line. | [![Bank Management System](https://github.com/mycplus/c-examples/actions/workflows/bank-management.yml/badge.svg)](https://github.com/mycplus/c-examples/actions/workflows/bank-management.yml) |
 
 
 ## About
