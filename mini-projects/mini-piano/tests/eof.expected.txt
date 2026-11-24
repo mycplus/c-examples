@@ -1,0 +1,8 @@
+Mini Piano
+==========
+Type a tune as notes separated by spaces, for example: C4 D4 E4 F4 G4
+Notes are A to G, # makes a sharp, the octave is 0 to 8 (4 if left out), R is a rest.
+Type ode to load the opening of Beethoven's Ode to Joy.
+Tune: Note length in milliseconds (100-2000): Save as: 
+
+Goodbye!

@@ -1,0 +1,19 @@
+Mini Piano
+==========
+Type a tune as notes separated by spaces, for example: C4 D4 E4 F4 G4
+Notes are A to G, # makes a sharp, the octave is 0 to 8 (4 if left out), R is a rest.
+Type ode to load the opening of Beethoven's Ode to Joy.
+Tune: Sorry, "H4" is not a note.
+Tune: Please type at least one note.
+Tune: Note length in milliseconds (100-2000): Please enter a whole number from 100 to 2000.
+Note length in milliseconds (100-2000): Save as: Please use a name ending in .wav.
+Save as: 
+Note     Frequency
+C4       261.63 Hz
+E4       329.63 Hz
+G4       392.00 Hz
+C5       523.25 Hz
+R           (rest)
+C5       523.25 Hz
+
+Wrote 6 notes (2.40 seconds) to tune.wav: 105884 bytes.
