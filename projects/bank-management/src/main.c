@@ -63,6 +63,10 @@ static Rule prepare_and_check(Teller *t, Entry *entry);
 static void explain(const Teller *t, const Entry *entry, Rule rule);
 static int  save_entry(Teller *t, const Entry *entry, char *error, size_t error_size);
 
+/* Reads the command line, loads and checks the ledger, refuses to start if
+ * today is earlier than the last entry, then runs the menu. With --verify
+ * it only checks the ledger. Returns 0 normally, 1 for a bad command line
+ * and 2 if the ledger cannot be opened or is damaged. */
 int main(int argc, char *argv[])
 {
     Teller t;
